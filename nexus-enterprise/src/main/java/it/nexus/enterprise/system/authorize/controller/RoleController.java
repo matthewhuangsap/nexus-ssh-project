@@ -35,7 +35,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 @ParentPackage(value = "coolie-default")
 @Namespace("/permission")
-@AccessGroup(name = "鏉冮檺绠＄悊", pluginClass = PluginClass.class)
+@AccessGroup(name = "权限管理", pluginClass = PluginClass.class)
 public class RoleController extends BaseAction<Role> {
 	private static final long	serialVersionUID	= -7004668560727425352L;
 
@@ -47,7 +47,7 @@ public class RoleController extends BaseAction<Role> {
 	SystemAssistService systemAssistService;
 	
 	
-	@Access("璁块棶")
+	@Access("访问")
 	@Action(value = "/permission/list", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_list.ftl", name = "success") })
 	public String list() throws Exception {
 		lists = authorizeService.getAll();
@@ -76,7 +76,7 @@ public class RoleController extends BaseAction<Role> {
 		}
 	}
 
-	@Access("缂栬緫")
+	@Access("保存")
 	@Action(value = "/permission/save", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_edit.ftl", name = "success") })
 	public String save() throws Exception {
 		// 浣跨敤缂撳瓨 灏嗗彇寰楃殑鏉冮檺淇℃伅鏀惧叆session
@@ -128,20 +128,16 @@ public class RoleController extends BaseAction<Role> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Access("缂栬緫")
+	@Access("编辑")
 	@Action(value = "/permission/edit", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_edit.ftl", name = "success") })
 	public String edit() throws Exception {
-
-		// 浣跨敤缂撳瓨 灏嗗彇寰楃殑鏉冮檺淇℃伅鏀惧叆session
 		this.initAccessGroupMap();
 		dmo = authorizeService.load(dmo.getId());
 		List<RoleAction> actions = dmo.getRoleactions();
 		Map<String, RoleAction> action_maps = new HashMap<String, RoleAction>();
-		// 灏唋ist 杞垚 map
 		for (RoleAction roleAction : actions) {
 			action_maps.put(roleAction.getName(), roleAction);
 		}
-		// 寰幆浠庨厤缃枃浠惰鍙栫殑鏁版嵁 瀵逛负浠栧鎵炬暟鎹簱鏄惁鏈夊畠鐨勮缃暟鎹�
 		fillCheckedValueList(action_maps, access_group_map);
 		return super.execute();
 	}
@@ -162,7 +158,6 @@ public class RoleController extends BaseAction<Role> {
 				Object key = entry.getKey();
 				Object value = entry.getValue();
 				if (action_maps.containsKey(key)) {
-					// 鍦ㄦ暟鎹簱涓壘鍒颁簡閰嶇疆鏁版嵁
 					RoleAction ra = action_maps.get(key);
 					result = createArrRole(ra.getRolebits(),
 							(Map<Long, String>) value);
@@ -191,19 +186,16 @@ public class RoleController extends BaseAction<Role> {
 		return result;
 	}
 
-	/*浠ヤ笅鏄痝eter seter灞炴��*/
+	/*geter seter*/
 	private Role								dmo;
 	private List<Role>							lists				= new ArrayList<Role>();
-	// 鏀剧疆value
 	private List<String>						keyList				= new ArrayList<String>();
-	// 鏀剧疆key
 	private List<String[]>						valueList			= new ArrayList<String[]>();
-	// 瀛樻斁鎵�鏈夎AccessGroup鏍囪杩囩殑绫�
 	List<Class<?>>								action_class_list	= new ArrayList<Class<?>>();
-	/* 瀛樻斁 plugin_name
+	/* plugin_name
 	// |----------access_group_name
-	// |---------------- 1 = 鏂板缓
-	// |---------------- 2 = 淇濆瓨*/
+	// |---------------- 1 = key   1
+	// |---------------- 2 = value 新建 */
 	Map<String, Map<String, Map<Long, String>>>	access_group_map	= new TreeMap<String, Map<String, Map<Long, String>>>();
 
 	Map<String, String>							plugin_info			= new HashMap<String, String>();
@@ -257,5 +249,5 @@ public class RoleController extends BaseAction<Role> {
 		this.plugin_info = plugin_info;
 	}
 
-	/*浠ヤ笂鏄痝eter seter灞炴��*/
+	/*geter seter*/
 }

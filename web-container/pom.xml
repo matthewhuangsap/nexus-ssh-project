@@ -14,7 +14,7 @@
   <name>web-container Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <build>
-    <finalName>web-container</finalName>
+    <finalName>web-psi</finalName>
   </build>
  
 </project>
