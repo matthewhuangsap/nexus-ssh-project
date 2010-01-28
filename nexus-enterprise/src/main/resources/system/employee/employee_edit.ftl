@@ -66,7 +66,7 @@
 	<body topmargin="0" onkeydown="if(event.keyCode==13){return false;}">
 		<#include "/components/buttongroup.ftl" />
 		<hr>
-		<@c.title id="tt" dmoID="dmo.id" name="title" ></@c.title>
+	
 		<@s.bean name="java.util.HashMap" id="qTableLayout">
 			<@s.param name="tablecolspan" value="%{4}" />
 		</@s.bean>

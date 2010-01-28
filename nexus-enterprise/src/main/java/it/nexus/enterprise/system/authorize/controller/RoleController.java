@@ -48,14 +48,14 @@ public class RoleController extends BaseAction<Role> {
 	
 	
 	@Access("访问")
-	@Action(value = "/permission/list", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_list.ftl", name = "success") })
+	@Action(value = "/permission/list", results = { @Result(type = "freemarker", location = "role_list.ftl", name = "success") })
 	public String list() throws Exception {
 		lists = authorizeService.getAll();
 		return super.execute();
 	}
 
 	@SuppressWarnings("unchecked")
-	@Action(value = "/permission/create", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_edit.ftl", name = "success") })
+	@Action(value = "/permission/create", results = { @Result(type = "freemarker", location = "role_edit.ftl", name = "success") })
 	public String create() throws Exception {
 		System.out.println(valueList.size());
 		this.initAccessGroupMap();
@@ -103,7 +103,7 @@ public class RoleController extends BaseAction<Role> {
 		return super.execute();
 	}
 
-	@Action(value = "/permission/remove", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_list.ftl", name = "success") })
+	@Action(value = "/permission/remove", results = { @Result(type = "freemarker", location = "role_list.ftl", name = "success") })
 	public String remove() throws Exception {
 		dmo = authorizeService.load(dmo.getId());
 		authorizeService.delete(dmo);
@@ -129,7 +129,7 @@ public class RoleController extends BaseAction<Role> {
 
 	@SuppressWarnings("unchecked")
 	@Access("编辑")
-	@Action(value = "/permission/edit", results = { @Result(type = "freemarker", location = "/it/coolie/system/authorize/view/role_edit.ftl", name = "success") })
+	@Action(value = "/permission/edit", results = { @Result(type = "freemarker", location = "role_edit.ftl", name = "success") })
 	public String edit() throws Exception {
 		this.initAccessGroupMap();
 		dmo = authorizeService.load(dmo.getId());

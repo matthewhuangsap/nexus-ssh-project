@@ -20,6 +20,5 @@
     <module>nexus-enterprise</module>
     <module>nexus-webcontrol</module>
     <module>nexus-psi</module>
-    <module>web-container</module>
   </modules>
 </project>
