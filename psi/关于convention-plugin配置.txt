@@ -1,0 +1,376 @@
+1.官方介绍的地址： 
+
+http://struts.apache.org/2.1.6/docs/convention-plugin.html 
+
+
+2.struts.xml文件配置 
+
+只挑选几个重要的常量说明： 
+
+(1) <constant name="struts.locale" value="zh_CN"/> 
+      <constant name="struts.i18n.encoding" value="UTF-8"/> 
+
+      struts2.1.6  现在只需要一个struts.xml文件就可以了。以前配struts.locale=zh_CN，struts.i18n.encoding＝UTF- 8，应用起动时会报一个警告，说没有配置locale，必须要在struts.properties里面配置才不会报错，现在这个问题已经解决了，所有配置都可以在xml文件中指定了。 
+
+
+(2) <constant name="struts.action.extension" value="action,do,,"/> 
+
+      扩展名可以指定为空。这样地址栏比较好看。但也会有个问题，就是一些其他servlet映射，如cxf，我们会映射地址为/services/*，现在这个地址也变成struts2控制范围的地址了，如果按默认的配置会报找不到action的错误。解决办法是修改mapper类。这在以后文章中会提到。 
+
+
+(3)  <constant name="struts.enable.DynamicMethodInvocation" value="true"/> 
+       <constant name="struts.enable.SlashesInActionNames" value="true"/> 
+
+      开启动态方法。要实现零配置，就是需要动态方法调用。开启action名称可以有 “/”，一个请求地址有多个“/”，struts2就不会再使用类路径扫描的命名空间，只会使用配置的名称。所以既想action名称里使用“/”，又想用struts2默认搜索的命名空间，只能自己修改一下convention插件的实现类了。 
+
+
+(4) <constant name="struts.ui.theme" value="simple"/> 
+
+      不用dojo的及struts2复杂标签样式的就把主题设置为simple，这样可以不加载多余的模板。 
+
+
+(5) <constant name="struts.devMode" value="true"/> 
+      <constant name="struts.i18n.reload" value="true"/> 
+      <constant name="struts.configuration.xml.reload" value="true"/> 
+      <constant name="struts.convention.classes.reload" value="true" /> 
+
+       开启开发者模式，在平时开发时修改action的annotation配置可以不重启，但是修改struts.xml文件还是要重启。修改类的具体内容，debug模式下可以不重启，或是使用javarebel，这个不在讨论范围。 
+
+
+(6)  <constant name="struts.convention.result.path" value="/WEB-INF/pages/"/> 
+
+      指定结果页面路径。 convention插件会自动在此路径中寻找文件。放到WEB-INF的目的的保护文件资源，只能通过程序内部跳转才能访问，我们的权限拦截器或其他权限处理只要加到action上就可以了。 
+
+
+(7) <constant name="struts.convention.action.suffix" value="Action"/> 
+     <constant name="struts.convention.action.name.lowercase" value="true"/> 
+     <constant name="struts.convention.action.name.separator" value="_"/> 
+
+     一个action名字的获取。比如为HelloWorldAction。按照配置，actionName为hello_world。 
+
+
+(8)<constant name="struts.convention.action.disableScanning" value="false"/> 
+
+     是否不扫描类。一定要设为false，否则convention插件不起作用，零配置也没有意义。 
+
+
+(9)<constant name="struts.convention.default.parent.package" value="default"/> 
+
+     设置默认的父包，一般我们都设置一个default包继承自struts-default。大部分类再继承default。如果有特殊的类需要特殊的包，只能在action中再指定父包了。 
+
+
+(10) <constant name="struts.convention.package.locators" value="action"/> 
+       <constant name="struts.convention.package.locators.disable" value="false"/> 
+       <constant name="struts.convention.package.locators.basePackage" value=""/> 
+
+确定搜索包的路径。只要是结尾为action的包都要搜索。basePackage按照默认不用配置，如果配置，只会找以此配置开头的包。locators及locators.basePackage都是一组以逗号分割的字符串。 
+
+
+(11)  <constant name="struts.convention.exclude.packages" value="org.apache.struts.*,org.apache.struts2.*,org.springframework.web.struts.*,org.springframework.web.struts2.*,org.hibernate."/> 
+
+排除哪些包不搜索。按默认配置即可。逗号分割字符串。 
+
+
+(12)  <constant name="struts.convention.action.includeJars" value="" /> 
+
+包括哪些jar包中的action。逗号分割字符串。 
+
+
+(13)<constant name="struts.convention.relative.result.types" value="dispatcher,freemarker,velocity"/> 
+
+默认返回的结果类型搜索。按顺序先找相关的dispatcher的jsp文件是否存在。然后再找freemarker，再找velocity。 
+
+
+(14)<constant name="struts.convention.result.flatLayout" value="true"/> 
+
+      如果此值设为true，如果一个action的命名空间为/login，名称为HelloWorldAction。result返回值是success，默认会找到/WEB-INF/pages/login/hello_world.jsp（如果有hello_world_success.jsp就找这个文件，连接符“_”是在<constant name="struts.convention.action.name.separator" value="_"/>中配置的）。如果有一个action的result返回值是“error”，就会找/WEB-INF/pages /login/hello_world_error.jsp。 
+
+      如果此值设为false，如果一个action的命名空间为/login，名称为HelloWorldAction。result返回值是success，默认会找到/WEB- INF/pages/login/hello_world/index.jsp（如果有success.jsp就找这个文件）。如果有一个action的result返回值是“error”，就会找/WEB-INF/pages /login/hello_world/error.jsp。 
+
+
+(15) <constant name="struts.convention.action.mapAllMatches" value="false"/> 
+       <constant name="struts.convention.action.checkImplementsAction" value="false"/> 
+   <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/> 
+   <constant name="struts.convention.redirect.to.slash" value="true"/> 
+
+      这几个配置没有太多的实际意义，本着最小检查的原则就可以。 
+
+
+(16)默认拦截器配置，已经简化了许多，一般不需要chain和 fileupload。modelDriven也没什么用，如果我们要使用restfull插件会有用。其实最简单只要一个params就可以了。我加入 exception是为了开发时的异常。servletConfig是为了包装一下request,reponse等对象，staticParams是为了可以配置${}形式参数。actionMappingParams是struts2.1新增的，我初步认为是可以在action配置中传参数，这个还有些疑问。 
+
+
+1.action配置 
+
+   按照第一篇中的配置，设置locator为action，则默认一个类的命名空间为： 
+
+               类路径                                             命名空间 
+com.example.action.MainAction         ->    / 
+com.example.action.products.Display ->    /products 
+
+    完整url为： 
+
+                类路径                                                                                      完整url 
+com.example.action.MainAction                                       -> /main 
+com.example.action.products.Display                               -> /products/display 
+com.example.action.company.ShowCompanyDetailsAction -> /company/details/show_company_details 
+
+
+
+3.action类写法 
+    如果要实现基本零配置，命名空间和action名称按照默认的类路径搜索。默认执行方法是execute。方法返回值是success，就会找。 
+
+
+Java代码 
+package com.example.action;    
+   
+import com.opensymphony.xwork2.ActionSupport;    
+   
+public class HelloWorld extends ActionSupport {    
+   
+    private String message;    
+   
+    public String getMessage() {    
+        return message;    
+    }    
+   
+    public String execute() {    
+        message = "Hello World! excute";    
+        return SUCCESS;    
+    }    
+   
+    public String edit() {    
+            message = "Hello World! edit";    
+        return "xyz";    
+    }    
+   
+    public String delete() {    
+        message = "Hello World! delete";    
+        return "depp";    
+    }    
+   
+}   
+package com.example.action;
+import com.opensymphony.xwork2.ActionSupport;
+public class HelloWorld extends ActionSupport {
+private String message;
+public String getMessage() {
+return message;
+}
+public String execute() {
+message = "Hello World! excute";
+return SUCCESS;
+}
+public String edit() {
+message = "Hello World! edit";
+return "xyz";
+}
+public String delete() {
+message = "Hello World! delete";
+return "depp";
+}
+}
+
+
+
+    返回结果对应： 
+
+               类路径                                   实际url(WEB-INF/pages) 
+/hello_world                                     /hello_world.jsp或/hello_world_success.jsp 
+/hello_world!edit                               /hello_world_xyz.jsp 
+/hello_world!delete                            /hello_world_depp.jsp 
+
+    基本的零配置就是这样，如果要有redirect、chain等跳转方式，interceptor的配置，就要加入annotation。 
+
+
+2.action类中的annotation 
+
+convention插件的annotation都在annotation这个包中，基本和xml配置相对应。 
+
+    annotation           意义                                                                        作用域 
+ParentPackage   指定继承的包(struts2)名                                              包，类 
+Namespaces      给一个action指定多个命名空间(一般不用)                      包，类 
+Namespace       指定一个命名空间(一般不用，按默认的类路径即可)         包，类，Namespaces注解中 
+actions              给一个action指定多个名称                                            方法 
+action               指定一个action名称                                                      类，方法，actions注解中 
+InterceptorRefs 一组拦截器集合(只能是名称，必须先在xml文件中配置好)  类，action注解中  
+InterceptorRef   一个拦截器                                                                  类，InterceptorRefs注解中 
+ResultPath        结果映射的路径(已经在struts.xml文件中指定)                 包，类 
+Results             多个结果集合                                                               类，action注解中 
+Result              一个结果定义                                                                类，Results注解中 
+
+    需要注意： 
+
+1）包(java)级别是在package-info.java这个文件中配置，可以配置整个包的定义，但是命名空间就不能按默认的类路径扫描了，必须也要显式的配置。所以这个文件最好不要使用。 
+
+2）不在包(java)级别配置就要在类(java)级别配置，可能每个类都要写一句ParentPackage，指定继承的包(struts2)，以获得父包中的拦截器配置及其他公用配置。如果没有特殊的拦截器配置则不用配置ParentPackage。 
+
+3）最好把annotation配到类级别，因为这样action名称及命名空间都可用默认的类路径扫描，不用我们显式的配置。只要配置特殊的result和拦截器即可。类中的其他方法使用动态方法调用的方式使用同一个配置。我们知道struts2所有配置都是启动加载到map中的，减少配置，会提高一定性能。而动态方法这种模式是零配置必不可少的，但我很不喜欢叹号出现在地址栏中，所以在后面的文章中我会结合restful插件及自己修改源代码实现意义上的动态方法调用，但形式上是别的方式，地址栏会比较美观。 
+
+Java代码 
+package com.example.action;    
+   
+import com.opensymphony.xwork2.ActionSupport;    
+import org.apache.struts2.convention.annotation.Result;    
+import org.apache.struts2.convention.annotation.Results;    
+import org.apache.struts2.convention.annotation.InterceptorRef;    
+import org.apache.struts2.convention.annotation.InterceptorRefs;    
+   
+@InterceptorRefs({    
+    @InterceptorRef("interceptor-1"),    
+    @InterceptorRef("defaultStack")    
+})    
+@Results({    
+    @Result(name="reload",location="hello_world",type="redirectAction",params={key1,value1,key2,value2}),    
+    @Result(name="chainact",location="hello_world!edit",type="chain")    
+})    
+public class HelloWorld extends MyBaseAction {    
+   
+    private String message;    
+   
+    public String getMessage() {    
+        return message;    
+    }    
+   
+    public String execute() {    
+        message = "Hello World! excute";    
+        return SUCCESS;    
+    }    
+   
+    public String edit() {    
+            message = "Hello World! edit";    
+        return RELOAD;    
+    }    
+            
+    public String delete() {    
+            message = "Hello World! delete";    
+        return CHAINACT;    
+    }    
+}   
+package com.example.action;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
+@InterceptorRefs({
+@InterceptorRef("interceptor-1"),
+@InterceptorRef("defaultStack")
+})
+@Results({
+@Result(name="reload",location="hello_world",type="redirectAction",params={key1,value1,key2,value2}),
+@Result(name="chainact",location="hello_world!edit",type="chain")
+})
+public class HelloWorld extends MyBaseAction {
+private String message;
+public String getMessage() {
+return message;
+}
+public String execute() {
+message = "Hello World! excute";
+return SUCCESS;
+}
+public String edit() {
+message = "Hello World! edit";
+return RELOAD;
+}
+public String delete() {
+message = "Hello World! delete";
+return CHAINACT;
+}
+}
+
+
+
+4）如果有极其特殊的情况需要为action的每个方法单独配置，这时就不能用默认的类扫描了，必须是先配置action，指定名称，再在action中配置result和interceptor。这就会使配置增多，违背的零配置的初衷。有时我们为了性能原因想把拦截器细化到具体的action上，我想如果真是这样，我们还不如再写一个action类。还有 struts2.1.6原有的配置是如果action名称中有“/”，会认为这是一个命名空间，不会再按照类扫描的默认值。例如： 
+
+Java代码 
+package com.example.action;    
+   
+import com.opensymphony.xwork2.ActionSupport;    
+import org.apache.struts2.convention.annotation.Action;    
+   
+public class HelloWorld extends ActionSupport {    
+   
+    @Action("/different/url")    
+    public String execute() {    
+        return SUCCESS;    
+    }    
+   
+    @Action("url")    
+    public String doSomething() {    
+        return SUCCESS;    
+    }    
+}   
+package com.example.action;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.convention.annotation.Action;
+public class HelloWorld extends ActionSupport {
+@Action("/different/url")
+public String execute() {
+return SUCCESS;
+}
+@Action("url")
+public String doSomething() {
+return SUCCESS;
+}
+}
+
+
+
+    调用方法execute的url为 :       /different/url (命名空间已经更换) 
+    调用方法doSomething的url为 :   /url 
+
+5）比较别扭的地方就是拦截器的配置，必须用名称，而名称和实际拦截器类的对应关系是在struts.xml文件中声明的，如果用 struts2以前的annotation是可以直接配置拦截器类的，但是我没有和convention插件结合使用，这个问题我正在研究，看看有没有好的办法。 
+
+6）还有一种默认的chain跳转，实际是在struts2.1.6中新增的unknownHandleder中设定的，没有什么太大作用，我们可以不使用。而unknownHandleder我们可以自定义为其他，这在后面的文章中会有说明。 
+
+
+1.Convention插件的主要实现浅析 
+
+1.1  PackageBasedActionConfigBuilder 这个类最重要，是整个程序的入口。 
+     1.1.1  buildActionConfigs方法进行初始化配置，其中findActions扫描类路径，我没有深入研究这个方法具体是怎么找到所有类的。只是找到全部类后，和我们的配置文件中限定的范围匹配、过滤，存入一个set中。然后buildConfiguration(set)循环分析这些类。 
+
+     1.1.2  buildConfiguration方法，首先创建一个map类型的packageConfigs。键为包（struts2）名，值为PackageConfig.Builder对象，这个对象可以创建PackageConfig对象。 
+      然后循环找到的类，分析包名（java），determineActionNamespace方法分析命名空间，得到一个list对象。 
+      再循环所有命名空间，determineActionName方法分析类名称、类的默认方法（这个是写死在程序中的，就是execute方法）。 
+      getPackageConfig方法分析得到PackageConfig.Builder对象。 
+      getActionAnnotations方法分析得到action类方法的annotation配置。 
+      循环每个方法的配置，调用createActionConfig方法分析，把 results，interceptors，exceptionMappings等配置放入ActionConfig.Builder对象，再把 ActionConfig对象（由ActionConfig.Builder生成）放入PackageConfig.Builder中。 
+      buildIndexActions创建默认索引action。这个好像用处不大。 
+      最后把PackageConfig对象放入Configuration对象中，这是最顶级的配置。我们在任何时间和地点都可以得到Configuration对象，并对其进行分析。 
+
+     1.1.3   determineActionNamespace方法是确定一个action类在web应用中的命名空间，先找这个类的Namespace注解，找到后放入一个存储命名空间的list。再找Namespaces注解，一个action可以有多个命名空间。如果有注解则按照注解来确定一个action的命名空间，如果没有，则分析这个action所在包（java）的路径，按照struts2.xml中配置的规则来确定。这个规则就是截取到定义的 locator，在这个locator之后的包（java）全部作为命名空间，类名作为action名称。 
+
+     1.1.4   determineActionName方法是确定一个action类在web应用中的名称。由ActionNameBuilder（接口）的方法来实现，这个接口的具体实现类，插件默认为SEOActionNameBuilder。被称为搜索引擎友好的名称。会把action类的name按单词分解，然后用连接符连起来。默认连接符是"-"，我们可以设置为"_"。 
+
+     1.1.5   getPackageConfig方法是确定一个action类在web应用中的继承的包（struts2）。先找这个类的ParentPackage注解，如果有注解则按照注解来确定一个action的父包（struts2），如果没有，按照struts.xml中配置的规则来确定。这个规则就是 defaultParentPackage。得到父包（struts2）后要拼成： actionPackage + "#" + parentPkg.getName() + "#" + actionNamespace 的形式，这是xwork里的规定。 
+
+     1.1.6   getActionAnnotations方法是确定一个action类的方法上的annotation配置。先找方法的Actions注解，一个方法可以有多个action映射。再找Action注解，放入一个map中，键是方法名，值是存储一组acton映射的list对象。 
+     
+      1.1.7   createActionConfig方法构造ActionConfig.Builder对象，逐一判断 interceptors，results，exceptionMappings，都是从类一级开始判断是否有此注解，再从方法的action注解中寻找。InterceptorMapBuilder，ResultMapBuilder是两个接口，提供通过注解构造Interceptor和Result 的方法，插件分别提供了默认的实现DefaultInterceptorMapBuilder和DefaultResultMapBuilder。而 buildExceptionMappings只是本类中的一个方法。 
+
+1.2  DefaultInterceptorMapBuilder 
+     先找action类是否存在InterceptorRefs注解，再看是否存在InterceptorRef注解，再看action注解中是否定义了InterceptorRefs。 
+     还用到了StringTools的createParameterMap方法把注解中的params（形式为{key1,value1,key2,value2,......}）转化成一个map。 
+      buildInterceptorList方法利用了xwork中的InterceptorBuilder的一个静态方法constructInterceptorReference把拦截器注入到配置中。 
+      而一个action所继承的父包中的拦截器，或是默认拦截器，并不在这个类中构造。而是由xwork根据包（struts2）的继承关系加载（actionPackage + "#" + parentPkg.getName() + "#" + actionNamespace 这是xwork里规定的形式，已经由PackageBasedActionConfigBuilder 配置）。 
+
+1.3 DefaultResultMapBuilder 
+    1.3.1  build方法，确定defaultResultPath，构造包含ResultConfig的map对象，再通过扩展名获得一个包含 ResultTypeConfig的map对象。createFromResources方法获得默认返回结果页面，然后查找action注解中的 results配置，再找类级别的Results注解，再找类级别的Result注解，相同的肯定会覆盖。createFromAnnotations。 
+
+    1.3.2  createFromResources方法中使用servletContext.getResourcePaths方法寻找页面。如果 struts.xml中配置flatLayout为true则直接找到以命名空间为名称的文件夹，在此文件夹中寻找页面，如果flatLayout为 false，则会找到以命名空间为名称的文件夹，再找到此文件夹中的以action名称命名的子文件夹，在这个文件夹中寻找页面。 
+
+    1.3.3  makeResults方法找默认的返回页面，如果没有路径没有包含resultcode（定义的字符串）的页面，则按默认顺序寻找 success，input，error。比如hello_world.jsp文件（flatLayout为true，连接符为"_"），如果没有 hello_world_success.jsp，hello_world_input.jsp，hello_world_error.jsp文件，同时"success"，"input"，"error"，又没有显式的配置，只是作为结果字符串返回，则程序默认会用hello_world.jsp来匹配三种结果。如果结果字符串resultcode是"edit"，同时又没有显式的配置，则必会找hello_world_edit.jsp。 
+
+    1.3.4  createFromAnnotations这个方法就是把注解转换成ResultConfig配置。 
+
+1.4 ConventionsServiceImpl 
+    是result配置的辅助类。determineResultPath方法先判断struts.xml文件中的配置，再判断action类的注解中是否有ResultPath，如果有将覆盖struts.xml中配置。 
+     getResultTypesByExtension方法提供一个map对象，默认的result结果返回。 
+
+      其实通过看这些方法，我们也基本了解了struts2的整个配置过程，非常繁琐，很多的判断确实很耗费资源，使用xml配置也一样。我们也知道所有配置信息都是应用启动时加载，存入map中常驻内存。所以我们应该尽可能减少配置，多使用动态方法调用。 
+
+1.5  ConventionUnknownHandler 是UnknownHandler接口的一个实现，用来处理找不到相应配置的情况。在struts2.1的dtd中新增了一个<unknown-handler-stack>元素，可以配置一组handler。 
+       handleUnknownAction方法处理找不到action的情况。这个我感觉用处不大。 
+       handleUnknownResult方法处理找不到result的情况。这个方法可以有很多扩展。比如我想定义一种返回值形式：redirect->xxx.do?ad=12或chain->xxx.do。用这种形式比写注解要方便的多。 
+       handleUnknownActionMethod方法处理找不到action中方法的情况。这个默认没有实现。 

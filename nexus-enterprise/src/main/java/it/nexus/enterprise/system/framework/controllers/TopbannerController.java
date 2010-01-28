@@ -33,7 +33,7 @@ public class TopbannerController extends ActionSupport {
 		this.username = username;
 	}
 
-	@Action(value = "/header", results = { @Result(type = "freemarker", location = "/it/coolie/system/framework/views/header.ftl", name = "success") })
+	@Action(value = "/header", results = { @Result(type = "freemarker", location = "/header.ftl", name = "success") })
 	public String header() throws Exception{
 		User user =(User)ActionContext.getContext().getSession().get("userinfo");
 		setUsername(user.getUsername());
@@ -41,7 +41,7 @@ public class TopbannerController extends ActionSupport {
 	}
 	
 	
-	@Action(value = "/logout", results = { @Result(type = "freemarker", location = "/it/coolie/system/framework/views/login.ftl", name = "success") })
+	@Action(value = "/logout", results = { @Result(type = "freemarker", location = "/login.ftl", name = "success") })
 	public String logout() throws Exception{
 		ActionContext.getContext().getSession().put("userinfo", null);
 		return super.execute();

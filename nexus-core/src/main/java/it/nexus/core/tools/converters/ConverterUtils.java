@@ -5,7 +5,7 @@ public class ConverterUtils {
 	 *ConverterUtils.java
 	 * dcriori
 	 */
-	public static long[] ArrStringToArrLong(String[] arr_string){
+	public static long[] StringToLong(String[] arr_string){
 		if(arr_string==null)
 			return null;
 		int i=0;

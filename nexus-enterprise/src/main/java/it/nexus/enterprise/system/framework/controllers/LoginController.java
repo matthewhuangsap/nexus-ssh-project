@@ -50,7 +50,7 @@ public class LoginController extends BaseAction implements ServletRequestAware,
 	@Resource
 	SystemAssistService	systemAssistService;
 
-	@Action(value = "show", results = { @Result(type = "freemarker", location = "/it/coolie/system/framework/views/login.ftl", name = "success") })
+	@Action(value = "show", results = { @Result(type = "freemarker", location = "/login.ftl", name = "success") })
 	public String show() throws Exception {
 		return super.execute();
 	}
@@ -59,8 +59,6 @@ public class LoginController extends BaseAction implements ServletRequestAware,
 	@Action(value = "login", results = { @Result(type = "redirect", location = "default", name = "success") })
 	public String login() throws Exception {
 		if (userService.isLogin(dmo.getUsername(), dmo.getPassword())) {
-// Map<String, Object> sessionMap = ActionContext.getContext()
-// .getSession();
 			getSession().put("userinfo", dmo);
 			dmo = userService.getUser(dmo.getUsername(), dmo.getPassword());
 			Map<String, Long> roleActions = userService.getRoleActions(dmo);

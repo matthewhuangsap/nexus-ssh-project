@@ -20,7 +20,7 @@ public class DefaultController extends ActionSupport {
 	 * @throws Exception 
 	 */
 	@Access("访问")
-	@Action(value = "/default", results = { @Result(type = "freemarker", location = "/it/coolie/system/framework/views/main.ftl", name = "success") })
+	@Action(value = "/default", results = { @Result(type = "freemarker", location = "/main.ftl", name = "success") })
 	public String execute() throws Exception{
 		return super.execute();
 	}

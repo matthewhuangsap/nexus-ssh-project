@@ -28,8 +28,8 @@ import plugin.system.PluginClass;
 @AccessGroup(name="用户管理",pluginClass=PluginClass.class)
 public class UserAction extends BaseAction<User> {
 	private static final long serialVersionUID = 1L;
-	private final String page_edit = "/it/coolie/system/user/views/user_edit.ftl";
-	private final String page_list = "/it/coolie/system/user/views/user_list.ftl";
+	private final String page_edit = "user_edit.ftl";
+	private final String page_list = "user_list.ftl";
 	private List<User> lists = new ArrayList<User>();
 	private String reinput;
 

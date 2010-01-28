@@ -17,38 +17,38 @@ public class SupplierController extends BaseAction<Supplier> {
 	 */
 	private static final long serialVersionUID = -8916475954087898625L;
 	private Supplier dmo;
-	@Access("�½�")
+	@Access("新建")
 	public String create() throws Exception{
 		return super.execute();
 	}
 	
-	@Access("����")
+	@Access("访问")
 	public String list() throws Exception{
 		return super.execute();
 	}
 	
-	@Access("�༭")
+	@Access("编辑")
 	public String edit() throws Exception{
 		return super.execute();
 	}
 	
-	@Access("ǰ��")
+	@Access("前单")
 	public String prev() throws Exception{
 		return super.execute();
 	}
 	
-	@Access("��")
+	@Access("后单")
 	public String next() throws Exception{
 		return super.execute();
 	}
 
-	@Access("ɾ��")
+	@Access("删除")
 	public String remove() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Access("����")
+	@Access("保存")
 	public String save() throws Exception {
 		// TODO Auto-generated method stub
 		return null;

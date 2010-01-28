@@ -93,7 +93,7 @@ public class RoleController extends BaseAction<Role> {
 			ra.setPlugin(findPluginDispName(access_group_map, keyList.get(i)));
 
 			String[] arr_role = (String[]) objs[i];
-			long[] arr_role_long = ConverterUtils.ArrStringToArrLong(arr_role);
+			long[] arr_role_long = ConverterUtils.StringToLong(arr_role);
 			long rolebit = RoleUtils.createPurview(arr_role_long);
 			ra.setRolebits(rolebit);
 			dmo.addRoleAction(ra);
