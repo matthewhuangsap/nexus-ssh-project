@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<@c.title id="tt" dmoID="dmo.id" name="title" ></@c.title>
+
 		<@s.form action="save">
 
 			<@s.hidden name="dmo.id"></@s.hidden>
