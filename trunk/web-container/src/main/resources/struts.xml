@@ -38,7 +38,7 @@
 	<!-- 将action交予Spring处理,没有这句的话，OpenSessionInViewFilter不能正常工作-->
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<constant name="struts.convention.action.includeJars"
-		value=".*?/coolie-system.*?jar(!/)?,.*?/coolie-psi.*?jar(!/)?" />
+		value=".*?/nexus-enterprise.*?jar(!/)?,.*?/nexus-psi.*?jar(!/)?" />
 	<constant name="struts.convention.action.disableJarScanning"
 		value="true" />
 	<!-- 结果资源所在路径默认为/WEB-INF/content下面 -->

@@ -10,6 +10,7 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+@SuppressWarnings("unchecked")
 public abstract class BaseAction<T extends Base> extends ActionSupport {
 	
 	private static final long serialVersionUID = 1L;

@@ -29,8 +29,8 @@ import plugin.system.PluginClass;
 @AccessGroup(name="员工",pluginClass=PluginClass.class)
 public class EmployeeAction extends BaseInfoAction<Employee> implements IBaseInfoAction<Employee> {
 	private static final long	serialVersionUID	= 1265101496764007164L;
-	private final String		page_edit			= "/it/coolie/system/employee/views/employee_edit.ftl";
-	private final String		page_list			= "/it/coolie/system/employee/views/employee_list.ftl";
+	private final String		page_edit			= "employee_edit.ftl";
+	private final String		page_list			= "employee_list.ftl";
 	private List<Employee> lists=new ArrayList<Employee>();
 	
 	@Resource

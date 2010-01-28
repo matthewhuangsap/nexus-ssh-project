@@ -28,8 +28,8 @@ import plugin.system.PluginClass;
 @AccessGroup(name = "部门", pluginClass = PluginClass.class)
 public class DeptAction extends BaseInfoAction<Dept> {
 	private static final long	serialVersionUID	= -5902936233600478352L;
-	private final String		page_edit			= "/it/coolie/system/dept/views/dept_edit.ftl";
-	private final String		page_list			= "/it/coolie/system/dept/views/dept_list.ftl";
+	private final String		page_edit			= "dept_edit.ftl";
+	private final String		page_list			= "dept_list.ftl";
 
 	private List<Dept>			lists				= new ArrayList<Dept>();
 

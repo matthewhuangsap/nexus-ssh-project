@@ -11,6 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class GoodsDAO extends BaseInfoDAO<Goods> {
+public class GoodsDAO extends BaseInfoDAO<Goods,Long> {
 
 }

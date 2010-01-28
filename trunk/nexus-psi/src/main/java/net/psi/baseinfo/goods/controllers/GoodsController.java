@@ -26,7 +26,7 @@ import plugin.psi.PluginClass;
 @Scope("prototype")
 @ParentPackage(value = "coolie-default")
 @Namespace("/baseinfo/goods")
-@AccessGroup(name = "���", pluginClass = PluginClass.class)
+@AccessGroup(name = "存货", pluginClass = PluginClass.class)
 public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoAction<Goods>{
 	private static final long	serialVersionUID	= 541673655485555351L;
 	private static final String	edit_page			= "/net/psi/baseinfo/goods/views/goods_edit.ftl";
@@ -38,7 +38,7 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 	@Resource
 	GoodsService				goodsService;
 
-	@Access("�½�")
+	@Access("新建")
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/create", results = { @Result(name = "success", type = "freemarker", location = edit_page) })
 	public String create() {
@@ -46,7 +46,7 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 		return SUCCESS;
 	}
 
-	@Access("����")
+	@Access("访问")
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/list", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String list() {
@@ -63,7 +63,7 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 	}
 
 	@Override
-	@Access("ɾ��")
+	@Access("删除")
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/remove", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String remove() throws Exception {
@@ -72,7 +72,7 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 	}
 
 	@Override
-	@Access("����")
+	@Access("保存")
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/save", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String save() throws Exception {
@@ -81,7 +81,7 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 	}
 
 	@Override
-	@Access("�༭")
+	@Access("编辑")
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/edit", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String edit() throws Exception {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PSI-APP"
+  id="myeclipse.1264648612609"
+  context-root="/PSI-APP"
+  j2ee-spec="5.0"
+  archive="PSI-APP.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

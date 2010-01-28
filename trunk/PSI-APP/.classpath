@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/nexus-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/nexus-enterprise"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/nexus-psi"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/nexus-webcontrol"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/xwork-2.1.2.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/activemq-4.0.1.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/aspectjrt.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/aspectjweaver.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/commons-collections.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/commons-lang.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/commons-logging.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/coolie-webcontrol.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/ehcache-1.5.0.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/freemarker-2.3.15.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/hibernate3.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/hibernate-entitymanager.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/jsonplugin-0.34.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/jta.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/jtds-1.1.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/ognl-2.7.3.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/servlet-api.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/slf4j-api-1.5.0.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/slf4j-log4j12-1.5.0.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/spring.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/spring-test.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/struts2-convention-plugin-2.1.6.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/struts2-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="E:/workspace-struts/libs/psi/struts2-spring-plugin-2.1.6.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

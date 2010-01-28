@@ -40,7 +40,7 @@ import com.opensymphony.xwork2.ActionContext;
 @ParentPackage(value = "coolie-default")
 public class LeftController extends BaseAction {
 	private static final long	serialVersionUID	= -1313764364459365272L;
-	private final String		page_left			= "/it/coolie/system/framework/views/left.ftl";
+	private final String		page_left			= "/left.ftl";
 	@Resource
 	SettingClass				settingClass;
 

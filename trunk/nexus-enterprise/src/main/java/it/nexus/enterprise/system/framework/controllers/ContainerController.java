@@ -25,7 +25,7 @@ public class ContainerController extends ActionSupport {
 	 */
 	
 	@Access("访问")
-	@Action(value = "/container", results = { @Result(type = "freemarker", location = "/it/coolie/system/framework/views/container.ftl", name = "success") })
+	@Action(value = "/container", results = { @Result(type = "freemarker", location = "/container.ftl", name = "success") })
 	public String container() throws Exception{
 		return super.execute();
 	}
