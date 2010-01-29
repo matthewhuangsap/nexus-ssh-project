@@ -7,7 +7,7 @@ public class PluginClass extends BasePlugin {
 	 * Dec 24, 2009 PluginClass.java Administrator
 	 */
 	protected final String name="psi";
-	protected final String displayName = "�����";
+	protected final String displayName = "进销存";
 
 	@Override
 	public String getDisplayName() {

@@ -13,7 +13,7 @@
 		<interceptors>
 			<!-- 定义权限检查拦截器 -->
 			<interceptor name="checkLogin"
-				class="it.coolie.interceptors.CheckLoginInterceptor" />
+				class="it.nexus.enterprise.interceptors.CheckLoginInterceptor" />
 			<!-- 定义一个包含权限检查的拦截器栈 -->
 			<interceptor-stack name="myDefaultStack">
 				<!-- 定义拦截器栈包含checkLogin拦截器 -->

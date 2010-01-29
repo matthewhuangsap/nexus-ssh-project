@@ -36,6 +36,8 @@ public class TopbannerController extends ActionSupport {
 	@Action(value = "/header", results = { @Result(type = "freemarker", location = "/header.ftl", name = "success") })
 	public String header() throws Exception{
 		User user =(User)ActionContext.getContext().getSession().get("userinfo");
+		if(user==null)
+			return "login";
 		setUsername(user.getUsername());
 		return super.execute();
 	}
