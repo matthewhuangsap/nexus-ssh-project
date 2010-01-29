@@ -13,7 +13,7 @@
 
 	<tag>
 		<name>title</name>
-		<tag-class>it.coolie.views.jsp.ui.DFTitleTag</tag-class>
+		<tag-class>it.nexus.webcontrol.views.jsp.ui.DFTitleTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>id</name>
@@ -38,7 +38,7 @@
 	</tag>
 	<tag>
 		<name>head</name>
-		<tag-class>it.coolie.views.jsp.ui.DFHeadTag</tag-class>
+		<tag-class>it.nexus.webcontrol.views.jsp.ui.DFHeadTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>baseRelativePath</name>
@@ -78,7 +78,7 @@
 	</tag>
 	<tag>
 		<name>dateinput</name>
-		<tag-class>it.coolie.views.jsp.ui.DFDateInputTag</tag-class>
+		<tag-class>it.nexus.webcontrol.views.jsp.ui.DFDateInputTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>id</name>
@@ -98,7 +98,7 @@
 	</tag>
 	<tag>
 		<name>choicebox</name>
-		<tag-class>it.coolie.views.jsp.ui.DFChoiceBoxTag</tag-class>
+		<tag-class>it.nexus.webcontrol.views.jsp.ui.DFChoiceBoxTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>id</name>

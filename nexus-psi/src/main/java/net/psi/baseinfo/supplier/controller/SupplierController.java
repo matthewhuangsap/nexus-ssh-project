@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import plugin.psi.PluginClass;
 
 @Controller
-@AccessGroup(name = "��Ӧ��", pluginClass=PluginClass.class)
+@AccessGroup(name = "供应商", pluginClass=PluginClass.class)
 public class SupplierController extends BaseAction<Supplier> {
 	/**
 	 * Jan 6, 2010 SupplierController.java Administrator

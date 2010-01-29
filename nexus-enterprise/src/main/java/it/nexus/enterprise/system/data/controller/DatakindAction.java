@@ -30,7 +30,7 @@ public class DatakindAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private List<Datakind> lists = new ArrayList<Datakind>();
 	
-	@Resource(name="dkDAO")
+	@Resource
 	DatakindDAO datakindDAO;
 	
 	@Action(value = "/data/datakind", results = { @Result(type="json", name = "success")})
