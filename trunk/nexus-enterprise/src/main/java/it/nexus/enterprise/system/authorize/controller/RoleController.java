@@ -1,5 +1,6 @@
 package it.nexus.enterprise.system.authorize.controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.annotation.AccessGroup;
@@ -10,26 +11,16 @@ import it.nexus.enterprise.system.authorize.model.Role;
 import it.nexus.enterprise.system.authorize.model.RoleAction;
 import it.nexus.enterprise.system.authorize.service.AuthorizeService;
 import it.nexus.enterprise.system.framework.services.SystemAssistService;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.annotation.Resource;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import plugin.system.PluginClass;
 
-import com.opensymphony.xwork2.ActionContext;
+import javax.annotation.Resource;
+import java.util.*;
 
 @Controller
 @Scope("prototype")
@@ -38,8 +29,8 @@ import com.opensymphony.xwork2.ActionContext;
 @AccessGroup(name = "权限管理", pluginClass = PluginClass.class)
 public class RoleController extends BaseAction<Role> {
 	private static final long	serialVersionUID	= -7004668560727425352L;
-
-	@Resource
+    
+    @Resource
 	AuthorizeService			authorizeService;
 	@Resource
 	SettingClass				settingClass;
