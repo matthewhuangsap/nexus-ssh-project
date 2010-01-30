@@ -12,7 +12,7 @@
 		margin:0;
 	}
 	#left{
-		background:url(../images/leftbg.jpg) repeat-y left top;
+		background:url() repeat-y left top;
 		float:left;
 		height:100%;
 		width:134px;
@@ -31,11 +31,6 @@
 ${output}
 </div>
 <div id="left1">
-      <div id="toLeft" style="display:" onClick="changeframe('left')">
-		    <img src="../images/arrowleft.gif" width="7" height="13" style="cursor:hand">			</div>
-			<div id="toRight" style="display:none" onClick="changeframe('right')">
-		    <img src="../images/arrow.gif" width="7" height="13" style="cursor:hand">
-	  </div>
 </div>
 </body>
 </html>
