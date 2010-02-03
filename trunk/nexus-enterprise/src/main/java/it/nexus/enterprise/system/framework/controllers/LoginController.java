@@ -68,7 +68,6 @@ public class LoginController extends BaseAction implements ServletRequestAware,
 					systemAssistService.getAccess_group_map());
 			getSession().put("plugin_info",
 					systemAssistService.getPlugin_info());
-
 		} else {
 			ActionContext.getContext().getSession().put("userinfo", null);
 			ActionContext.getContext().getSession().put("roles", null);

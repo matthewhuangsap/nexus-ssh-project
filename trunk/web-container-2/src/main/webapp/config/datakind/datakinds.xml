@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datakinds>
+	<datakind name="部门" query="Dept.findAll"/>
+	<datakind name="员工" query="Employee.findAll"/>
+	<datakind name="角色" query="Role.findAll"/>
+</datakinds>

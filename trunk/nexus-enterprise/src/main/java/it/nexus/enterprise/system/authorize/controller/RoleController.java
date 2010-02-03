@@ -188,9 +188,7 @@ public class RoleController extends BaseAction<Role> {
 	// |---------------- 1 = key   1
 	// |---------------- 2 = value 新建 */
 	Map<String, Map<String, Map<Long, String>>>	access_group_map	= new TreeMap<String, Map<String, Map<Long, String>>>();
-
 	Map<String, String>							plugin_info			= new HashMap<String, String>();
-
 	public Role getDmo() {
 		return dmo;
 	}
