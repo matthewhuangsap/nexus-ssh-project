@@ -29,8 +29,8 @@ import plugin.psi.PluginClass;
 @AccessGroup(name = "存货", pluginClass = PluginClass.class)
 public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoAction<Goods>{
 	private static final long	serialVersionUID	= 541673655485555351L;
-	private static final String	edit_page			= "/net/psi/baseinfo/goods/views/goods_edit.ftl";
-	private static final String	list_page			= "/net/psi/baseinfo/goods/views/goods_list.ftl";
+	private static final String	edit_page			= "goods_edit.ftl";
+	private static final String	list_page			= "goods_list.ftl";
 	/**
 	 * Dec 25, 2009 GoodsController.java Administrator
 	 */
