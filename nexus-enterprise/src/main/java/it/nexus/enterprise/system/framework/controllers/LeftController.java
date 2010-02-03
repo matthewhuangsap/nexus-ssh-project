@@ -186,8 +186,8 @@ public class LeftController extends BaseAction {
 				authorised_role = roles.get(access_group_name);
 			}
 			if (role_key != null && authorised_role != null) {
-				System.out
-						.println("asdf:" + role_key + "   " + authorised_role);
+//				System.out
+//						.println("asdf:" + role_key + "   " + authorised_role);
 				if (!RoleUtils.checkRole(authorised_role, role_key)) {
 					removeElement(element);
 				} else if (authorised_role == -1) {

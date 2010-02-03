@@ -38,12 +38,9 @@ public class SystemAssistService {
 				action_class_list.add(clazz);
 			}
 		}
-
 		for (Class<?> clazz : action_class_list) {
 			findAccessGroup(clazz);
 		}
-
-		
 	}
 
 	@SuppressWarnings("unused")

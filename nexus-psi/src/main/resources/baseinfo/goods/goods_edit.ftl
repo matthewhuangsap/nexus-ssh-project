@@ -5,7 +5,7 @@
 			body{
 				FONT-SIZE:14px;
 				color:#333;
-				FONT-FAMILY: 'Lucida Grande','Lucida Sans Unicode','ËÎÌå','ÐÂËÎÌå',arial,verdana,sans-serif;
+				FONT-FAMILY: 'Lucida Grande','Lucida Sans Unicode','ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',arial,verdana,sans-serif;
 				LINE-HEIGHT:150%;
 				padding:0;
 				border:0;
@@ -15,9 +15,9 @@
 		<@c.head compressed="false" uiTheme="flick" locale="zh-CN" />
 		
 	</head>
-	<body>
+	<body>      
 		<!-- Add Button Group -->
-		<#include "/it/coolie/template/freemarker/buttongroup.ftl" />
+		<#include "/components/buttongroup.ftl" />
 		<form id="myform" action="save">
 			<input name="dmo.id" type="hidden" value="1"/>
 		</form>
