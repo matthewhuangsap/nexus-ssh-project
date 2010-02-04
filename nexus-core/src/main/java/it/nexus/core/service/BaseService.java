@@ -13,7 +13,6 @@ public class BaseService<T extends Base,K extends BaseDAO> {
 	public K getDao() {
 		return dao;
 	}
-	
 	public void setDao(K dao) {
 		this.dao = dao;
 	}

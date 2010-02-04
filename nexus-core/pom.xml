@@ -26,6 +26,11 @@
             <version>2.1.8.1</version>            
 		</dependency>
         <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>2.1.8.1</version>
+        </dependency>
+        <dependency>
             <groupId>com.opensymphony</groupId>
             <artifactId>xwork-core</artifactId>
             <version>2.1.6</version>
@@ -33,7 +38,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
-            <version>3.2.5.ga</version>
+            <version>3.2.6.ga</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -48,12 +53,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.5.10</version>
+            <version>1.5.2</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.10</version>
+            <version>1.5.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -65,16 +70,15 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
         </dependency>
-<!--        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.0</version>
-            <scope>provide</scope>
-        </dependency>-->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2</version>
         </dependency>
 	</dependencies>
 	<build>
