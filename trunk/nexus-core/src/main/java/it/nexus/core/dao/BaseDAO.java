@@ -36,6 +36,9 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	protected Class<T>			entityClass;
 
 	public BaseDAO() {
+        System.out.println("BaseDAO Constructor Initiling!!!!");
+        if(sessionFactory!=null)
+            System.out.println("session factory is initlised");
 		entityClass = getGenericClass();
 	}
 
@@ -203,9 +206,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 根据查询HQL与参数列表创建Query对象.
-	 * 
 	 * 本类封装的find()函数全部默认返回对象类型为T,当不为T时使用本函数.
-	 * 
 	 * @param values
 	 *            数量可变的参数,按顺序绑定.
 	 */
@@ -222,7 +223,6 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 根据查询HQL与参数列表创建Query对象.
-	 * 
 	 * @param values
 	 *            命名参数,按名称绑定.
 	 */
@@ -248,7 +248,6 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 按Criteria查询唯一对象.
-	 * 
 	 * @param criterions
 	 *            数量可变的Criterion.
 	 */
@@ -258,9 +257,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 根据Criterion条件创建Criteria.
-	 * 
 	 * 本类封装的find()函数全部默认返回对象类型为T,当不为T时使用本函数.
-	 * 
 	 * @param criterions
 	 *            数量可变的Criterion.
 	 */
@@ -283,7 +280,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	}
 
 	/**
-	 * @see #initEntity(Object)
+	 * @see ##initEntity(Object)
 	 */
 	public void initEntity(List<T> entityList) {
 		for (T entity : entityList) {
@@ -331,5 +328,4 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
 }
