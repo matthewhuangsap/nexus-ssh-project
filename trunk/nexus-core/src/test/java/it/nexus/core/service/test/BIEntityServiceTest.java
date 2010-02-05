@@ -46,9 +46,7 @@ public class BIEntityServiceTest {
         session.save(bi_entity);
         t.commit();
         session.close();*/
-
           baseinfoEntityService.setDao(baseinfoEntityDAO);
-        
           baseinfoEntityService.save(bi_entity);
         
     }
