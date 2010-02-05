@@ -15,7 +15,6 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 @Repository
-@Transactional
 public class BaseInfoEntityDAO extends BaseInfoDAO<BaseInfoEntity, Serializable> {
         
 }
