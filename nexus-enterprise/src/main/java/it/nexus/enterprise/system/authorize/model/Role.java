@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "SYS_ROLE")
 @LogicName("角色")
-@NamedQueries( { @NamedQuery(name = "Role.findAll", query = "SELECT id,name FROM Role role ORDER BY id") })
+@NamedQueries( { @NamedQuery(name = "Role.findAll", query = "SELECT id,name FROM Role role") })
 public class Role extends BaseTree implements Serializable {
 	private static final long serialVersionUID = 2994367232031808014L;
 	@OneToMany(cascade = CascadeType.ALL)

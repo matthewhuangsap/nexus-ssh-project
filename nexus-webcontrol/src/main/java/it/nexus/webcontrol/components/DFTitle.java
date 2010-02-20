@@ -48,8 +48,5 @@ public class DFTitle extends UIBean {
         	Long dmo_id = (Long)findValue(dmoID,Long.class);
         	addParameter("dmoValue",dmo_id==null?0:dmo_id);
         }
-        	
 	}
-
-
 }

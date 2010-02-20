@@ -71,7 +71,7 @@ public class DFChoiceBox extends UIBean {
 		if (this.datakind != null)
 			addParameter("datakind", findString(this.datakind));
 		if (this.value!= null){
-			Long value = (Long)findValue(this.value);
+			String value = (String)findValue(this.value);
 			if(value!=null)
 				addParameter("value", value.toString());
 			else

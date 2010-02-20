@@ -16,7 +16,9 @@ public class DeptConverter extends StrutsTypeConverter {
 	DeptService deptService;
 	@Override
 	public Object convertFromString(Map context, String[] values, Class toClass) {
-		Long dept_id = Long.valueOf(values[0]);
+        System.out.println(">>>>>dept_id:"+values[0]);
+		String dept_id = values[0].toString();
+        System.out.println(">>>>>dept_id:"+dept_id);
 		Dept dept = deptService.load(dept_id);
 		System.out.println("传入的值："+values[0]);
 		System.out.println("toClass："+toClass.getName());
