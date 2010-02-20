@@ -6,7 +6,7 @@ import it.nexus.enterprise.system.dept.model.Dept;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DeptDAO extends BaseInfoDAO<Dept,Long> implements IDeptDAO<Dept> {
+public class DeptDAO extends BaseInfoDAO<Dept,String> implements IDeptDAO<Dept> {
 	@Override
 	public void save(Dept entity) {
 		super.saveOrUpdate(entity);

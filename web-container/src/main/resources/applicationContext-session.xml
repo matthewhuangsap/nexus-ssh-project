@@ -48,7 +48,7 @@
 				</prop>
 				<prop key="myeclipse.connection.profile">ms2005</prop>
 				<prop key="hibernate.connection.url">
-					jdbc:jtds:sqlserver://localhost:1433/mytest;instance=SQLEXPRESS <!-- ;instance=SQLEXPRESS -->
+					jdbc:jtds:sqlserver://localhost:1433/procurement;instance=SQLEXPRESS <!-- ;instance=SQLEXPRESS -->
 				</prop>
 				<prop key="hibernate.connection.username">sa</prop>
 				<prop key="hibernate.connection.password">qrqr</prop>
