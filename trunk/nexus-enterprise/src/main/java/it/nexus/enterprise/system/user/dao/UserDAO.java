@@ -12,7 +12,7 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDAO extends BaseDAO<User,Long> implements IUserDAO<User> {
+public class UserDAO extends BaseDAO<User,String> implements IUserDAO<User> {
 	@SuppressWarnings("unchecked")
 	public boolean find(final String username,final String password){
 		String sql = "FROM User AS u WHERE u.username = ? AND u.password = ?";

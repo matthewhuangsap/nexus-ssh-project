@@ -1,22 +1,24 @@
 package it.nexus.core.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @MappedSuperclass
 public class Base {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(length = 32)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+	private String id;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

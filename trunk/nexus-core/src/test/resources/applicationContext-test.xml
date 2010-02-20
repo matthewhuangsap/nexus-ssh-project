@@ -16,7 +16,7 @@
 	    个配置是当你使用@Autowired的属性注入时需要配置的项，如果使用@Resource可以不使用这个
 		<bean
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
-	<aop:aspectj-autoproxy />
+	    <aop:aspectj-autoproxy />
 	-->
     <!-- 定义受环境影响易变的变量 -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -61,7 +61,6 @@
 				<prop key="hibernate.connection.driver_class">
 					net.sourceforge.jtds.jdbc.Driver
 				</prop>
-				<prop key="myeclipse.connection.profile">ms2005</prop>
 				<prop key="hibernate.connection.url">
 					jdbc:jtds:sqlserver://localhost:1433/mytest;instance=SQLEXPRESS
 				</prop>
@@ -69,12 +68,13 @@
 				<prop key="hibernate.connection.password">qrqr</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.cache.provider_class">
-					org.hibernate.cache.EhCacheProvider
-				</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+				<!--<prop key="hibernate.cache.provider_class">-->
+					<!--org.hibernate.cache.EhCacheProvider-->
+				<!--</prop>-->
                 <!--［hibernate.current_session_context_class = jta/thread/managed ］这个配置是用来处理-->
                 <prop key="hibernate.current_session_context_class">thread</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
 				<prop key="hibernate.default_batch_fetch_size">30</prop>
 			</props>
 		</property>
@@ -94,8 +94,8 @@
         <property name="transactionAttributes">
                     <!--  下面定义事务传播属性-->
             <props>
-                <prop key="save*">PROPAGATION_REQUIRED,readOnly
-                </prop>
+                <!--<prop key="save*">PROPAGATION_REQUIRED,readOnly-->
+                <!--</prop>-->
                 <prop key="*">PROPAGATION_REQUIRED
                 </prop>
             </props>

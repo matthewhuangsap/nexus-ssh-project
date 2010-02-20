@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @SuppressWarnings("unchecked")
 @Repository
-public class DatakindDAO extends BaseDAO<Base,Long> {
+public class DatakindDAO extends BaseDAO<Base,String> {
 	
 	public List<?> getDataKind(Document document,String dk){
 		String query = XmlUtils.getNamedQueryValue(document, dk);
