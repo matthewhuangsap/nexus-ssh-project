@@ -12,11 +12,11 @@ import java.util.concurrent.atomic.AtomicReference;
 @Repository
 public class AuthorizeDAO extends BaseTreeDAO<Role, String> {
 	public void removeAction(final Role entity) {
-		String idLong = entity.getId();
-		AtomicReference<Query> query = new AtomicReference<Query>(getSession().createQuery(
-                "delete  RoleAction  where   role_id = ?"));
-		query.get().setString(0,idLong);
-		query.get().executeUpdate();
+        String idLong = entity.getId();
+		Query query = getSession().createQuery(
+				"delete RoleAction where role_id = ?");
+		query.setString(0, idLong);
+		query.executeUpdate();
 		getSession().flush();
 	}
 }
