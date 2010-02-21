@@ -16,6 +16,7 @@
     </dependency>
   </dependencies>
   <modules>
+    <module>nexus-component</module>
     <module>nexus-core</module>
     <module>nexus-enterprise</module>
     <module>nexus-webcontrol</module>

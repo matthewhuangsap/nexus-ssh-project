@@ -16,7 +16,8 @@ public class TestUIComponent {
     UIComponent form=new UIComponent();
     @Before
     public void createComponent(){
-
+        form.setId("form1");
+        form.setName("form1");
         UIComponent div1 =new UIComponent();
         UIComponent div2 =new UIComponent();
         UIComponent div3 =new UIComponent();
@@ -46,6 +47,10 @@ public class TestUIComponent {
     @Test
     public void TestAdd(){
         Assert.assertEquals(form.size(),5);
-        
+    }
+
+    @Test
+    public void TestRender(){
+        form.render();
     }
 }
