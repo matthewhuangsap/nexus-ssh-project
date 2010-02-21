@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+        default-lazy-init="true" >
+
+	<!--
+	    个配置是当你使用@Autowired的属性注入时需要配置的项，如果使用@Resource可以不使用这个
+		<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	    <aop:aspectj-autoproxy />
+	-->
+    <!-- 定义受环境影响易变的变量 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<!-- 标准配置 -->
+				<value>classpath*:/application.properties</value>
+				<!-- 本地开发环境配置 -->
+				<value>classpath*:/application.local.properties</value>
+				<!-- 本地测试环境配置 -->
+				<value>classpath*:/application.test.properties</value>
+			</list>
+		</property>
+	</bean>
+    
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<!-- <property name="configLocation"
+			value="classpath:hibernate.cfg.xml" /> -->
+		<property name="configurationClass"
+			value="org.hibernate.cfg.AnnotationConfiguration" />
+		<property name="hibernateProperties" ref="hibernateProperties" />
+		<!--
+		<property name="packagesToScan" value="it.coolie.**.model"/>
+		-->
+		<property name="packagesToScan">
+			<list>
+				<value>it.nexus.**.model</value>
+				<value>it.nexus.system.**.model</value>
+			</list>
+		</property>
+	</bean>
+	<bean name="hibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+				<prop key="hibernate.connection.driver_class">
+					net.sourceforge.jtds.jdbc.Driver
+				</prop>
+				<prop key="hibernate.connection.url">
+					jdbc:jtds:sqlserver://localhost:1433/mytest;instance=SQLEXPRESS
+				</prop>
+				<prop key="hibernate.connection.username">sa</prop>
+				<prop key="hibernate.connection.password">qrqr</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+				<!--<prop key="hibernate.cache.provider_class">-->
+					<!--org.hibernate.cache.EhCacheProvider-->
+				<!--</prop>-->
+                <!--［hibernate.current_session_context_class = jta/thread/managed ］这个配置是用来处理-->
+                <prop key="hibernate.current_session_context_class">thread</prop>
+				<!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
+				<prop key="hibernate.default_batch_fetch_size">30</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 定义事务管理器（声明式的事务） -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--开启事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="false" />
+  	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+            <!--  事务拦截器bean需要依赖注入一个事务管理器 -->
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="transactionAttributes">
+                    <!--  下面定义事务传播属性-->
+            <props>
+                <!--<prop key="save*">PROPAGATION_REQUIRED,readOnly-->
+                <!--</prop>-->
+                <prop key="*">PROPAGATION_REQUIRED
+                </prop>
+            </props>
+        </property>
+    </bean>
+
+
+	<!-- 使Spring关注Annotation -->
+	<context:annotation-config />
+	<!-- 让Spring通过自动扫描来查询和管理Bean -->
+	<context:component-scan base-package="it.nexus.core" />
+	<context:component-scan base-package="net.psi" />
+
+</beans>
