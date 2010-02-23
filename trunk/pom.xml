@@ -16,13 +16,11 @@
     </dependency>
   </dependencies>
   <modules>
-    <module>nexus-component</module>
     <module>nexus-core</module>
     <module>nexus-enterprise</module>
     <module>nexus-webcontrol</module>
     <module>nexus-psi</module>
     <module>web-container</module>
-    <module>web-container-2</module>
   </modules>
 
 </project>
