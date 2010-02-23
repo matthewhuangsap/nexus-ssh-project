@@ -15,11 +15,8 @@ public class RoleConverter extends StrutsTypeConverter {
 	AuthorizeService authorizeService;
 	@Override
 	public Object convertFromString(Map arg0, String[] values, Class toClazz) {
-		Long role_id = Long.valueOf(values[0]);
+		String role_id = values[0];
 		Role role = authorizeService.load(role_id);
-		System.out.println("传入的值："+values[0]);
-		System.out.println("toClass："+toClazz.getName());
-		
 		return role;
 	}
 

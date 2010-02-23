@@ -11,7 +11,6 @@ public class DeptConverter extends StrutsTypeConverter  {
 	
 	@Resource
 	DeptService deptService;
-
     @Override
 	public Object convertFromString(Map context, String[] values, Class toClass) {
         String dept_id = values[0];
