@@ -12,7 +12,6 @@ public class DateTypeConverter extends StrutsTypeConverter {
 //	private static final Logger log = Logger.getLogger(DateTypeConverter.class);
 	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
 
-	// 暂时只考虑这几种日期格式
 	public static final DateFormat[] ACCEPT_DATE_FORMATS = {
 			new SimpleDateFormat(DEFAULT_DATE_FORMAT),
 			new SimpleDateFormat("MM/dd/yyyy"),

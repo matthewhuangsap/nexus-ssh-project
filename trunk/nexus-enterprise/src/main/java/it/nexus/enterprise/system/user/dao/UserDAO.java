@@ -15,14 +15,8 @@ import org.springframework.stereotype.Repository;
 public class UserDAO extends BaseDAO<User,String> implements IUserDAO<User> {
 	@SuppressWarnings("unchecked")
 	public boolean find(final String username,final String password){
-		String sql = "FROM User AS u WHERE u.username = ? AND u.password = ?";
-		Query query = getSession().createQuery (sql);
-        query.setString(0, username);
-        query.setString(1, password);
-        
-        List<User> list = query.list ( ) ;
-       
-		if(list.size()>0)
+        User user = this.findUniqueBy("username",username);
+        if(user.getPassword().equalsIgnoreCase(password))
 			return true;
 		return false;
 	}
