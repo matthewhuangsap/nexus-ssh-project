@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.opensymphony.xwork2.util.ValueStack;
 
-public class CoolieModels {
+public class NexusModels {
 	protected TitleModel title;
 	protected DateInputModel dateinput;
 	protected ChoiceBoxModel choicebox;
@@ -15,14 +15,14 @@ public class CoolieModels {
 	private HttpServletRequest req;
 	private HttpServletResponse res;
 
-	public CoolieModels(ValueStack stack, HttpServletRequest req,
+	public NexusModels(ValueStack stack, HttpServletRequest req,
 			HttpServletResponse res) {
 		this.stack = stack;
 		this.req = req;
 		this.res = res;
 	}
 
-	public TitleModel getAnchor() {
+    public TitleModel getAnchor() {
 		if (title == null) {
 			title = new TitleModel(stack, req, res);
 		}

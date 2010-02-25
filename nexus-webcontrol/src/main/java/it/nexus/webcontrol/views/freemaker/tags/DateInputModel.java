@@ -13,7 +13,6 @@ public class DateInputModel extends TagModel {
 	public DateInputModel(ValueStack stack, HttpServletRequest req,
 			HttpServletResponse res) {
 		super(stack, req, res);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -41,17 +41,20 @@
 		<property name="properties">
 			<props>
 				<prop key="hibernate.dialect">
-					org.hibernate.dialect.SQLServerDialect
+                    org.hibernate.dialect.MySQLInnoDBDialect
+					<!--org.hibernate.dialect.SQLServerDialect-->
 				</prop>
 				<prop key="hibernate.connection.driver_class">
-					net.sourceforge.jtds.jdbc.Driver
+                    com.mysql.jdbc.Driver
+					<!--net.sourceforge.jtds.jdbc.Driver-->
 				</prop>
 				<prop key="hibernate.connection.autocommit">true</prop>
 				<prop key="hibernate.connection.url">
-					jdbc:jtds:sqlserver://localhost:1433/procurement;instance=SQLEXPRESS <!-- ;instance=SQLEXPRESS -->
+                    jdbc:mysql://localhost/mytest?createDatabaseIfNotExist=true&amp;characterEncoding=UTF-8
+                    <!--jdbc:jtds:sqlserver://localhost:1433/procurement;instance=DCR&lt;!&ndash; ;instance=SQLEXPRESS &ndash;&gt;-->
 				</prop>
-				<prop key="hibernate.connection.username">sa</prop>
-				<prop key="hibernate.connection.password">qrqr</prop>
+				<prop key="hibernate.connection.username">root</prop>
+				<prop key="hibernate.connection.password">root</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.cache.provider_class">
