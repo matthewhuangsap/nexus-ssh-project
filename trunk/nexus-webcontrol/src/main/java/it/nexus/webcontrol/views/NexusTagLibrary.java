@@ -12,7 +12,7 @@ import org.apache.struts2.views.TagLibrary;
 
 import com.opensymphony.xwork2.util.ValueStack;
 
-public class CoolieTagLibrary implements TagLibrary {
+public class NexusTagLibrary implements TagLibrary {
 	public Object getFreemarkerModels(ValueStack stack, HttpServletRequest req,
 			HttpServletResponse res) {
 		return new CoolieModels(stack,req,res);
