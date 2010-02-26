@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @LogicName("部门") 
 @NamedQueries( { 
        @NamedQuery(name = "Dept.findAll", 
-               query = "SELECT id,name+'|'+remark FROM Dept dept ORDER BY level") }) 
+               query = "SELECT id,name FROM Dept dept ORDER BY level") }) 
 public class Dept extends BaseTree {
 	private String time;
 	public String getTime() {
@@ -33,5 +33,13 @@ public class Dept extends BaseTree {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+    public Dept getTemparent() {
+		return (Dept) getParent();
+	}
+
+	public void setTemparent(Dept temparent) {
+		this.parent = temparent;
 	}
 }

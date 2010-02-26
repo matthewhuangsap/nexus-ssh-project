@@ -70,7 +70,6 @@ public class RoleController extends BaseAction<Role> {
 	@Access("保存")
 	@Action(value = "/permission/save", results = { @Result(type = "freemarker", location = "role_edit.ftl", name = "success") })
 	public String save() throws Exception {
-		// 浣跨敤缂撳瓨 灏嗗彇寰楃殑鏉冮檺淇℃伅鏀惧叆session
 		this.initAccessGroupMap();
 
 		Object[] objs = valueList.toArray();

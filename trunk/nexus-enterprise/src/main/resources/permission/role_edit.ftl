@@ -29,7 +29,7 @@
 		</script>
 	</head>
 	<body>
-		<@s.form action="save" theme="simple">			
+		<@s.form action="save" theme="simple">
 		    <div><h4>基础信息</h4></div>
 			<#include "/components/baseinfo.ftl" /><#nt/>
 			<#assign itemCount = 0/>

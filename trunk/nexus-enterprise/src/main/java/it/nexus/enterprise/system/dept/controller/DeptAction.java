@@ -58,8 +58,7 @@ public class DeptAction extends BaseInfoAction<Dept> {
 			@Result(name = "input", location = page_edit) })
 	public String save() {
 		System.out.println("do save:" + dmo.getId() + dmo.getRemark());
-        dmo.setAvailable(true);
-		deptService.save(dmo);
+		deptService.saveOrUpdate(dmo);
 		return SUCCESS;
 	}
 

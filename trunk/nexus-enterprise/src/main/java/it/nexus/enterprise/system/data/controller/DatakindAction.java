@@ -61,7 +61,7 @@ public class DatakindAction extends ActionSupport {
 		lists.add(new Datakind("",""));
 		List<?> list = datakindDAO.getDataKind(document, datakind);
 		for (Object object : list) {
-			Object[]dept = (Object[]) object;
+			Object[] dept = (Object[]) object;
 			lists.add(new Datakind(dept[0].toString(), dept[1].toString()));
 		}
 		System.out.println("out put:"+query+":"+datakind);    

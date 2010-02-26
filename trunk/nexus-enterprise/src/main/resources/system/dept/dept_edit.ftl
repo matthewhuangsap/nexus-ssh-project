@@ -25,7 +25,7 @@
 			<@s.textfield name="dmo.name" label="名称"></@s.textfield>
 			<@s.textfield name="dmo.remark" label="摘要"></@s.textfield>
 			<@c.choicebox id="dept_parent" action="../../data/datakind"
-				name="dmo.parent" label="上级部门" datakind="部门"
+				name="dmo.temparent" label="上级部门" datakind="部门"
 				displayValue="dmo.parent.name" value="dmo.parent.id" />
 			<@s.submit/>
 		</@s.form>
