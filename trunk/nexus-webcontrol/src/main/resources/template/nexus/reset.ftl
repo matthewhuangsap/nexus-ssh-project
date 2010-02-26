@@ -6,4 +6,4 @@
 ><#t/>
 <#include "/${parameters.templateDir}/simple/reset.ftl" />
 </div><#t/>
-<#include "/${parameters.templateDir}/ext/controlfooter.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlfooter.ftl" />

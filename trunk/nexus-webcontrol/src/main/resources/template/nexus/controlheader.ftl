@@ -1,4 +1,4 @@
-<#include "/${parameters.templateDir}/ext/controlheader-core.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlheader-core.ftl" />
 <#if parameters.inputcolspan?exists>
 	<#assign inputColumnSpan = parameters.inputcolspan />
 <#else>

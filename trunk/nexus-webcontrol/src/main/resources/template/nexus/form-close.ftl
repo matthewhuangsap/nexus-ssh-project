@@ -1,3 +1,3 @@
 </table>
 <#include "/${parameters.templateDir}/simple/form-close.ftl" />
-<#include "/${parameters.templateDir}/ext/form-close-validate.ftl" />
+<#include "/${parameters.templateDir}/nexus/form-close-validate.ftl" />

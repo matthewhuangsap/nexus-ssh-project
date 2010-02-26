@@ -11,4 +11,4 @@ ${parameters.after?if_exists}<#t/>
 </#list>
 </#if>
 </td><#lt/><#-- Write out the closing td for the html input -->
-<#include "/${parameters.templateDir}/ext/controlfooter-trlogic.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlfooter-trlogic.ftl" />

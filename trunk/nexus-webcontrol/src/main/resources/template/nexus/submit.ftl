@@ -1,4 +1,4 @@
-<#include "/${parameters.templateDir}/ext/controlheader-trlogic.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlheader-trlogic.ftl" />
 <#assign columnSpan = parameters.colspan?default(2) />
 <td colspan="${columnSpan?html}"><div <#rt/>
 <#if parameters.align?exists>
@@ -12,4 +12,4 @@
 	<#-- update the value of the qTableLayout.currentColumnCount bean on the value stack. -->
 	${stack.setValue('#qTableLayout.currentColumnCount', columnCount)}
 </#if>
-<#include "/${parameters.templateDir}/ext/controlfooter.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlfooter.ftl" />
