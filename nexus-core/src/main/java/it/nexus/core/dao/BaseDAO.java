@@ -64,10 +64,10 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	 */
 	public void save(final T entity) {
 		Assert.notNull(entity, "entity不能为空");
-//        getSession().beginTransaction();
+        getSession().beginTransaction();
 		getSession().saveOrUpdate(entity);
 		logger.debug("save entity: {}", entity);
-//        getSession().beginTransaction().commit();
+        getSession().beginTransaction().commit();
 	}
 
 	/**

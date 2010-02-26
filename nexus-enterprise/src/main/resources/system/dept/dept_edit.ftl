@@ -9,7 +9,9 @@
 	<body topmargin="0">
 		<#include "/components/buttongroup.ftl" />
 		<hr>
-		
+		<@s.bean name="java.util.HashMap" id="qTableLayout">
+			<@s.param name="tablecolspan" value="%{2}" />
+		</@s.bean>
 		<@s.form action="save">
 			<@s.hidden name="dmo.id"></@s.hidden>
 			<@s.hidden name="dmo.version"></@s.hidden>

@@ -1,3 +1,3 @@
-<#include "/${parameters.templateDir}/ext/controlheader.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlheader.ftl" />
 <#include "/${parameters.templateDir}/simple/richtexteditor.ftl" />
-<#include "/${parameters.templateDir}/ext/controlfooter.ftl" />
+<#include "/${parameters.templateDir}/nexus/controlfooter.ftl" />

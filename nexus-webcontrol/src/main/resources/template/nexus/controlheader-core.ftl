@@ -6,7 +6,7 @@
 
 	Additionally it calls controlerheader-trlogic.ftl to handle table row logic.
 -->
-<#include "/${parameters.templateDir}/ext/controlheader-trlogic.ftl" /> 
+<#include "/${parameters.templateDir}/nexus/controlheader-trlogic.ftl" /> 
 <#assign labelColumnSpan = parameters.labelcolspan?default(1) />
 <#if parameters.label?exists>
 	<td class="tdLabel" colspan="${labelColumnSpan}"><#rt/>
@@ -29,7 +29,7 @@
  		<span class="required">*</span><#t/>
 	</#if>
 	:<#t/>
-	<#include "/${parameters.templateDir}/ext/tooltip.ftl" /> 
+	<#include "/${parameters.templateDir}/nexus/tooltip.ftl" /> 
 	</label><#t/>
 	</td><#lt/>
 	<#-- We only update the qTableLayout.currentColumnCount if we actually printed out a td for the lable. -->

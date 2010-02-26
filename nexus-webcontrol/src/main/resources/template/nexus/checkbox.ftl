@@ -99,4 +99,4 @@ ${parameters.label?html}<#t/>
 </#if>
 </#if>
 </#if>
- <#include "/${parameters.templateDir}/ext/controlfooter.ftl" /><#nt/>
+ <#include "/${parameters.templateDir}/nexus/controlfooter.ftl" /><#nt/>

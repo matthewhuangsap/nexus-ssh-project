@@ -70,7 +70,7 @@
 		<@s.bean name="java.util.HashMap" id="qTableLayout">
 			<@s.param name="tablecolspan" value="%{4}" />
 		</@s.bean>
-		<@s.form action="save" theme="ext">
+		<@s.form action="save" theme="nexus">
 			<@s.hidden name="dmo.id"></@s.hidden>
 			<@s.hidden name="dmo.available"></@s.hidden>
 			<@s.hidden name="dmo.spell"></@s.hidden>
