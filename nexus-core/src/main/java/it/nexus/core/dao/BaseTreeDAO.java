@@ -17,10 +17,10 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 	@Override
 	public void save(T entity) {
 		Session session = getSession();
-		session.setFlushMode(FlushMode.COMMIT);
-		session.saveOrUpdate(entity);
+		session.setFlushMode(FlushMode.MANUAL);
+		session.save(entity);
 		update_level(entity);
-		session.flush();
+        session.flush();
 	}
 
 	private void update_level(T entity) {
@@ -33,7 +33,7 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 			System.out.println("No Parent");
 			entity.setLevel(entity.getId().toString());
 		}
-		super.update(entity);
+		super.merge(entity);
 	}
 
 	@Override

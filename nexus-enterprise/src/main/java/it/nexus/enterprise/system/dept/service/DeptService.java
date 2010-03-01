@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
 @Service
+@Transactional
 public class DeptService extends BaseTreeService<Dept,DeptDAO> {
 	
 	@Resource
