@@ -10,12 +10,14 @@ import java.util.Map;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
 
 @Repository
 public class UserDAO extends BaseDAO<User,String> implements IUserDAO<User> {
 	@SuppressWarnings("unchecked")
 	public boolean find(final String username,final String password){
-        User user = this.findUniqueBy("username",username);
+        User user =  this.getUserByNameAndPwd(username,password);
+        Assert.notNull(user, "用户不存在！");
         if(user.getPassword().equalsIgnoreCase(password))
 			return true;
 		return false;
@@ -28,9 +30,9 @@ public class UserDAO extends BaseDAO<User,String> implements IUserDAO<User> {
 		query.setString(0, username);
 		query.setString(1, password);
 		
-		List<User> list = query.list ( ) ;
+		List list = query.list ( ) ;
 		if(list.size()>0)
-			return list.get(0);
+			return (User)list.get(0);
 		return null;
 	}
 	

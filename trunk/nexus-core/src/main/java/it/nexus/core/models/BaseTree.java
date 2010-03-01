@@ -5,15 +5,11 @@ import it.nexus.core.models.BaseInfo;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
+@Table(name = "SYS_BASETREE")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class BaseTree extends BaseInfo implements Serializable {
 	private static final long serialVersionUID = -6302515221641872592L;
@@ -27,10 +23,11 @@ public class BaseTree extends BaseInfo implements Serializable {
     /** level */  
     protected String level;  
     
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	protected BaseTree parent;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="parent",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY,
+            mappedBy="parent",cascade ={ CascadeType.PERSIST,CascadeType.REFRESH})
 	protected List<BaseTree> childs;
 
 	public BaseTree getParent() {

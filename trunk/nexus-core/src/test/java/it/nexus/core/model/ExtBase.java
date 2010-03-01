@@ -1,6 +1,7 @@
 package it.nexus.core.model;
 
 import it.nexus.core.models.Base;
+import it.nexus.core.models.BaseInfo;
 
 import javax.persistence.Entity;
 
@@ -12,14 +13,6 @@ import javax.persistence.Entity;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class ExtBase extends Base {
-    private String remark;
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
+public class ExtBase extends BaseInfo {
+    
 }

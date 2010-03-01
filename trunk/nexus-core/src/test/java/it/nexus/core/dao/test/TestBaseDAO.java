@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -45,8 +46,10 @@ public class TestBaseDAO extends AbstractTransactionalJUnit4SpringContextTests{ 
     @Repeat(10)
     public void check_test(){
         System.out.println("OKOKOOKK!!!");
-//        ExtBase eb=new ExtBase();
-//        eb.setRemark("this is a sagaris test pojo!!");
-//        extBaseDAO.save(eb);
+        ExtBase eb=new ExtBase();
+        eb.setName("dcriori");
+        eb.setCreateDate(new Date());
+        eb.setRemark("this is a sagaris test pojo!!");
+        extBaseDAO.save(eb);
     }
 }

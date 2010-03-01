@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * To change this template use File | Settings | File Templates.
  */
 @Repository
-public class ExtBaseDAO extends BaseDAO<ExtBase,String> {
+public class ExtBaseDAO extends BaseInfoDAO<ExtBase,String> {
     
 }

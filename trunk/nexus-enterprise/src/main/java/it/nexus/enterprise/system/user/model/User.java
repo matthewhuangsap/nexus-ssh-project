@@ -4,11 +4,7 @@ import it.nexus.core.annotation.LogicName;
 import it.nexus.core.models.Base;
 import it.nexus.enterprise.system.authorize.model.Role;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "SYS_USER")
@@ -21,7 +17,8 @@ public class User extends Base {
 	private String remark;
 	private String spell;
 	private Boolean stoped;
-	private boolean isAdmin;
+
+	private Boolean isAdmin = false;
 	@Version
 	private Integer version;
 
@@ -73,11 +70,11 @@ public class User extends Base {
 		this.stoped = stoped;
 	}
 
-	public boolean isAdmin() {
+	public Boolean isAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 

@@ -23,6 +23,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.metadata.ClassMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 @SuppressWarnings("unchecked")
@@ -62,12 +63,13 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	/**
 	 * 保存新增或修改的对象.
 	 */
+    
 	public void save(final T entity) {
 		Assert.notNull(entity, "entity不能为空");
-        getSession().beginTransaction();
+//        getSession().beginTransaction();
 		getSession().saveOrUpdate(entity);
 		logger.debug("save entity: {}", entity);
-        getSession().beginTransaction().commit();
+//        getSession().beginTransaction().commit();
 	}
 
 	/**
