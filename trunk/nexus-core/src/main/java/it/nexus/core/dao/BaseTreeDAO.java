@@ -18,7 +18,7 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 	public void save(T entity) {
 		Session session = getSession();
 		session.setFlushMode(FlushMode.COMMIT);
-		session.save(entity);
+		session.saveOrUpdate(entity);
 		update_level(entity);
         session.flush();
 	}
@@ -38,6 +38,11 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 
 	@Override
 	public void delete(T entity) {
-		super.delete(entity);
+        if(entity.getParent()!=null){
+            entity.getParent().setChilds(null);
+            entity.setParent(null);
+        }
+		getSession().delete(entity);
+        getSession().flush();
 	}
 }

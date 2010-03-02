@@ -68,7 +68,11 @@ public class RoleController extends BaseAction<Role> {
 	}
 
 	@Access("保存")
-	@Action(value = "/permission/save", results = { @Result(type = "freemarker", location = "role_edit.ftl", name = "success") })
+	@Action(value = "/permission/save",
+            results = {
+                @Result(type = "freemarker", location = "role_edit.ftl", name = "success"),
+                @Result(type = "freemarker", location ="role_edit.ftl", name="input")
+            })
 	public String save() throws Exception {
 		this.initAccessGroupMap();
 

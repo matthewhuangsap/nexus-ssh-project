@@ -31,7 +31,7 @@
 	<body>
 		<@s.form action="save" theme="simple">
 		    <div><h4>基础信息</h4></div>
-			<#include "/components/basetree.ftl" /><#nt/>
+			<#include "/components/baseinfo.ftl" /><#nt/>
 			<#assign itemCount = 0/>
 			<@s.textfield name= "dmo.name" label="角色"/>
 			<@c.choicebox id="role_parent" action="../data/datakind"
@@ -48,7 +48,7 @@
 		        	<@s.iterator value="access_group_map" status="it" id="us">
 		        		<div id="<@s.property value='key'/>">
 		        		<table>
-		                	<@s.iterator value="value" status="st">		 
+		                	<@s.iterator value="value" status="st">
 		                	<tr>
 			                	<td align="right"><font color="red" ><@s.property value='key'/></font>
 			                		<@s.hidden name="keyList" value="%{key}"></@s.hidden>

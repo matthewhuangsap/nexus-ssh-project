@@ -23,7 +23,7 @@ public class BaseTree extends BaseInfo implements Serializable {
     /** level */  
     protected String level;  
     
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	protected BaseTree parent;
 	
 	@OneToMany(fetch = FetchType.LAZY,
