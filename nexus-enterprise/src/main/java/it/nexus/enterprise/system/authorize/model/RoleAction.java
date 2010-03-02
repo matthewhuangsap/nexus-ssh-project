@@ -2,8 +2,7 @@ package it.nexus.enterprise.system.authorize.model;
 
 import it.nexus.core.models.Base;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="SYS_ROLEACTION")
@@ -11,7 +10,9 @@ public class RoleAction extends Base {
 	/**
 	 * Dec 15, 2009 RoleAction.java Administrator
 	 */
-	
+	@ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private Role role;
+
 	private String name;
 	private Long rolebits;
 	private String plugin;

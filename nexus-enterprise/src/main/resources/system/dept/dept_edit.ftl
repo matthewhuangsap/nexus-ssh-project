@@ -14,6 +14,7 @@
 		</@s.bean>
 		<@s.form action="save">
 			<#include "/components/basetree.ftl" /><#nt/>
+            <@s.hidden name="dmo.time"/>
 			<@s.textfield name="dmo.name" label="名称"></@s.textfield>
 			<@s.textfield name="dmo.remark" label="摘要"></@s.textfield>
 			<@c.choicebox id="dept_parent" action="../../data/datakind"
