@@ -5,8 +5,10 @@ import java.util.List;
 
 import it.nexus.core.dao.BaseDAO;
 import it.nexus.core.models.Base;
+import org.springframework.transaction.annotation.Transactional;
 
 @SuppressWarnings("unchecked")
+@Transactional
 public class BaseService<T extends Base,K extends BaseDAO> {
 	public BaseService(){}
 	protected K dao;
@@ -35,6 +37,7 @@ public class BaseService<T extends Base,K extends BaseDAO> {
 		return (T) dao.load(id);
 	}
 
+    @Transactional
 	public void save(T entity) {
 		dao.save(entity);
 	}

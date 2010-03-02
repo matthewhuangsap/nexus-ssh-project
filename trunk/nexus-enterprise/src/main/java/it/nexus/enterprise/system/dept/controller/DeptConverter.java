@@ -14,6 +14,8 @@ public class DeptConverter extends StrutsTypeConverter  {
     @Override
 	public Object convertFromString(Map context, String[] values, Class toClass) {
         String dept_id = values[0];
+        if(dept_id.equalsIgnoreCase(""))
+            return null;
 		Dept dept = deptService.load(dept_id);
 		return dept;
 	}

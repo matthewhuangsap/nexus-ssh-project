@@ -65,6 +65,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	 */
     
 	public void save(final T entity) {
+        System.out.println("base dao do save method!!!");
 		Assert.notNull(entity, "entity不能为空");
 //        getSession().beginTransaction();
 		getSession().saveOrUpdate(entity);
