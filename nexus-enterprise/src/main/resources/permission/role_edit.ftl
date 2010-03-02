@@ -1,4 +1,4 @@
-<#global c=JspTaglibs["/WEB-INF/coolie-tags.tld"]/>  
+<#global c=JspTaglibs["/WEB-INF/coolie-tags.tld"]/>
 <html>
 	<head>
 <style tpye="text/css">
@@ -31,7 +31,7 @@
 	<body>
 		<@s.form action="save" theme="simple">
 		    <div><h4>基础信息</h4></div>
-			<#include "/components/baseinfo.ftl" /><#nt/>
+			<#include "/components/basetree.ftl" /><#nt/>
 			<#assign itemCount = 0/>
 			<@s.textfield name= "dmo.name" label="角色"/>
 			<@c.choicebox id="role_parent" action="../data/datakind"

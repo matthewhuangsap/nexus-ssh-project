@@ -26,7 +26,7 @@ import java.util.Date;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:applicationContext-test2.xml"})
+@ContextConfiguration(locations={"classpath:applicationContext-test.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = false)
 public class TestBaseDAO extends AbstractTransactionalJUnit4SpringContextTests{       //
 

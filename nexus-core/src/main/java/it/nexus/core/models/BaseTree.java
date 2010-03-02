@@ -27,7 +27,7 @@ public class BaseTree extends BaseInfo implements Serializable {
 	protected BaseTree parent;
 	
 	@OneToMany(fetch = FetchType.LAZY,
-            mappedBy="parent",cascade ={ CascadeType.PERSIST,CascadeType.REFRESH})
+            mappedBy="parent",cascade = CascadeType.ALL)
 	protected List<BaseTree> childs;
 
 	public BaseTree getParent() {

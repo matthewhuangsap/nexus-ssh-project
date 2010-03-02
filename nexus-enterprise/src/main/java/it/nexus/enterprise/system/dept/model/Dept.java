@@ -20,7 +20,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="SYS_DEPT")
-@MappedSuperclass
 @LogicName("部门") 
 @NamedQueries( { 
        @NamedQuery(name = "Dept.findAll", 

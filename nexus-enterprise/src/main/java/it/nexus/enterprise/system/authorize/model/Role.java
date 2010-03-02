@@ -7,13 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 权限 - 角色
@@ -27,7 +21,7 @@ import javax.persistence.Table;
 @NamedQueries( { @NamedQuery(name = "Role.findAll", query = "SELECT id,name FROM Role role") })
 public class Role extends BaseTree implements Serializable {
 	private static final long serialVersionUID = 2994367232031808014L;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
 	@JoinColumn(name="role_id")
 	private List<RoleAction> roleactions = new ArrayList<RoleAction>();
 	private String plugin;
