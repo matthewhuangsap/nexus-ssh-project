@@ -38,10 +38,8 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 
 	@Override
 	public void delete(T entity) {
-        if(entity.getParent()!=null){
-            entity.getParent().setChilds(null);
-            entity.setParent(null);
-        }
+        entity.setParent(null);
+        entity.setChilds(null);
 		getSession().delete(entity);
         getSession().flush();
 	}
