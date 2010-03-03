@@ -30,6 +30,8 @@
 	</head>
 	<body>
 		<@s.form action="save" theme="simple">
+            <@s.hidden name="dmo.plugin"></@s.hidden>
+            <@s.hidden name="dmo.action"></@s.hidden>
 		    <div><h4>基础信息</h4></div>
 			<#include "/components/baseinfo.ftl" /><#nt/>
 			<#assign itemCount = 0/>

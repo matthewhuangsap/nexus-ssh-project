@@ -6,7 +6,5 @@
 <@s.hidden name="dmo.createDate"></@s.hidden>
 <@s.hidden name="dmo.modifyDate"></@s.hidden>
 <@s.hidden name="dmo.version"></@s.hidden>
-<@s.hidden name="dmo.plugin"></@s.hidden>
-<@s.hidden name="dmo.action"></@s.hidden>
 <@s.hidden name="dmo.level"></@s.hidden>
-<@s.hidden name="dmo.childs"></@s.hidden>
+<#--<@s.hidden name="dmo.childs"></@s.hidden>-->
