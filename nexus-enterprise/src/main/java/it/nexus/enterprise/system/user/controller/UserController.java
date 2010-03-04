@@ -26,7 +26,7 @@ import plugin.system.PluginClass;
 @ParentPackage(value = "coolie-default")
 @Namespace("/system/user")
 @AccessGroup(name="用户管理",pluginClass=PluginClass.class)
-public class UserAction extends BaseAction<User> {
+public class UserController extends BaseAction<User> {
 	private static final long serialVersionUID = 1L;
 	private final String page_edit = "user_edit.ftl";
 	private final String page_list = "user_list.ftl";

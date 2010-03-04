@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import freemarker.template.utility.ClassUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -158,7 +159,7 @@ public class FileUtils {
 	public static List<String> searchFileFromClassPath(String classPath,
 			String pattern) throws IOException {
 		// 获取指定的类路径的定位URL
-		URL[] urls = BeanUtil.getClassPathFileURLs(classPath);
+		URL[] urls = ClassUtils.getClassPathFileURLs(classPath);
 
 		// 返回的是list，但是利用set来保证没有重复的url
 		List<String> list = new ArrayList<String>();

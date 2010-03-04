@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("unchecked")
 @Repository
-public class AuthorizeDAO extends BaseTreeDAO<Role, String> {
+public class RoleDAO extends BaseTreeDAO<Role, String> {
 	public void removeAction(final Role entity) {
         String idLong = entity.getId();
 		Query query = getSession().createQuery(
