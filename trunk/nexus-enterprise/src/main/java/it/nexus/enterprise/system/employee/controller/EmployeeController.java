@@ -27,7 +27,7 @@ import plugin.system.PluginClass;
 @ParentPackage(value = "coolie-default")
 @Namespace("/system/employee")
 @AccessGroup(name="员工",pluginClass=PluginClass.class)
-public class EmployeeAction extends BaseInfoAction<Employee> implements IBaseInfoAction<Employee> {
+public class EmployeeController extends BaseInfoAction<Employee> implements IBaseInfoAction<Employee> {
 	private static final long	serialVersionUID	= 1265101496764007164L;
 	private final String		page_edit			= "employee_edit.ftl";
 	private final String		page_list			= "employee_list.ftl";

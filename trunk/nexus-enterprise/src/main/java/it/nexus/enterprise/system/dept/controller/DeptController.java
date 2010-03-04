@@ -26,7 +26,7 @@ import plugin.system.PluginClass;
 @ParentPackage(value = "coolie-default")
 @Namespace("/system/dept")
 @AccessGroup(name = "部门", pluginClass = PluginClass.class)
-public class DeptAction extends BaseInfoAction<Dept> {
+public class DeptController extends BaseInfoAction<Dept> {
 	private static final long	serialVersionUID	= -5902936233600478352L;
 	private final String		page_edit			= "dept_edit.ftl";
 	private final String		page_list			= "dept_list.ftl";

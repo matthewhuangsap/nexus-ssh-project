@@ -1,17 +1,17 @@
 package it.nexus.enterprise.system.data.model;
 
-public class Datakind {
+public class WordPair {
 	private String key;
 	private String value;
 	
-	public Datakind(){}
+	public WordPair(){}
 	
-	public Datakind(String key,String value){
+	public WordPair(String key,String value){
 		this.key = key;
 		this.value = value;
 	}
-	
-	public String getKey() {
+
+    public String getKey() {
 		return key;
 	}
 

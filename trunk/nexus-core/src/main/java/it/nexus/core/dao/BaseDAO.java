@@ -37,10 +37,8 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	protected Class<T>			entityClass;
 
 	public BaseDAO() {
-        System.out.println("BaseDAO Constructor Initiling!!!!");
-        if(sessionFactory!=null)
-            System.out.println("session factory is initlised");
 		entityClass = getGenericClass();
+        System.out.println(entityClass.getName() + "DAO Constructor Initiling!!!!");
 	}
 
 	public BaseDAO(final SessionFactory sessionFactory,

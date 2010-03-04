@@ -38,17 +38,20 @@
 				<prop key="hibernate.dialect"> org.hibernate.dialect.MySQLInnoDBDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <!--<prop key="hibernate.connection.autocommit">true</prop>-->
 				<prop key="hibernate.show_sql">true</prop>
-				<!--<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider
-				</prop>
-				<prop key="hibernate.cache.provider_configuration_file_resource_path">${hibernate.ehcache_config_file}</prop>-->
+                <!--<prop key="hibernate.cache.provider_class">-->
+					<!--org.hibernate.cache.NoCacheProvider-->
+				<!--</prop>-->
+			    <!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
+				<!--<prop key="hibernate.default_batch_fetch_size">30</prop>-->
+				<!--<prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>-->
+				<!--<prop key="hibernate.cache.provider_configuration_file_resource_path">${hibernate.ehcache_config_file}</prop>-->
 			</props>
 		</property>
 		<property name="packagesToScan">
 			<list>
 				<value>it.nexus.**.model</value>
-				<value>it.nexus.system.**.model</value>
+				<!--<value>other_class_path.**.model</value>-->
 			</list>
 		</property>
 	</bean>

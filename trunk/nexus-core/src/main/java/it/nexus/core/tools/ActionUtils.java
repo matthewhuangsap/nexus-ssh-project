@@ -1,5 +1,6 @@
 package it.nexus.core.tools;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,20 +8,31 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 
+/**
+ *
+ */
 public class ActionUtils {
-	/**
-	 * Dec 25, 2009 ActionUtils.java Administrator
-	 */
+    /**
+     * 在Struts2的Action中获取 request对象 
+     * @param context
+     * @return
+     */
 	public static HttpServletRequest getRequest(ActionContext context) {
 		return (HttpServletRequest) context
 				.get(ServletActionContext.HTTP_REQUEST);
 	}
 
+    /**
+     * 在Struts2的Action中获取 RealPath 信息 
+     * @param context
+     * @return
+     */
 	public static String getRealPath(ActionContext context,String path) {
 		HttpServletRequest request = ActionUtils.getRequest(context);
 		return request.getSession().getServletContext().getRealPath(path);
 	}
-	
+
+    
 	public static String getConfigPath(ActionContext context){
 		return getRealPath(context,"/")+"config";
 	}
@@ -72,6 +84,15 @@ public class ActionUtils {
 		return ActionUtils.getSession(context).getAttribute(name);
 	}
 	
-	
-	
+    public static ServletContext getApplication(ActionContext context){
+        return ActionUtils.getSession(context).getServletContext();
+    }
+
+    public static Object getApplictionAttribute(ActionContext context, String name){
+        return ActionUtils.getApplication(context).getAttribute(name);
+    }
+
+    public static void setApplicationAttribute(ActionContext context,String name, Object value){
+        ActionUtils.getApplication(context).setAttribute(name,value);
+    }
 }

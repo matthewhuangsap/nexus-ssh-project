@@ -1,6 +1,7 @@
 package it.nexus.core.models;
 
 import it.nexus.core.models.BaseInfo;
+import org.hibernate.annotations.Cascade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,17 +18,17 @@ public class BaseTree extends BaseInfo implements Serializable {
 	 *BaseTree.java
 	 * dcriori
 	 */
-	
 	/** Level分层标记，用来记录树形的级别，方便取子一级的数据 */  
     public static final String LEVEL_SPLIT = "|";  
     /** level */  
     protected String level;  
     
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	protected BaseTree parent;
 	
-	@OneToMany(fetch = FetchType.LAZY,
-            mappedBy="parent",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="parent",cascade = CascadeType.ALL)
+    @Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	protected List<BaseTree> childs;
 
 	public BaseTree getParent() {
@@ -53,6 +54,4 @@ public class BaseTree extends BaseInfo implements Serializable {
 	public void setLevel(String level) {
 		this.level = level;
 	}
-	
-	
 }

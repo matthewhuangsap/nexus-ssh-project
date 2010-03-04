@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Plugin name="psi" displayName="PSI" class="plugin.PluginClass"
+<Plugin name="psi" displayName="PSI" class="plugin.psi.PluginClass"
 	depends="system">
 	<Menus>
 		<Menu id="40" name="业务单据">

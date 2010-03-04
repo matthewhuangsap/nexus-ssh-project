@@ -2,7 +2,7 @@ package it.nexus.enterprise.system.data.controller;
 
 import it.nexus.core.tools.xml.XmlUtils;
 import it.nexus.enterprise.system.data.dao.DatakindDAO;
-import it.nexus.enterprise.system.data.model.Datakind;
+import it.nexus.enterprise.system.data.model.WordPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,9 @@ import com.opensymphony.xwork2.ActionSupport;
 @Scope("prototype")
 @ParentPackage(value = "json-default")
 @Namespace("/data")
-public class DatakindAction extends ActionSupport {
+public class DatakindController extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private List<Datakind> lists = new ArrayList<Datakind>();
+	private List<WordPair> lists = new ArrayList<WordPair>();
 	
 	@Resource
 	DatakindDAO datakindDAO;
@@ -49,28 +49,25 @@ public class DatakindAction extends ActionSupport {
 		if(dk_string == null)
 			dk_string = "";
 		//得到查询字符串和datakind名称，比如query=部门1 d 
-//			String query = new String(query_string.getBytes("ISO-8859-1"),"UTF-8");
-//			String datakind =new String(dk_string.getBytes("ISO-8859-1"),"UTF-8");
 		String query = query_string;
 		String datakind = dk_string;
 		
 		String templetDire = request.getSession().getServletContext()
 		 .getRealPath("/config/datakind/datakinds.xml");
-//			System.out.println("AAAAAAAA"+templetDire);
 		Document document = XmlUtils.loadDocument(templetDire);
-		lists.add(new Datakind("",""));
+		lists.add(new WordPair("",""));
 		List<?> list = datakindDAO.getDataKind(document, datakind);
 		for (Object object : list) {
 			Object[] dept = (Object[]) object;
-			lists.add(new Datakind(dept[0].toString(), dept[1].toString()));
+			lists.add(new WordPair(dept[0].toString(), dept[1].toString()));
 		}
 		System.out.println("out put:"+query+":"+datakind);    
 		return super.execute();
 	}
-	public List<Datakind> getLists() {
+	public List<WordPair> getLists() {
 		return lists;
 	}
-	public void setLists(List<Datakind> lists) {
+	public void setLists(List<WordPair> lists) {
 		this.lists = lists;
 	}
 }

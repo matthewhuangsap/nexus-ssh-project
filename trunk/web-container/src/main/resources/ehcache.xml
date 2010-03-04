@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+　 <diskStore path="java.io.tmpdir"/>
+
+    <!-- maxElemnetsInMemory = "1000"   缓存最大数目 -->
+    <!-- eternal = "false" 缓存是否持久 -->
+    <!--overflowToDisk = "true" 是否保存到磁盘，当系统当机时-->
+    <!--timeToIdleSeconds = "300" 当缓存闲置n秒后销毁 -->
+    <!--timeToLiveSeconds = "180" 当缓存存活n秒后销毁-->
+　　<defaultCache maxElementsInMemory="10000"
+                eternal="false"
+                overflowToDisk="true"
+                timeToIdleSeconds="300"
+                timeToLiveSeconds="180"
+                diskPersistent="false"
+                diskExpiryThreadIntervalSeconds= "120"  />
+</ehcache>
