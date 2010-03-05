@@ -3,6 +3,7 @@ package it.nexus.enterprise.system.user.model;
 import it.nexus.core.annotation.LogicName;
 import it.nexus.core.models.Base;
 import it.nexus.enterprise.system.authorize.model.Role;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "SYS_USER")
 @LogicName("系统用户")
 public class User extends Base {
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Role role;
 	private String username;
 	private String password;
