@@ -4,6 +4,8 @@ import it.nexus.core.models.BaseTree;
 
 import java.io.Serializable;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 
@@ -13,7 +15,7 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 	/**
 	 * Dec 14, 2009 BaseTreeDAO.java Administrator
 	 */
-
+   private final Log log = LogFactory.getLog(BaseTreeDAO.class);
 	@Override
 	public void save(T entity) {
 		Session session = getSession();
@@ -26,11 +28,11 @@ public class BaseTreeDAO<T extends BaseTree, PK extends Serializable> extends
 	private void update_level(T entity) {
 		BaseTree parent = entity.getParent();
 		if (parent != null && (parent.getId() != entity.getId())) {
-			System.out.println("Has A Parent");
+			log.debug("update_level method:has a parent");
 			entity.setLevel(parent.getLevel() + BaseTree.LEVEL_SPLIT
 					+ entity.getId());
 		} else {
-			System.out.println("No Parent");
+			log.debug("update_level method:no parent");
 			entity.setLevel(entity.getId().toString());
 		}
 		super.update(entity);
