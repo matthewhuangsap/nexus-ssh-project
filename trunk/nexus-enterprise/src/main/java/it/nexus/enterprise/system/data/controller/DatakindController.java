@@ -1,8 +1,8 @@
 package it.nexus.enterprise.system.data.controller;
 
+import it.nexus.core.datakind.WordPair;
 import it.nexus.core.tools.xml.XmlUtils;
 import it.nexus.enterprise.system.data.dao.DatakindDAO;
-import it.nexus.enterprise.system.data.model.WordPair;
 
 import java.util.ArrayList;
 import java.util.List;
