@@ -1,11 +1,11 @@
-package it.nexus.enterprise.system.data.model;
+package it.nexus.core.datakind;
 
 public class WordPair {
 	private String key;
 	private String value;
-	
+
 	public WordPair(){}
-	
+
 	public WordPair(String key,String value){
 		this.key = key;
 		this.value = value;

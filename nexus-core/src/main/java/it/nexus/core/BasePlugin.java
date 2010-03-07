@@ -11,4 +11,5 @@ public abstract class BasePlugin {
 
 	public abstract String getDisplayName();
 
+    public abstract void Init() throws NexusException;
 }

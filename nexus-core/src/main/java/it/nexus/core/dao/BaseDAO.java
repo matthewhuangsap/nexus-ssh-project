@@ -38,7 +38,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	public BaseDAO() {
 		entityClass = getGenericClass();
-        System.out.println(entityClass.getName() + "DAO Constructor Initiling!!!!");
+        logger.debug(entityClass.getName() + "DAO Constructor Initiling!!!!");
 	}
 
 	public BaseDAO(final SessionFactory sessionFactory,
