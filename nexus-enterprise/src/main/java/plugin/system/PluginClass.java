@@ -1,16 +1,17 @@
 package plugin.system;
 
 import it.nexus.core.BasePlugin;
-import it.nexus.core.dao.HibernateDAO;
 import it.nexus.core.datakind.Argument;
 import it.nexus.core.datakind.ChoiceBoxSettings;
 import it.nexus.core.datakind.IChoiceBoxCallback;
 import it.nexus.core.NexusException;
 import it.nexus.core.datakind.WordPair;
 import it.nexus.enterprise.system.dept.dao.DeptDAO;
-import org.hibernate.Query;
+import it.nexus.enterprise.system.dept.model.Dept;
+import it.nexus.enterprise.system.employee.dao.EmployeeDAO;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PluginClass extends BasePlugin{
@@ -30,16 +31,34 @@ public class PluginClass extends BasePlugin{
 		return this.name;
 	}
 
-    @Override
-    public void Init() throws NexusException {
-        ChoiceBoxSettings.Register("部门",new IChoiceBoxCallback(){
+    IChoiceBoxCallback dept = new IChoiceBoxCallback(){
             @Resource
             DeptDAO deptDAO;
+
             @Override
             public List<WordPair> getData(Argument arg) {
-                deptDAO.find("SELECT id,name FROM Dept d WHERE id=?",arg.getBeforedrop());
-                return null;
+                List<WordPair> result = new ArrayList<WordPair>();
+                List<Dept> list = deptDAO.find("SELECT id,name FROM Dept d WHERE id=?",arg.getBeforedrop());
+                for (Dept dept : list){
+                    WordPair wp = new WordPair(dept.getId(),dept.getName());
+                    result.add(wp);
+                }
+                return result;
             }
-        });
+        }   ;
+
+    IChoiceBoxCallback employee = new IChoiceBoxCallback(){
+        @Resource
+        EmployeeDAO employeeDAO;
+        @Override
+        public List<WordPair> getData(Argument arg) {
+            return null;
+        }
+    };
+
+    @Override
+    public void Init() throws NexusException {
+        ChoiceBoxSettings.Register("部门",dept);
+        ChoiceBoxSettings.Register("员工",employee);
     }
 }
