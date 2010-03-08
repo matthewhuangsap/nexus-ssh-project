@@ -1,6 +1,7 @@
 package plugin.psi;
 
 import it.nexus.core.BasePlugin;
+import it.nexus.core.NexusException;
 
 public class PluginClass extends BasePlugin {
 	/**
@@ -14,7 +15,12 @@ public class PluginClass extends BasePlugin {
 		return this.displayName;
 	}
 
-	@Override
+    @Override
+    public void Init() throws NexusException {
+        
+    }
+
+    @Override
 	public String getName() {
 		return this.name;
 	}

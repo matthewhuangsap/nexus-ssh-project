@@ -250,9 +250,7 @@ public class FileUtils {
 
 	/**
 	 * 根据传入文件完整路径，获取文件所在的文件夹路径 原理是截取最后一个"/"之前的字符串作为文件夹名称
-	 * 
 	 * @param filePath 文件完整路径
-	 * 
 	 * @return 文件夹名称
 	 */
 	public static String getFloderName(String filePath) {
