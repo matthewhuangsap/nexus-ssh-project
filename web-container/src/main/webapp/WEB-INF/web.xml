@@ -14,7 +14,11 @@
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
-
+    <listener>
+		<listener-class>
+			it.nexus.core.web.InitWebHostListener
+		</listener-class>
+	</listener>
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>

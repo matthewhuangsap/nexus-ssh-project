@@ -37,7 +37,8 @@ public class DeptController extends BaseInfoAction<Dept> {
 	DeptService					deptService;
 
 	@Access("删除")
-	@Action(value = "/system/dept/remove", results = { @Result(name = "success", location = "/system/dept/list", type = "redirect") })
+	@Action(value = "/system/dept/remove",
+            results = { @Result(name = "success", location = "/system/dept/list", type = "redirect") })
 	public String remove() {
 		dmo = deptService.load(dmo.getId());
 		deptService.delete(dmo);
