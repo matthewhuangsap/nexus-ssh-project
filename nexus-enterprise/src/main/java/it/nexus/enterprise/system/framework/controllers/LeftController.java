@@ -3,6 +3,7 @@ package it.nexus.enterprise.system.framework.controllers;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
+import it.nexus.core.tools.ActionUtils;
 import it.nexus.core.tools.TestActionUtils;
 import it.nexus.core.tools.FileUtils;
 import it.nexus.core.tools.RoleUtils;
@@ -58,7 +59,7 @@ public class LeftController extends BaseAction {
 		Element menus = root.addElement("Menus");
 
 		if (settingClass.getDebugModule()) {
-			String plugin_path = TestActionUtils.getPluginPath(context);
+			String plugin_path = ActionUtils.getPluginPath(context);
 			System.out.println("Plugin Path:" + plugin_path);
 			List<String> plugin_file = FileUtils.searchFileFromFolder(
 					plugin_path, ".*\\.plugin.xml");
@@ -75,7 +76,7 @@ public class LeftController extends BaseAction {
 			// 存放jar的路径及名称
 			List<String> jar_list = new ArrayList<String>();
 
-			String lib_path = TestActionUtils.getLibPath(context);
+			String lib_path = ActionUtils.getLibPath(context);
 			for (String string : plugin_matching) {
 				// System.out.println("打印配置的插件正则匹配：" + string);
 				List<String> plugin_list = FileUtils.searchFileFromFolder(

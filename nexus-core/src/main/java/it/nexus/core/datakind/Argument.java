@@ -8,31 +8,33 @@ package it.nexus.core.datakind;
  * To change this template use File | Settings | File Templates.
  */
 public class Argument {
-    private String datakind;
-    private String beforedrop;
-    private String parameter;
-
-    public String getDatakind() {
-        return datakind;
+    private String code;
+    private String input;
+    private String kind;
+    
+    public Argument(String kind,String code ,String input){
+        this.code = code;
+        this.input = input;
+        this.kind = kind;
     }
 
-    public void setDatakind(String datakind) {
-        this.datakind = datakind;
+    public String getKind() {
+        return kind;
+    }
+    
+    public String getCode() {
+        return code;
     }
 
-    public String getBeforedrop() {
-        return beforedrop;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public void setBeforedrop(String beforedrop) {
-        this.beforedrop = beforedrop;
+    public String getInput() {
+        return input;
     }
 
-    public String getParameter() {
-        return parameter;
-    }
-
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
+    public void setInput(String input) {
+        this.input = input;
     }
 }
