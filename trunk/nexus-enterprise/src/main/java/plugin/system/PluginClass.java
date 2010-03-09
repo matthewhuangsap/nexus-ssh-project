@@ -32,20 +32,20 @@ public class PluginClass extends BasePlugin{
 	}
 
     IChoiceBoxCallback dept = new IChoiceBoxCallback(){
-            @Resource
-            DeptDAO deptDAO;
+        @Resource
+        DeptDAO deptDAO;
 
-            @Override
-            public List<WordPair> getData(Argument arg) {
-                List<WordPair> result = new ArrayList<WordPair>();
-                List<Dept> list = deptDAO.find("SELECT id,name FROM Dept d WHERE id=?",arg.getBeforedrop());
-                for (Dept dept : list){
-                    WordPair wp = new WordPair(dept.getId(),dept.getName());
-                    result.add(wp);
-                }
-                return result;
+        @Override
+        public List<WordPair> getData(Argument arg) {
+            List<WordPair> result = new ArrayList<WordPair>();
+            List<Dept> list = deptDAO.find("SELECT id,name FROM Dept d WHERE id like ?",arg.getInput());
+            for (Dept dept : list){
+                WordPair wp = new WordPair(dept.getId(),dept.getName());
+                result.add(wp);
             }
-        }   ;
+            return result;
+        }
+    }   ;
 
     IChoiceBoxCallback employee = new IChoiceBoxCallback(){
         @Resource

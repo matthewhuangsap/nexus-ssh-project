@@ -17,7 +17,7 @@ public class PluginClass extends BasePlugin {
 
     @Override
     public void Init() throws NexusException {
-        
+            
     }
 
     @Override

@@ -18,14 +18,14 @@ import org.dom4j.io.XMLWriter;
 public class XmlUtils {
 	/**
 	 * 载入XML数据，通过文件路径的方式
-	 * @param xml_path
+	 * @param xml
 	 * @return
 	 */
-	public static Document loadDocument(String xml_path) {
+	public static Document loadDocument(String xml) {
 		Document document = null;
 		SAXReader reader = new SAXReader();
 		try {
-			document = reader.read(new File(xml_path));
+			document = reader.read(new File(xml));
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
@@ -34,14 +34,14 @@ public class XmlUtils {
 	
 	/**
 	 * 载入XML数据，通过InputStream的方式
-	 * @param is_xml
+	 * @param stream
 	 * @return
 	 */
-	public static Document loadDocument(InputStream is_xml){
+	public static Document loadDocument(InputStream stream){
 		Document document = null;
 		SAXReader reader = new SAXReader();
 		try {
-			document = reader.read(is_xml);
+			document = reader.read(stream);
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}

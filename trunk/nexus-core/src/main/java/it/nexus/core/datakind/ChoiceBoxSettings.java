@@ -20,5 +20,7 @@ public final class ChoiceBoxSettings {
         callbacks.put(key,function);
     }
 
-    
+    public static Map<String, IChoiceBoxCallback> getCallbacks() {
+        return callbacks;
+    }
 }
