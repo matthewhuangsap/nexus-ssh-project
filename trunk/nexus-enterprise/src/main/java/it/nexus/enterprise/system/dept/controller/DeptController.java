@@ -3,6 +3,7 @@ package it.nexus.enterprise.system.dept.controller;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.controller.BaseInfoAction;
+import it.nexus.core.datakind.ChoiceBoxSettings;
 import it.nexus.enterprise.system.dept.model.Dept;
 import it.nexus.enterprise.system.dept.service.DeptService;
 
