@@ -29,7 +29,7 @@ import java.util.*;
 @AccessGroup(name = "权限管理", pluginClass = PluginClass.class)
 public class RoleController extends BaseAction<Role> {
 	private static final long	serialVersionUID	= -7004668560727425352L;
-    
+    private static final String  ACCESS_GROUP_MAP ="access_group_map";
     @Resource
 	AuthorizeService			authorizeService;
 	@Resource
@@ -56,11 +56,11 @@ public class RoleController extends BaseAction<Role> {
 	@SuppressWarnings("unchecked")
 	private void initAccessGroupMap() {
 		access_group_map = (Map<String, Map<String, Map<Long, String>>>) ActionContext
-				.getContext().getSession().get("access_group_map");
+				.getContext().getSession().get(ACCESS_GROUP_MAP);
 		plugin_info = (Map<String, String>) ActionContext.getContext()
 				.getSession().get("plugin_info");
 		if (access_group_map == null || plugin_info == null) {
-			ActionContext.getContext().getSession().put("access_group_map",
+			ActionContext.getContext().getSession().put(ACCESS_GROUP_MAP,
 					systemAssistService.getAccess_group_map());
 			ActionContext.getContext().getSession().put("plugin_info",
 					systemAssistService.getPlugin_info());

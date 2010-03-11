@@ -56,9 +56,19 @@ public class PluginClass extends BasePlugin{
         }
     };
 
+     IChoiceBoxCallback employee2 = new IChoiceBoxCallback(){
+        @Resource
+        EmployeeDAO employeeDAO;
+        @Override
+        public List<WordPair> getData(Argument arg) {
+            return null;
+        }
+    };
+
     @Override
     public void Init() throws NexusException {
         ChoiceBoxSettings.Register("部门",dept);
         ChoiceBoxSettings.Register("员工",employee);
+        
     }
 }

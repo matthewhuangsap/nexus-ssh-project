@@ -15,6 +15,6 @@ import java.io.UnsupportedEncodingException;
  */
 public class TestActionUtils extends StrutsSpringTestCase {
     public void testGetRequest() throws ServletException, UnsupportedEncodingException {
-        executeAction("/system/dept/save"); 
+       
     }
 }

@@ -7,7 +7,6 @@
 	</head>
 	
 	<body topmargin="0">
-        <@s.property name="error"/>
 		<#include "/components/buttongroup.ftl" />
 		<hr>
 		<@s.bean name="java.util.HashMap" id="qTableLayout">

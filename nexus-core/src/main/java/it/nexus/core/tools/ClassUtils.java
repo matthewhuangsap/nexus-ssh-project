@@ -295,4 +295,12 @@ public class ClassUtils {
     public static InputStream getClassPathFileByInputStream(String classPath) {
         return Thread.currentThread().getContextClassLoader().getResourceAsStream(classPath);
     }
+
+    public static String convertClassNameToResourcePath(String className) {
+		return className.replace('.', '/');
+	}
+
+    public static String convertResourcePathToClassName(String resourcePath) {
+		return resourcePath.replace('/', '.');
+	}
 }
