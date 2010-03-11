@@ -8,15 +8,14 @@ import java.net.JarURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * tools class 
@@ -270,7 +269,6 @@ public class ClassUtils {
             set.add((URL)o);
             log.debug("find file [" + classPath +"] from class path, and url is [" + o + "]");
         }
-
         return (URL[]) set.toArray(new URL[0]);
     }
 
@@ -303,4 +301,43 @@ public class ClassUtils {
     public static String convertResourcePathToClassName(String resourcePath) {
 		return resourcePath.replace('/', '.');
 	}
+
+    /**
+     * 使用Spring的框架获取匹配的package下的类
+     * @param matchPattern   例：it.nexus.**.model
+     * @return
+     * @throws IOException
+     */
+    public static List<Class> listMatchingClasses(String matchPattern) throws IOException {
+        List<Class> classes = new LinkedList<Class>();
+        PathMatchingResourcePatternResolver scanner = new PathMatchingResourcePatternResolver();
+        Resource[] resources = scanner.getResources(matchPattern);
+
+        for (Resource resource : resources) {
+            Class<?> clazz = getClassFromResource(resource);
+            classes.add(clazz);
+        }
+
+        return classes;
+    }
+
+    /**
+     * 将Spring Resource 转成Class
+     * TODO:这里有些问题，因为得到的resourceUri一般是绝对路径
+     * URL base = this.getClass().getResource("/");
+     *
+     * @param resource
+     * @return
+     */
+    public static Class getClassFromResource(Resource resource) {
+        try {
+            String resourceUri = resource.getURI().toString();
+            resourceUri = resourceUri.replace(resourceUri.substring(resourceUri.indexOf(".class")),"").replace("/", ".");
+            // try printing the resourceUri before calling forName, to see if it is OK.
+            return Class.forName(resourceUri);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }
