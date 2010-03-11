@@ -18,6 +18,7 @@ import java.net.URL;
  */
 public class TestClassUtils {
     private final String RESOURCE_PATTERN ="/**/*.class";
+    private final String RESOURCE_XML_PATTERN ="/**/*.xml";
     private ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
      @Test
     public void testGetResource() throws IOException {
@@ -45,6 +46,21 @@ public class TestClassUtils {
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    @Test
+    public void testGetResourceFile(){
+        String pattern = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
+							ClassUtils.convertClassNameToResourcePath("it.**.resource") + RESOURCE_XML_PATTERN;
+        try {
+
+            Resource[] resources = this.resourcePatternResolver.getResources(pattern);
+            for (Resource resource : resources) {
+                System.out.println(resource.getFile());
+		     }
+        } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
