@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Plugin name="system" displayName="系统模块" class="plugin.system.PluginClass" >
+<Plugin name="system" displayName="系统模块" class="plugin.system.PluginClass">
     <Requires>
         <!--<Plugin name="" version="1.0" />-->
     </Requires>
