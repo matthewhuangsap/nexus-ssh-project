@@ -1,0 +1,4 @@
+1.采用Spring管理，包括Entity,Service,DAO。
+2.对于Datakind及一些报表，使用Spring JDBCTemplate以提高性能，其余CRUD则使用hibernate。
+3.采用freemarker做为交互层模板，可以打包到jar中，将一些公共的、共有的页面封装起来。
+4.在SSH框架上完全使用annotation，去除复杂XML配置，方便使用模板生成框架，提高开发速度。

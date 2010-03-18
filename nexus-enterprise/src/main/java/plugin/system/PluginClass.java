@@ -6,6 +6,7 @@ import it.nexus.core.datakind.ChoiceBoxSettings;
 import it.nexus.core.datakind.IChoiceBoxCallback;
 import it.nexus.core.NexusException;
 import it.nexus.core.datakind.WordPair;
+import it.nexus.core.menu.Menu;
 import it.nexus.enterprise.system.dept.dao.DeptDAO;
 import it.nexus.enterprise.system.dept.model.Dept;
 import it.nexus.enterprise.system.employee.dao.EmployeeDAO;
@@ -15,7 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PluginClass extends BasePlugin{
-	/**
+    @Override
+    public Menu getMenu() {
+        
+        return null; 
+    }
+
+    /**
 	 * Dec 24, 2009 PluginClass.java Administrator
 	 */
 	protected final String name="system";
@@ -67,6 +74,7 @@ public class PluginClass extends BasePlugin{
 
     @Override
     public void Init() throws NexusException {
+        super.Init();
         ChoiceBoxSettings.Register("部门",dept);
         ChoiceBoxSettings.Register("员工",employee);
         

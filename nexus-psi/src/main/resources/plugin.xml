@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Plugin name="psi" displayName="PSI" class="plugin.psi.PluginClass"
-	depends="system">
+<Plugin name="psi" displayName="PSI" class="plugin.psi.PluginClass">
+    <Requires>
+        <Plugin name="system" version="1.0" /> 
+    </Requires>
 	<Menus>
 		<Menu id="40" name="业务单据">
 			<Menu id="01" name="存货">
