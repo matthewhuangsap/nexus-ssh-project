@@ -18,7 +18,7 @@ import java.util.List;
 public class PluginClass extends BasePlugin{
     @Override
     public Menu getMenu() {
-        
+        super.getMenu();
         return null; 
     }
 
@@ -79,4 +79,6 @@ public class PluginClass extends BasePlugin{
         ChoiceBoxSettings.Register("员工",employee);
         
     }
+
+
 }

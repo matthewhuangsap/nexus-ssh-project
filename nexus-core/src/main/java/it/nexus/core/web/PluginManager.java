@@ -27,6 +27,7 @@ public final class PluginManager {
                     System.out.println(String.format("正在初始化模块%s......",bp.getDisplayName()));
                     bp.Init();
                     System.out.println(String.format("模块%s初始化完毕",bp.getDisplayName()));
+                    bp.getMenu();                    
                     plugins.put(bp.getName(),bp);
                     System.out.println("%%%%%%%%%%%%%%%%"+ bp.getDisplayName()+"%%%%%%%%%%%%%%%%%%");
                 } catch (Exception e){

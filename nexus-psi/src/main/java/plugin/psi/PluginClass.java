@@ -18,11 +18,12 @@ public class PluginClass extends BasePlugin {
 
     @Override
     public void Init() throws NexusException {
-        super.Init();        
+        super.Init();            
     }
 
     @Override
     public Menu getMenu() {
+        super.getMenu();
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
