@@ -1,5 +1,6 @@
 package it.nexus.enterprise.system.framework.controllers;
 
+import it.nexus.core.BasePlugin;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
@@ -20,6 +21,7 @@ import java.util.jar.JarFile;
 
 import javax.annotation.Resource;
 
+import it.nexus.core.web.PluginManager;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -48,6 +50,10 @@ public class LeftController extends BaseAction {
 	@Access("访问")
 	@Action(value = "/left", results = { @Result(type = "freemarker", location = page_left, name = "success") })
 	public String left() throws Exception {
+        Map<String, BasePlugin> map =  PluginManager.getPlugins();
+        System.out.println(">>>>>>>>>>>>:"+map.size());
+        Iterator it = map.keySet().iterator();
+        
 		ActionContext context = getContext();
 
 		StringBuilder menu_info = new StringBuilder();

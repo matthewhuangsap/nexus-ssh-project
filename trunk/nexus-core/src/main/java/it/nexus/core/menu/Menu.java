@@ -26,11 +26,21 @@ public class Menu {
         this.childs.add(menu);
 
     }
+    
+    private String id;
     private List<Menu> childs = new LinkedList<Menu>();
     private Menu parent;
     private Boolean isFolder;
     private String name;
     private String url;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public List<Menu> getChilds() {
         return childs;
@@ -78,5 +88,22 @@ public class Menu {
         if(menu.getName() == this.name && menu.getUrl() == this.url && menu.isFolder() == this.isFolder)
             return true;
         return super.equals(obj); 
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("Menu:");
+        printMenu(this,sb);
+        return sb.toString();
+    }
+
+    private void printMenu(Menu menu, StringBuilder sb){
+        sb.append("Name:"+menu.getName()+"  Url:" + menu.getUrl()+ " IsFolder:" + menu.isFolder() +" \n ");
+        if(menu.getChilds().size()>0)
+        {
+            for(Menu m  : menu.getChilds()){
+                printMenu(m,sb);
+            }
+        }
     }
 }
