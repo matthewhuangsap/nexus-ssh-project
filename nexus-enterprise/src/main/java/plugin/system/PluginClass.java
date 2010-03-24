@@ -16,9 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PluginClass extends BasePlugin{
-    @Override
+  
     public Menu getMenu() {
-        super.getMenu();
         return null; 
     }
 
@@ -72,9 +71,7 @@ public class PluginClass extends BasePlugin{
         }
     };
 
-    @Override
     public void Init() throws NexusException {
-        super.Init();
         ChoiceBoxSettings.Register("部门",dept);
         ChoiceBoxSettings.Register("员工",employee);
         

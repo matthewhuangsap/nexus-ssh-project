@@ -9,6 +9,7 @@ import org.dom4j.io.SAXReader;
 import java.io.File;
 import java.util.Iterator;
 import java.net.URL;
+import java.util.List;
 
 public abstract class BasePlugin {
 	/**
@@ -16,42 +17,36 @@ public abstract class BasePlugin {
 	 */
 	protected String pluginName;
 	protected String displayName;
+    protected Menu menus;
+    protected List<String> requires;
 
-	public abstract String getName();
+    
+    public List<String> getRequires() {
+        return requires;
+    }
+
+    public void setRequires(List<String> requires) {
+        this.requires = requires;
+    }
+
+    public Menu getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Menu menus) {
+        this.menus = menus;
+    }
+
+    public abstract String getName();
     
 	public abstract String getDisplayName();
 
-    public void validate(){
-        
-    }
-    
-    public void Init() throws NexusException{
-        URL url =  getClass().getResource("/plugin.xml");
-        System.out.println("得到Plugin.xml路径："+url.getFile());
-        String ur = url.getFile();
-        File file=new File(ur.substring(6,ur.length()));
-        SAXReader saxReader = new SAXReader();
-        try{
-           Document document = saxReader.read(file);
-           System.out.println(">>>>>>>>>>>"+document.toString());
-        }  catch (DocumentException de){
-           System.out.println(de.getMessage());
-        }     
+    public void Init(Document doc) throws NexusException{
+        initMenu(doc);
     }
 
-    public Menu getMenu(){
+    protected void initMenu(Document doc) throws NexusException {
         Menu menu = new Menu(getName(),null,true);
-//        URL url =  getClass().getResource("/plugin.xml");
-//        System.out.println("得到Plugin.xml路径："+url.getFile());
-//        String ur = url.getFile();
-//        File file=new File(ur.substring(6,ur.length()));
-//        SAXReader saxReader = new SAXReader();
-//        try{
-//           Document document = saxReader.read(file);
-//           System.out.println(">>>>>>>>>>>"+document.toString());
-//        }  catch (DocumentException de){
-//           System.out.println(de.getMessage());
-//        }
-        return menu;     
+        menus.add(menu);     
     }
 }

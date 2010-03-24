@@ -16,7 +16,6 @@
 					roles="system.员工.访问" />
 			</Menu>
 		</Menu>
-
 		<Menu id="90" name="系统管理">
 			<Menu id="01" name="用户管理" url="system/user/list"  roles="system.用户管理.访问"/>
 			<Menu id="02" name="权限管理" url="permission/list" roles="system.权限管理.访问"/>
