@@ -1,5 +1,8 @@
 package it.nexus.enterprise.system.data.controller;
 
+import it.nexus.core.datakind.Argument;
+import it.nexus.core.datakind.ChoiceBoxSettings;
+import it.nexus.core.datakind.IChoiceBoxCallback;
 import it.nexus.core.datakind.WordPair;
 import it.nexus.core.tools.xml.XmlUtils;
 import it.nexus.enterprise.system.data.dao.DatakindDAO;
@@ -17,6 +20,7 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.dom4j.Document;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -32,7 +36,10 @@ public class DatakindController extends ActionSupport {
 	
 	@Resource
 	DatakindDAO datakindDAO;
-	
+
+    @Resource
+    JdbcTemplate jdbcTemplate;
+
 	@Action(value = "/data/datakind", results = { @Result(type="json", name = "success")})
 	public String execute() throws Exception{
 		ActionContext ctx = ActionContext.getContext();
@@ -51,6 +58,15 @@ public class DatakindController extends ActionSupport {
 		//得到查询字符串和datakind名称，比如query=部门1 d 
 		String query = query_string;
 		String datakind = dk_string;
+
+        IChoiceBoxCallback callback = ChoiceBoxSettings.getCallbacks().get(datakind);
+        
+        List<WordPair> wpList = callback.getData(jdbcTemplate,new Argument("","",""));
+//
+//        for(WordPair wp : wpList){
+//            System.out.println("KEY:"+wp.getKey() + "   VALUE:"+wp.getValue());
+//        }
+        
 		
 		String templetDire = request.getSession().getServletContext()
 		 .getRealPath("/config/datakind/datakinds.xml");

@@ -41,12 +41,5 @@ public abstract class BasePlugin {
     
 	public abstract String getDisplayName();
 
-    public void Init(Document doc) throws NexusException{
-        initMenu(doc);
-    }
-
-    protected void initMenu(Document doc) throws NexusException {
-        Menu menu = new Menu(getName(),null,true);
-        menus.add(menu);     
-    }
+    public abstract void Init() throws NexusException;
 }

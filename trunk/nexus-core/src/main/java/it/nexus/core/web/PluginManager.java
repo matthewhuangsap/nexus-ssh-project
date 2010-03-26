@@ -31,9 +31,10 @@ import java.util.jar.JarFile;
  * To change this template use File | Settings | File Templates.
  */
 public final class PluginManager {
-    private static Map<String, BasePlugin> plugins = new HashMap<String,BasePlugin>();
-    public static void init(List<String> jar_list)  {
-        for(String jar_path : jar_list){
+    private static Map<String, BasePlugin> plugins = new HashMap<String, BasePlugin>();
+
+    public static void init(List<String> jar_list) {
+        for (String jar_path : jar_list) {
             initPlugin(jar_path);
         }
     }
@@ -51,19 +52,20 @@ public final class PluginManager {
                     input = jarFile.getInputStream(entry);
                     Document document = XmlUtils.loadDocument(input);
                     //取得菜单
-                    Menu menu =  new Menu();
-                    List<?> menu_list = XmlUtils.getElementList(document,"/Plugin/Menus/Menu", "@id");
-                    initMenus(menu_list,document,menu);
-                    
+                    Menu menu = new Menu();
+                    List<?> menu_list = XmlUtils.getElementList(document, "/Plugin/Menus/Menu", "@id");
+                    initMenus(menu_list, document, menu);
+                    System.out.println(">>>>>>>>>>>>>>:"+menu.toString());
                     //取得依赖plugin list
                     List<String> requires = initRequire(document);
-                    
+
                     Element element = document.getRootElement();
                     String clazz_name = element.attributeValue("class");
                     String plugin_name = element.attributeValue("name");
                     BasePlugin bp = (BasePlugin) Class.forName(clazz_name).newInstance();
+                    bp.Init();  //初始化DataKind 
                     bp.setMenus(menu);
-                    plugins.put(plugin_name,bp);
+                    plugins.put(plugin_name, bp);
                 }
             }
             jarFile.close();
@@ -76,32 +78,41 @@ public final class PluginManager {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (NexusException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
 
-    protected static void initMenus(List<?> list,Document doc,Menu menu) throws NexusException {
+    protected static void initMenus(List<?> list, Document doc, Menu menu) throws NexusException {
 
         Iterator<?> iterator = list.iterator();
-		while (iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Element element = (Element) iterator.next();
             if (XmlUtils.elementIsExistChild(element)) {
-				Menu childMenu = new Menu(element.attributeValue("name"),"",true);
+                Menu childMenu = new Menu(
+                        element.attributeValue("id"),
+                        element.attributeValue("name"),
+                        "",
+                        true);
                 menu.add(childMenu);
-				List<?> childList = element.elements();
-				initMenus(childList, doc, childMenu);
-			} else {
-				if (!XmlUtils.elementIsExistAttribute(element, "url")) {
-					continue;
-				}
-                Menu linkMenu = new Menu(element.attributeValue("name"),element.attributeValue("url"),false);
+                List<?> childList = element.elements();
+                initMenus(childList, doc, childMenu);
+            } else {
+                if (!XmlUtils.elementIsExistAttribute(element, "url")) {
+                    continue;
+                }
+                Menu linkMenu = new Menu(
+                        element.attributeValue("id"),
+                        element.attributeValue("name"),
+                        element.attributeValue("url"),
+                        element.attributeValue("role"),                        
+                        false);
                 menu.add(linkMenu);
-			}
+            }
         }
     }
 
-    protected static List<String> initRequire(Document doc){
-        return null;           
+    protected static List<String> initRequire(Document doc) {
+        return null;
     }
 
     public static Map<String, BasePlugin> getPlugins() {

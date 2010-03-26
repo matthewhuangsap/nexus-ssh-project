@@ -1,5 +1,6 @@
 package it.nexus.core.dao;
 
+import it.nexus.core.datakind.WordPair;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,19 +34,13 @@ public class TestJDBCTemplate extends AbstractTransactionalJUnit4SpringContextTe
     public void testCRUD(){
         int count = jdbcTemplate.queryForInt("select count(*) from sys_user");
         System.out.println("Count is:" + count);
-//        jdbcTemplate.query("select id,username,password from sys_user",new RowCallbackHandler(){
-//            @Override
-//            public void processRow(ResultSet resultSet) throws SQLException {
-//                System.out.println(resultSet.getString("id"));
-//                System.out.println(resultSet.getString("username"));
-//                System.out.println(resultSet.getString("password"));
-//            }
-//        });
+
     }
 
     @Test
     public void testQueryForList(){
-        List rows=jdbcTemplate.queryForList("select * from sys_user");
+        List rows=jdbcTemplate.queryForList("select * from sys_user" );
+        System.out.println("###############:"+rows.size());
         Iterator it=rows.iterator();
         while(it.hasNext()){
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
