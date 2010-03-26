@@ -16,17 +16,11 @@ public class PluginClass extends BasePlugin {
 		return this.displayName;
 	}
 
-//    @Override
+    @Override
     public void Init() throws NexusException {
-
+        
     }
-
-//    @Override
-    public Menu getMenu() {
-
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
+    
     @Override
 	public String getName() {
 		return this.name;

@@ -1,5 +1,7 @@
 package it.nexus.core.datakind;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.util.List;
 import java.util.Map;
 
@@ -11,5 +13,5 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public interface IChoiceBoxCallback {
-    List<WordPair> getData(Argument arg);
+    List<WordPair> getData(JdbcTemplate jdbcTemplate, Argument arg);
 }
