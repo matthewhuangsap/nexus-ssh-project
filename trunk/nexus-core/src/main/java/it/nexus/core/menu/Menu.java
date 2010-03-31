@@ -35,11 +35,15 @@ public class Menu implements Comparable<Menu> {
         this.isFolder = isFolder;
     }
 
+    public boolean hasChilds(){
+        return this.childs.size()> 0;
+    }
+
     public void add(Menu menu) throws NexusException {
         if(this.childs.contains(menu))
             throw new NexusException("［ERROR］不能重复添加菜单");
         this.childs.add(menu);
-
+        menu.setParent(this); //设置parent
     }
     
     private String id;

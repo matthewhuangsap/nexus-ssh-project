@@ -50,9 +50,9 @@ public class LeftController extends BaseAction {
 	@Access("访问")
 	@Action(value = "/left", results = { @Result(type = "freemarker", location = page_left, name = "success") })
 	public String left() throws Exception {
-        Map<String, BasePlugin> map =  PluginManager.getPlugins();
-        System.out.println(">>>>>>>>>>>>:"+map.size());
-        Iterator it = map.keySet().iterator();
+        Map<String, BasePlugin> plugins =  PluginManager.getPlugins();
+        System.out.println(">>>>>>>>>>>>:"+plugins.size());
+        Iterator it = plugins.keySet().iterator();
         
 		ActionContext context = getContext();
 

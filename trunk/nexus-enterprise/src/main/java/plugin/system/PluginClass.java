@@ -45,17 +45,16 @@ public class PluginClass extends BasePlugin {
         @Override
         public List<WordPair> getData( JdbcTemplate jdbcTemplate,Argument arg) {
             List result = new ArrayList();
-            result = jdbcTemplate.queryForList("SELECT s.id,sb.name FROM sys_dept s inner join sys_basetree sb on s.id = sb.id");
-            Iterator it = result.iterator();
-            while (it.hasNext()) {
-                Map map = (Map) it.next();
-                WordPair wp = new WordPair(map.get("id").toString(), map.get("name").toString());
-                System.out.println(map.get("id"));
-                System.out.println(map.get("name"));
+            Iterator<?> iterator = jdbcTemplate.queryForList
+                    ("SELECT s.id,sb.name FROM sys_dept s inner join sys_basetree sb on s.id = sb.id")
+                    .iterator();
+            while(iterator.hasNext()){
+                Map itmap = (Map)iterator.next();
+                WordPair wp = new WordPair((String)itmap.get("id"),(String) itmap.get("name"));
                 result.add(wp);
             }
             return result;
-        }
+        }                                
     };
 
     IChoiceBoxCallback employee = new IChoiceBoxCallback() {

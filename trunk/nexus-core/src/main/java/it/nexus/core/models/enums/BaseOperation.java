@@ -24,7 +24,5 @@ public class BaseOperation extends ValuedEnum {
 	}
 
 	private static final long serialVersionUID = -3884760431475638770L;
-	/**
-	 * Jan 4, 2010 BaseOperation.java Administrator
-	 */
+	
 }

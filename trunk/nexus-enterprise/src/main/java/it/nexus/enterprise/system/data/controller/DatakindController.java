@@ -34,9 +34,6 @@ public class DatakindController extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private List<WordPair> lists = new ArrayList<WordPair>();
 	
-	@Resource
-	DatakindDAO datakindDAO;
-
     @Resource
     JdbcTemplate jdbcTemplate;
 
@@ -45,39 +42,19 @@ public class DatakindController extends ActionSupport {
 		ActionContext ctx = ActionContext.getContext();
 		HttpServletRequest request = (HttpServletRequest) ctx
 				.get(ServletActionContext.HTTP_REQUEST);
-		String query_string= request.getParameter("query");
+		String input_str = request.getParameter("query");
 		//获取DataKind的值
-		String dk_string=request.getParameter("dk");
+		String kind_str =request.getParameter("dk");
 		//获取其它控件的值，用来在下拉时做过滤数据使用
-		String bd_String = request.getParameter("beforDrop");
+		String code_str = request.getParameter("beforDrop");
 		
-		if(query_string==null)
-			query_string = "";
-		if(dk_string == null)
-			dk_string = "";
-		//得到查询字符串和datakind名称，比如query=部门1 d 
-		String query = query_string;
-		String datakind = dk_string;
+		if(input_str==null)input_str = "";
+		if(kind_str == null)kind_str = "";
+        if(code_str == null)code_str = "";
 
-        IChoiceBoxCallback callback = ChoiceBoxSettings.getCallbacks().get(datakind);
+        IChoiceBoxCallback callback = ChoiceBoxSettings.getCallbacks().get(kind_str);
         
-        List<WordPair> wpList = callback.getData(jdbcTemplate,new Argument("","",""));
-//
-//        for(WordPair wp : wpList){
-//            System.out.println("KEY:"+wp.getKey() + "   VALUE:"+wp.getValue());
-//        }
-        
-		
-		String templetDire = request.getSession().getServletContext()
-		 .getRealPath("/config/datakind/datakinds.xml");
-		Document document = XmlUtils.loadDocument(templetDire);
-		lists.add(new WordPair("",""));
-		List<?> list = datakindDAO.getDataKind(document, datakind);
-		for (Object object : list) {
-			Object[] dept = (Object[]) object;
-			lists.add(new WordPair(dept[0].toString(), dept[1].toString()));
-		}
-		System.out.println("out put:"+query+":"+datakind);    
+       lists = callback.getData(jdbcTemplate,new Argument(code_str,input_str));
 		return super.execute();
 	}
 	public List<WordPair> getLists() {

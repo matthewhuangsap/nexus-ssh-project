@@ -40,15 +40,23 @@ public class UserController extends BaseAction<User> {
 	@SuppressWarnings("unchecked")
 	@Action(value = "/system/user/list", results = { @Result(name = "success", location = page_list) })
 	public String list() {
+        long begin_time = System.currentTimeMillis();
 		lists = userService.getAll();
+        long end_time = System.currentTimeMillis();
+        long time = end_time - begin_time;
+        System.out.println("List:>>>######>>>>>"+ time);
 		return SUCCESS;
 	}
 
 	@Access("删除")
 	@Action(value = "/system/user/remove", results = { @Result(name = "success", location = "/system/user/list", type = "redirect") })
 	public String remove() {
+         long begin_time = System.currentTimeMillis();
 		dmo = userService.load(dmo.getId());
 		userService.delete(dmo);
+         long end_time = System.currentTimeMillis();
+        long time = end_time - begin_time;
+        System.out.println("Remove:>>>######>>>>>"+ time);
 		return SUCCESS;
 	}
 
