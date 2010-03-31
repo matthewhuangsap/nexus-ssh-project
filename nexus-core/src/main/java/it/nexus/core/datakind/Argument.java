@@ -10,16 +10,10 @@ package it.nexus.core.datakind;
 public class Argument {
     private String code;
     private String input;
-    private String kind;
     
-    public Argument(String kind,String code ,String input){
+    public Argument(String code ,String input){
         this.code = code;
         this.input = input;
-        this.kind = kind;
-    }
-
-    public String getKind() {
-        return kind;
     }
     
     public String getCode() {

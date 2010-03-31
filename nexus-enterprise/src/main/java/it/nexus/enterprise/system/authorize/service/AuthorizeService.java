@@ -23,4 +23,8 @@ public class AuthorizeService extends BaseTreeService<Role, RoleDAO>{
 	public void removeAction(Role entity){
 		dao.removeAction(entity);
 	}
+
+    public void getUserRoles(String user_id){
+        
+    }
 }
