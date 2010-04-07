@@ -7,6 +7,9 @@ import it.nexus.core.datakind.IChoiceBoxCallback;
 import it.nexus.core.NexusException;
 import it.nexus.core.datakind.WordPair;
 import it.nexus.core.menu.Menu;
+import it.nexus.enterprise.system.authorize.dao.RoleDAO;
+import it.nexus.enterprise.system.authorize.model.Role;
+import it.nexus.enterprise.system.authorize.service.AuthorizeService;
 import it.nexus.enterprise.system.dept.dao.DeptDAO;
 import it.nexus.enterprise.system.dept.model.Dept;
 import it.nexus.enterprise.system.employee.dao.EmployeeDAO;
@@ -57,6 +60,23 @@ public class PluginClass extends BasePlugin {
         }                                
     };
 
+    IChoiceBoxCallback roles = new IChoiceBoxCallback() {
+            @Override
+            public List<WordPair> getData( JdbcTemplate jdbcTemplate,Argument arg) {
+                List result = new ArrayList();
+            Iterator<?> iterator = jdbcTemplate.queryForList
+                    ("SELECT s.id,sb.name FROM sys_role s inner join sys_basetree sb on s.id = sb.id")
+                    .iterator();
+            while(iterator.hasNext()){
+                Map itmap = (Map)iterator.next();
+                WordPair wp = new WordPair((String)itmap.get("id"),(String) itmap.get("name"));
+                result.add(wp);
+            }
+            return result;
+            }
+        };
+
+
     IChoiceBoxCallback employee = new IChoiceBoxCallback() {
 
         @Override
@@ -78,7 +98,7 @@ public class PluginClass extends BasePlugin {
     public void Init() throws NexusException {
         ChoiceBoxSettings.Register("部门", dept);
         ChoiceBoxSettings.Register("员工", employee);
-
+        ChoiceBoxSettings.Register("角色", roles );
     }
 
 

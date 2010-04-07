@@ -45,6 +45,13 @@ public class Menu implements Comparable<Menu> {
         this.childs.add(menu);
         menu.setParent(this); //设置parent
     }
+
+    //加入菜单集合
+    public void add(List<Menu> menus) throws NexusException {
+        for(Menu menu : menus){
+            add(menu);
+        }
+    }
     
     private String id;
     private String role;
@@ -53,7 +60,15 @@ public class Menu implements Comparable<Menu> {
     private Boolean isFolder;
     private String name;
     private String url;
+    private Boolean isRemove;
 
+    public Boolean isRemove() {
+        return isRemove;
+    }
+
+    public void setRemove(Boolean remove) {
+        isRemove = remove;
+    }
 
     public String getRole() {
         return role;
@@ -153,5 +168,9 @@ public class Menu implements Comparable<Menu> {
             return 0;
         else
             return -1;
+    }
+
+    public void remove() {
+        this.setRemove(true);
     }
 }

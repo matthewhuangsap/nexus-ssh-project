@@ -1,9 +1,11 @@
 package it.nexus.enterprise.system.framework.controllers;
 
 import it.nexus.core.BasePlugin;
+import it.nexus.core.NexusException;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
+import it.nexus.core.menu.Menu;
 import it.nexus.core.tools.ActionUtils;
 import it.nexus.core.tools.ActionUtils;
 import it.nexus.core.tools.FileUtils;
@@ -11,11 +13,7 @@ import it.nexus.core.tools.RoleUtils;
 import it.nexus.core.tools.xml.XmlUtils;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -51,15 +49,71 @@ public class LeftController extends BaseAction {
 	@Action(value = "/left", results = { @Result(type = "freemarker", location = page_left, name = "success") })
 	public String left() throws Exception {
         Map<String, BasePlugin> plugins =  PluginManager.getPlugins();
-        System.out.println(">>>>>>>>>>>>:"+plugins.size());
+        ActionContext context = getContext();
         Iterator it = plugins.keySet().iterator();
-        
-		ActionContext context = getContext();
+        //创建一个菜单根结点
+        Menu rootMenu = new Menu();
+        for   (Object   o   :   plugins.keySet())   {
+             BasePlugin bp =(BasePlugin) plugins.get(o);  
+             rootMenu.add(bp.getMenus().getChilds());
+        }
+
+        //用Menu的ID属性将菜单排序
+        Menu[] array = rootMenu.getChilds().toArray(new Menu[] {});
+        Arrays.sort(array);
+        rootMenu.setChilds(Arrays.asList(array));
+
+        //rootMenu排序完成
+        //得到权限
+        Map<String, Object> session = ActionContext.getContext().getSession();
+		Map<String, Long> roles = (Map<String, Long>) session.get("roles");
+        //检查权限
+        checkMenuRole(rootMenu,roles);
 
 		StringBuilder menu_info = new StringBuilder();
-		menu_info
-				.append("<ul id=\"menu\" class=\"filetree treeview-famfamfam\">");
-		// 创建一个新的document存放合并后的XML
+		menu_info.append("<ul id=\"menu\" class=\"filetree treeview-famfamfam\">");
+        createMenu2(menu_info,rootMenu);
+		menu_info.append("</ul>");
+		getSession().put("output", menu_info.toString());
+		return super.execute();
+	}
+
+    private void checkMenuRole(Menu rootMenu, Map<String, Long> roles) {
+        for(Menu menu : rootMenu.getChilds()){
+            if(menu.isFolder())
+                checkMenuRole(menu,roles);
+            String[] role_arr = menu.getRole().split("[.]");
+            String plugin_name = role_arr[0];
+			String access_group_name = role_arr[1];
+			String access_name = role_arr[2];
+            
+        }
+    }
+
+    private void createMenu2(StringBuilder menu_info, Menu rootMenu) {
+        //无URL
+        for(Menu menu: rootMenu.getChilds()){
+            if(menu.isFolder()){
+                menu_info.append("<li class=\"closed\"><span class=\"folder\">"
+                            + menu.getName()
+                            + "</span><ul>");
+                if(menu.hasChilds())
+                {
+                    createMenu2(menu_info,menu);
+                }
+                menu_info.append("</ul></li>");
+            }else{
+                menu_info.append("<li><span class=\"file\"><a href=\""
+						+ menu.getUrl()
+						+ "\" target=\"contener\">"
+						+ menu.getName() + "</a></span></li>"); 
+            }
+        }
+    }
+
+    //早期版本
+    private void temp(ActionContext context,StringBuilder menu_info)throws Exception{
+        // 创建一个新的document存放合并后的XML
 		Document merge_doc = DocumentHelper.createDocument();
 		Element root = merge_doc.addElement("Plugin");
 		Element menus = root.addElement("Menus");
@@ -124,11 +178,7 @@ public class LeftController extends BaseAction {
 		List<?> merge_menu = XmlUtils.getElementList(merge_doc,
 				"/Plugin/Menus/Menu", "@id");
 		createMenu(merge_menu, menu_info, merge_doc);
-
-		menu_info.append("</ul>");
-		getSession().put("output", menu_info.toString());
-		return super.execute();
-	}
+    }
 
 	private void removeElement(Element element) {
 		Element parent = element.getParent();
