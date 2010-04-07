@@ -104,7 +104,7 @@ public final class PluginManager {
                         element.attributeValue("id"),
                         element.attributeValue("name"),
                         element.attributeValue("url"),
-                        element.attributeValue("role"),                        
+                        element.attributeValue("roles"),                        
                         false);
                 menu.add(linkMenu);
             }

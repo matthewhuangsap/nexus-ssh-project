@@ -64,4 +64,20 @@ public class TestMenu {
                 create(m);
         }
     }
+
+//    @Test(expected = NexusException.class)
+//    public void testRemove() throws NexusException {
+//        System.out.println(main.toString());
+//        main.remove();
+//        System.out.println(main.toString());
+//    }
+//
+//    @Test
+//    public void testRemove2() throws NexusException {
+//        System.out.println("==============================");
+//        Menu menu = main.getChilds().get(0);
+//        System.out.println(menu.toString());
+//        menu.remove();
+//        System.out.println("==============================");
+//    }
 }
