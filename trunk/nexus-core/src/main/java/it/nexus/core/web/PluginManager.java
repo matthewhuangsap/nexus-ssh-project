@@ -4,21 +4,12 @@ import com.opensymphony.xwork2.util.ClassLoaderUtil;
 import it.nexus.core.BasePlugin;
 import it.nexus.core.NexusException;
 import it.nexus.core.menu.Menu;
-import it.nexus.core.tools.ActionUtils;
-import it.nexus.core.tools.ClassUtils;
-import it.nexus.core.tools.FileUtils;
 import it.nexus.core.tools.xml.XmlUtils;
 import org.dom4j.Document;
 import org.dom4j.Element;
-import org.dom4j.Node;
-import org.dom4j.QName;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -37,6 +28,10 @@ public final class PluginManager {
         for (String jar_path : jar_list) {
             initPlugin(jar_path);
         }
+    }
+
+    public static void initAccess() {
+        
     }
 
     public static void initPlugin(String jar_path) {

@@ -14,7 +14,7 @@ import org.springframework.util.Assert;
 
 @Repository
 public class UserDAO extends BaseDAO<User,String> implements IUserDAO<User> {
-	@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
 	public boolean find(final String username,final String password){
         User user =  this.getUserByNameAndPwd(username,password);
         Assert.notNull(user, "用户不存在！");
@@ -35,19 +35,29 @@ public class UserDAO extends BaseDAO<User,String> implements IUserDAO<User> {
 			return (User)list.get(0);
 		return null;
 	}
-	
-	public Map<String, Long> getRoleActions(User user){
-		Map<String, Long> roleAction = new HashMap<String, Long>();
+
+    Map<String, Map<String,Long>> ROLE_ACTION = new HashMap<String, Map<String,Long>>();
+
+	public Map<String, Map<String,Long>> getRoleActions(User user){
+
 		String hql="from RoleAction where role_id=?" ;
 		if(user.getRole() == null)
-			return new HashMap<String,Long>();
+			return new HashMap<String,Map<String,Long>>();
 		Query query = createQuery(hql,user.getRole().getId());
 		List<RoleAction> roles = query.list();
 		for (Object role : roles) {
 			RoleAction ra = (RoleAction)role;
-			roleAction.put(ra.getName(), ra.getRolebits());
+			Map<String,Long> role_item = getRoleItem(((RoleAction) role).getPlugin());
+            role_item.put(ra.getName(),ra.getRolebits());
 		}
-		return roleAction;
+		return ROLE_ACTION;
 	}
-	
+
+    private Map<String, Long> getRoleItem(String plugin) {
+        if(!ROLE_ACTION.containsKey(plugin)){
+            ROLE_ACTION.put(plugin,new HashMap<String,Long>()) ;
+        }
+        return ROLE_ACTION.get(plugin);
+    }
+
 }
