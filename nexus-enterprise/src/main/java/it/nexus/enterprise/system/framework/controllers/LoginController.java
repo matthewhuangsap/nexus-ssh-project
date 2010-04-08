@@ -2,7 +2,7 @@ package it.nexus.enterprise.system.framework.controllers;
 
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
-import it.nexus.core.tools.FileUtils;
+import it.nexus.core.tools.ClassUtils;
 import it.nexus.enterprise.system.framework.services.SystemAssistService;
 import it.nexus.enterprise.system.user.model.User;
 import it.nexus.enterprise.system.user.service.UserService;
@@ -61,13 +61,13 @@ public class LoginController extends BaseAction implements ServletRequestAware,
 		if (userService.isLogin(dmo.getUsername(), dmo.getPassword())) {
 			getSession().put("userinfo", dmo);
 			dmo = userService.getUser(dmo.getUsername(), dmo.getPassword());
-			Map<String, Long> roleActions = userService.getRoleActions(dmo);
+			Map<String, Map<String,Long>> roleActions = userService.getRoleActions(dmo);
 			getSession().put("roles", roleActions);
 
 			getSession().put("access_group_map",
-					systemAssistService.getAccess_group_map());
+					systemAssistService.getAccessGroupMap());
 			getSession().put("plugin_info",
-					systemAssistService.getPlugin_info());
+					systemAssistService.getPluginInfo());
 		} else {
 			ActionContext.getContext().getSession().put("userinfo", null);
 			ActionContext.getContext().getSession().put("roles", null);
@@ -87,7 +87,7 @@ public class LoginController extends BaseAction implements ServletRequestAware,
 		// TODO 目前这里应该是从各个模块jar中读取配置文件
 		String real_path = request.getSession().getServletContext().getRealPath("/");
 		String config_path = real_path + "//config";
-		List<String> list = FileUtils.searchFileFromFolder(config_path,".*\\.plugin.xml");
+		List<String> list = ClassUtils.searchFileFromFolder(config_path,".*\\.plugin.xml");
 		for (String string : list) {
 			System.out.println(">>>>>>>" + string);
 		}

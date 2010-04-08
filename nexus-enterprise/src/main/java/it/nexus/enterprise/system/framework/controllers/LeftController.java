@@ -1,14 +1,12 @@
 package it.nexus.enterprise.system.framework.controllers;
 
 import it.nexus.core.BasePlugin;
-import it.nexus.core.NexusException;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
 import it.nexus.core.menu.Menu;
 import it.nexus.core.tools.ActionUtils;
-import it.nexus.core.tools.ActionUtils;
-import it.nexus.core.tools.FileUtils;
+import it.nexus.core.tools.ClassUtils;
 import it.nexus.core.tools.RoleUtils;
 import it.nexus.core.tools.xml.XmlUtils;
 
@@ -66,7 +64,7 @@ public class LeftController extends BaseAction {
         //rootMenu排序完成
         //得到权限
         Map<String, Object> session = ActionContext.getContext().getSession();
-		Map<String, Long> roles = (Map<String, Long>) session.get("roles");
+		Map<String, Map<String,Long>> roles = (Map<String, Map<String,Long>>) session.get("roles");
         //检查权限
         checkMenuRole(rootMenu,roles);
 
@@ -78,10 +76,18 @@ public class LeftController extends BaseAction {
 		return super.execute();
 	}
 
-    private void checkMenuRole(Menu rootMenu, Map<String, Long> roles) {
+    private void checkMenuRole(Menu rootMenu,Map<String, Map<String,Long>> roles) {
+        final Map<String, Map<String, Map<Long, String>>> plugin_map = (Map<String, Map<String, Map<Long, String>>>) ActionContext
+				.getContext().getSession().get("access_group_map");
+		final Map<String, String> plugin_info = (Map<String, String>) ActionContext
+				.getContext().getSession().get("plugin_info");
+		System.out.println(plugin_map);
+		System.out.println(plugin_info);
         for(Menu menu : rootMenu.getChilds()){
-            if(menu.isFolder())
+            if(menu.isFolder()){
                 checkMenuRole(menu,roles);
+                continue;
+            }
             String[] role_arr = menu.getRole().split("[.]");
             String plugin_name = role_arr[0];
 			String access_group_name = role_arr[1];
@@ -121,7 +127,7 @@ public class LeftController extends BaseAction {
 		if (settingClass.getDebugModule()) {
 			String plugin_path = ActionUtils.getPluginPath(context);
 			System.out.println("Plugin Path:" + plugin_path);
-			List<String> plugin_file = FileUtils.searchFileFromFolder(
+			List<String> plugin_file = ClassUtils.searchFileFromFolder(
 					plugin_path, ".*\\.plugin.xml");
 			for (String pf : plugin_file) {
 				Document document = XmlUtils.loadDocument(pf);
@@ -139,7 +145,7 @@ public class LeftController extends BaseAction {
 			String lib_path = ActionUtils.getLibPath(context);
 			for (String string : plugin_matching) {
 				// System.out.println("打印配置的插件正则匹配：" + string);
-				List<String> plugin_list = FileUtils.searchFileFromFolder(
+				List<String> plugin_list = ClassUtils.searchFileFromFolder(
 						lib_path, string);
 				for (String jar_path : plugin_list) {
 					jar_list.add(jar_path);

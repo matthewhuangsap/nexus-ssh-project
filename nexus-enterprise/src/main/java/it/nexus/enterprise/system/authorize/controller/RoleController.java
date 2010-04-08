@@ -61,9 +61,9 @@ public class RoleController extends BaseAction<Role> {
 				.getSession().get("plugin_info");
 		if (access_group_map == null || plugin_info == null) {
 			ActionContext.getContext().getSession().put(ACCESS_GROUP_MAP,
-					systemAssistService.getAccess_group_map());
+					systemAssistService.getAccessGroupMap());
 			ActionContext.getContext().getSession().put("plugin_info",
-					systemAssistService.getPlugin_info());
+					systemAssistService.getPluginInfo());
 		}
 	}
 

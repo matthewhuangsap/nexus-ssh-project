@@ -1,28 +1,14 @@
 package it.nexus.core.web;
 
-import com.opensymphony.xwork2.util.ClassLoaderUtil;
-import it.nexus.core.BasePlugin;
-import it.nexus.core.NexusException;
-import it.nexus.core.SettingClass;
-import it.nexus.core.tools.ActionUtils;
-import it.nexus.core.tools.FileUtils;
-import it.nexus.core.tools.xml.XmlUtils;
+import it.nexus.core.tools.ClassUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.dom4j.Document;
-import org.dom4j.Element;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,10 +33,9 @@ public class InitWebHostListener implements  ServletContextListener {
 
         List<String> jar_list = new ArrayList<String>();
         // TODO: 一个约定，目前只是临时的，只搜索以［-SNAPSHOT］结尾的jar包，把这种jar包做为plugin
-        List<String> plugin_list = FileUtils.searchFileFromFolder(lib_path, "[a-zA-Z]*.*-SNAPSHOT\\.jar");
+        List<String> plugin_list = ClassUtils.searchFileFromFolder(lib_path, "[a-zA-Z]*.*-SNAPSHOT\\.jar");
         for (String jar_path : plugin_list) {
             jar_list.add(jar_path);
-            
         }
 
         PluginManager.init(jar_list);

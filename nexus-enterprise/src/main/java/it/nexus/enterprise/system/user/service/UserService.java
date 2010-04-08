@@ -47,7 +47,7 @@ public class UserService {
 		return userDAO.getUserByNameAndPwd(username, password);
 	}
 	
-	public Map<String, Long> getRoleActions(User user){
+	public Map<String, Map<String,Long>> getRoleActions(User user){
 		return userDAO.getRoleActions(user);
 	}
 }
