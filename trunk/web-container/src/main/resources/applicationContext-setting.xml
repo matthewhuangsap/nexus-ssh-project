@@ -28,4 +28,5 @@
      		<value>true</value>
      	</property>
      </bean>
+    <bean name="initAccess" class="it.nexus.enterprise.system.InitAccessBean"/>
 </beans>
