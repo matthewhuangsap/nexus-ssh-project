@@ -22,7 +22,6 @@ import plugin.system.PluginClass;
 
 @Controller
 @Scope("prototype")
-// spring
 @ParentPackage(value = "coolie-default")
 @Namespace("/system/user")
 @AccessGroup(name="用户管理",pluginClass=PluginClass.class)
