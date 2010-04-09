@@ -28,5 +28,6 @@
      		<value>true</value>
      	</property>
      </bean>
-    <bean name="initAccess" class="it.nexus.enterprise.system.InitAccessBean"/>
+    <!-- 初始化plugin 的choiceboxsetting 和 access 权限-->
+    <bean name="initPlugin" class="it.nexus.enterprise.system.InitSystemBean"/>
 </beans>
