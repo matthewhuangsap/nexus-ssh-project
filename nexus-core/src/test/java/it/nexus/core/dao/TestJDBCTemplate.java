@@ -1,6 +1,7 @@
 package it.nexus.core.dao;
 
 import it.nexus.core.datakind.WordPair;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,6 +29,14 @@ import java.util.Iterator;
 @ContextConfiguration(locations={"classpath:applicationContext-test.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = false)
 public class TestJDBCTemplate extends AbstractTransactionalJUnit4SpringContextTests {
+     
+    @Before
+    public void before(){
+      
+    }
+
+
+
     @Resource
     JdbcTemplate jdbcTemplate;
     @Test

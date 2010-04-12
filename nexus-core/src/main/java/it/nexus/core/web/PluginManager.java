@@ -2,6 +2,7 @@ package it.nexus.core.web;
 
 import it.nexus.core.BasePlugin;
 import it.nexus.core.NexusException;
+import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.menu.Menu;
 import it.nexus.core.tools.xml.XmlUtils;
 import org.dom4j.Document;
@@ -30,6 +31,10 @@ public final class PluginManager {
     }
   }
 
+  /**
+   * 将Controller上的功能函数上的权限收集起来
+   * @param jar_path
+   */
   private static void initAccessInfo(String jar_path) {
     JarFile jarFile = null;
     try {
@@ -39,10 +44,11 @@ public final class PluginManager {
         JarEntry entry = (JarEntry) enu.nextElement();
         String name = entry.getName();
         if (name.endsWith("Controller.class")||name.endsWith("Action.class")) {
-//          System.out.println("###########class name :" + name);
           String className = name.replace(".class","").replace("/",".");
           Class clazz = Class.forName(className);
-          
+          AccessGroup ag = (AccessGroup) clazz.getAnnotation(AccessGroup.class);
+          if(ag!=null)
+            System.out.println("#############"+name);
         }
       }
     } catch (IOException e) {
