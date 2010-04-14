@@ -35,9 +35,9 @@ public class LeftController extends BaseAction {
   @Access("访问")
   @Action(value = "/left", results = {@Result(type = "freemarker", location = page_left, name = "success")})
   public String left() throws Exception {
-    System.out.println("=======================================================");
-    System.out.println("================== begin left action ==================");
-    System.out.println("=======================================================");
+//    System.out.println("=======================================================");
+//    System.out.println("================== begin left action ==================");
+//    System.out.println("=======================================================");
     Map<String, BasePlugin> plugins = PluginManager.getPlugins();
     ActionContext context = getContext();
     Iterator it = plugins.keySet().iterator();
@@ -70,11 +70,11 @@ public class LeftController extends BaseAction {
 
   private void checkMenuRole(Menu rootMenu, Map<String, Map<String, Long>> roles) {
     final Map<String, Map<String, Map<Long, String>>> PLUGIN_ACCESS_MAP = PluginManager.getAccessGroupMap();
-    System.out.println("==========================================");
-    System.out.println(PLUGIN_ACCESS_MAP);
-    System.out.println("==========================================");
-    System.out.println(roles);
-    System.out.println("==========================================");
+//    System.out.println("==========================================");
+//    System.out.println(PLUGIN_ACCESS_MAP);
+//    System.out.println("==========================================");
+//    System.out.println(roles);
+//    System.out.println("==========================================");
     for (Menu menu : rootMenu.getChilds()) {
       if (menu.isFolder()) {
         checkMenuRole(menu, roles);
@@ -117,7 +117,7 @@ public class LeftController extends BaseAction {
   private long findOptPurview(String[] roleArr,
                               Map<String, Map<String, Map<Long, String>>> pluginAccessMap) {
     String plugin_name = roleArr[0];      //plugin名称，如：system,psi
-    String module_name = roleArr[1];//功能模块名称 如：部门，员工，存货
+    String module_name = roleArr[1];      //功能模块名称 如：部门，员工，存货
     String option_name = roleArr[2];      //功能名称     如：新建，审核，删除
     if (pluginAccessMap == null)
       return 0;

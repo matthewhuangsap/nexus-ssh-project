@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import it.nexus.psi.PSIOption;
 import net.psi.baseinfo.goods.model.Goods;
 import net.psi.baseinfo.goods.services.GoodsService;
 
@@ -85,6 +86,13 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/edit", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String edit() throws Exception {
+		return super.execute();
+	}
+
+  @Access(enumClass = PSIOption.class,value = "检查单价")
+	@SuppressWarnings("unchecked")
+	@Action(value = "/baseinfo/goods/checkPrice", results = { @Result(name = "success", type = "freemarker", location = list_page) })
+	public String checkPrice() throws Exception {
 		return super.execute();
 	}
 
