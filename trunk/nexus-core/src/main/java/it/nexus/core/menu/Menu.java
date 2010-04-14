@@ -57,10 +57,10 @@ public class Menu implements Comparable<Menu> {
     private String role;
     private List<Menu> childs = new LinkedList<Menu>();
     private Menu parent;
-    private Boolean isFolder;
+    private Boolean isFolder=false;
     private String name;
     private String url;
-    private Boolean isRemove;
+    private Boolean isRemove=false;
 
     public Boolean isRemove() {
         return isRemove;
