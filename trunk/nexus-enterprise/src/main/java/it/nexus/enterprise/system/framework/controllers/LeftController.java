@@ -8,6 +8,7 @@ import it.nexus.core.controller.BaseAction;
 import it.nexus.core.menu.Menu;
 import it.nexus.core.tools.RoleUtils;
 import it.nexus.core.web.PluginManager;
+import it.nexus.enterprise.system.user.model.User;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -57,8 +58,10 @@ public class LeftController extends BaseAction {
     //得到权限
     Map<String, Object> session = ActionContext.getContext().getSession();
     Map<String, Map<String, Long>> roles = (Map<String, Map<String, Long>>) session.get("roles");
-    //检查权限
-    checkMenuRole(rootMenu, roles);
+    User user = (User) session.get("userinfo");
+    //检查权限,内置用户admin除外
+    if(!user.getUsername().equalsIgnoreCase("admin"))
+        checkMenuRole(rootMenu, roles);
 
     StringBuilder menu_info = new StringBuilder();
     menu_info.append("<ul id=\"menu\" class=\"filetree treeview-famfamfam\">");
@@ -70,11 +73,7 @@ public class LeftController extends BaseAction {
 
   private void checkMenuRole(Menu rootMenu, Map<String, Map<String, Long>> roles) {
     final Map<String, Map<String, Map<Long, String>>> PLUGIN_ACCESS_MAP = PluginManager.getAccessGroupMap();
-//    System.out.println("==========================================");
-//    System.out.println(PLUGIN_ACCESS_MAP);
-//    System.out.println("==========================================");
-//    System.out.println(roles);
-//    System.out.println("==========================================");
+
     for (Menu menu : rootMenu.getChilds()) {
       if (menu.isFolder()) {
         checkMenuRole(menu, roles);
