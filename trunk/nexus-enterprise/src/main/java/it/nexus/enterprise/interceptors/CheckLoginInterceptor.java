@@ -14,10 +14,6 @@ public class CheckLoginInterceptor extends AbstractInterceptor {
 
 	private static final long serialVersionUID = -1683769230647168110L;
 
-	/**
-	 * Dec 17, 2009 LogonInterceptor.java Administrator
-	 */
-
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Map<String, Object> session = invocation.getInvocationContext()
@@ -37,8 +33,6 @@ public class CheckLoginInterceptor extends AbstractInterceptor {
 				return Action.ERROR;
 		}
 			
- 
-
 		User user = (User) session.get("userinfo");
 		if (null != user) {
 			return invocation.invoke();
