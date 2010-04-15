@@ -67,7 +67,6 @@ public final class PluginManager {
    * @param pluginDispname
    * @desc 存放简单plugin信息
    */
-  @SuppressWarnings("unused")
   private static void createPluginInfo(final String pluginName,
                                        final String pluginDispname) {
     if (pluginSimpleInfo == null)
@@ -100,6 +99,7 @@ public final class PluginManager {
 
   public static void initPlugin(String jar_path) {
     JarFile jarFile = null;
+    Menu menu = new Menu();
     try {
       jarFile = new JarFile(jar_path);
       Enumeration<?> enu = jarFile.entries();
@@ -120,7 +120,6 @@ public final class PluginManager {
           checkRequire(document);
 
           //取得菜单
-          Menu menu = new Menu();
           List<?> menu_list = XmlUtils.getElementList(document, "/Plugin/Menus/Menu", "@id");
           initMenus(menu_list, menu);
           //取得权限

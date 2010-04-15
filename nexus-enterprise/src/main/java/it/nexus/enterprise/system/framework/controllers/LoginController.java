@@ -75,16 +75,6 @@ public class LoginController extends BaseAction implements ServletRequestAware,
     this.session = sesssion;
   }
 
-//  private void getSecurityMap() {
-//    // TODO 目前这里应该是从各个模块jar中读取配置文件
-//    String real_path = request.getSession().getServletContext().getRealPath("/");
-//    String config_path = real_path + "//config";
-//    List<String> list = ClassUtils.searchFileFromFolder(config_path, ".*\\.plugin.xml");
-//    for (String string : list) {
-//      System.out.println(">>>>>>>" + string);
-//    }
-//  }
-
   private HttpServletRequest request;
 
   @Override
