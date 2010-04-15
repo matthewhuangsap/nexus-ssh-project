@@ -89,7 +89,7 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 		return super.execute();
 	}
 
-  @Access(enumClass = PSIOption.class,value = "检查单价")
+  @Access("检查单价")
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/checkPrice", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String checkPrice() throws Exception {
