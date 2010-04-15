@@ -72,7 +72,7 @@ public class LeftController extends BaseAction {
   }
 
   private void checkMenuRole(Menu rootMenu, Map<String, Map<String, Long>> roles) {
-    final Map<String, Map<String, Map<Long, String>>> PLUGIN_ACCESS_MAP = PluginManager.getAccessGroupMap();
+    final Map<String, Map<String, Map<Long, String>>> PLUGIN_ACCESS_MAP = PluginManager.getPluginMap();
 
     for (Menu menu : rootMenu.getChilds()) {
       if (menu.isFolder()) {

@@ -1,36 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Plugin name="psi" displayName="PSI" class="plugin.psi.PluginClass">
+<Plugin name="psi" displayName="进销存模块" class="plugin.psi.PluginClass">
     <Requires>
-        <Plugin name="system" version="1.0" /> 
+        <Plugin name="system" version="1.0"/>
     </Requires>
-	<Menus>
-		<Menu id="40" name="业务单据">
-			<Menu id="01" name="存货">
-				<Menu id="01" name="新建" url="baseinfo/goods/create"
-					roles="psi.存货.新建" />
-				<Menu id="02" name="列表" url="baseinfo/goods/list"
-					roles="psi.存货.访问" />
-			</Menu>
-			<Menu id="02" name="供应商">
-				<Menu id="01" name="新建" url="baseinfo/goods/create"
-					roles="psi.供应商.新建" />
-				<Menu id="02" name="列表" url="baseinfo/goods/list"
-					roles="psi.供应商.访问" />
-			</Menu>
-		</Menu>
-		<Menu id="30" name="国内销售">
-			<Menu id="01" name="销售管理">
-				<Menu id="01" name="新建" url="baseinfo/goods/create"
-					roles="psi.销售管理.新建" />
-				<Menu id="02" name="列表" url="baseinfo/goods/list"
-					roles="psi.销售管理.访问" />
-			</Menu>
-			<Menu id="02" name="工厂直销">
-				<Menu id="01" name="新建" url="baseinfo/goods/create"
-					roles="psi.工厂直销.新建" />
-				<Menu id="02" name="列表" url="baseinfo/goods/list"
-					roles="psi.工厂直销.访问" />
-			</Menu>
-		</Menu>
-	</Menus>
+    <Menus>
+        <Menu id="40" name="业务单据">
+            <Menu id="01" name="存货">
+                <Menu id="01" name="新建" url="baseinfo/goods/create"
+                      roles="psi.存货.新建"/>
+                <Menu id="02" name="列表" url="baseinfo/goods/list"
+                      roles="psi.存货.访问"/>
+            </Menu>
+            <Menu id="02" name="供应商">
+                <Menu id="01" name="新建" url="baseinfo/goods/create"
+                      roles="psi.供应商.新建"/>
+                <Menu id="02" name="列表" url="baseinfo/goods/list"
+                      roles="psi.供应商.访问"/>
+            </Menu>
+        </Menu>
+        <Menu id="30" name="国内销售">
+            <Menu id="01" name="销售管理">
+                <Menu id="01" name="新建" url="baseinfo/goods/create"
+                      roles="psi.销售管理.新建"/>
+                <Menu id="02" name="列表" url="baseinfo/goods/list"
+                      roles="psi.销售管理.访问"/>
+            </Menu>
+            <Menu id="02" name="工厂直销">
+                <Menu id="01" name="新建" url="baseinfo/goods/create"
+                      roles="psi.工厂直销.新建"/>
+                <Menu id="02" name="列表" url="baseinfo/goods/list"
+                      roles="psi.工厂直销.访问"/>
+            </Menu>
+        </Menu>
+    </Menus>
+    <Security>
+        <FunctionGroup name="存货">
+            <Function index="0" name="访问"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="停用"/>
+            <Function index="5" name="启用"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+        </FunctionGroup>
+        <FunctionGroup name="供应商">
+            <Function index="0" name="访问"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="停用"/>
+            <Function index="5" name="启用"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+        </FunctionGroup>
+        <FunctionGroup name="销售管理">
+            <Function index="0" name="访问"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="审核"/>
+            <Function index="5" name="撤销"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+            <Function index="8" name="管理"/>
+            <Function index="9" name="完毕"/>
+            <Function index="10" name="作废"/>
+        </FunctionGroup>
+        <FunctionGroup name="工厂直销">
+            <Function index="0" name="访问"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="审核"/>
+            <Function index="5" name="撤销"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+            <Function index="8" name="管理"/>
+            <Function index="9" name="完毕"/>
+            <Function index="10" name="作废"/>
+        </FunctionGroup>
+    </Security>
 </Plugin>

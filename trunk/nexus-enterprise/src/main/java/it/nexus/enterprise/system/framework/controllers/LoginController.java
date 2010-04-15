@@ -3,8 +3,6 @@ package it.nexus.enterprise.system.framework.controllers;
 import com.opensymphony.xwork2.ActionContext;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
-import it.nexus.core.tools.ClassUtils;
-import it.nexus.enterprise.system.framework.services.SystemAssistService;
 import it.nexus.enterprise.system.user.model.User;
 import it.nexus.enterprise.system.user.service.UserService;
 import org.apache.struts2.convention.annotation.Action;
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
@@ -42,9 +39,6 @@ public class LoginController extends BaseAction implements ServletRequestAware,
 
   @Resource
   UserService userService;
-
-  @Resource
-  SystemAssistService systemAssistService;
 
   @Action(value = "show", results = {@Result(type = "freemarker", location = "/login.ftl", name = "success")})
   public String show() throws Exception {

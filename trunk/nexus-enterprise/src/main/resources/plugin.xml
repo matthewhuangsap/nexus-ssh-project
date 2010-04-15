@@ -21,4 +21,46 @@
 			<Menu id="02" name="权限管理" url="permission/list" roles="system.权限管理.访问"/>
 		</Menu>
 	</Menus>
+    <Security>
+        <FunctionGroup name="部门">
+            <Function index="0" name="访问"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="停用"/>
+            <Function index="5" name="启用"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+        </FunctionGroup>
+        <FunctionGroup name="员工">
+            <Function index="0" name="访问"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="停用"/>
+            <Function index="5" name="启用"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+        </FunctionGroup>
+        <FunctionGroup name="用户管理">
+            <Function index="0" name="用户管理"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="停用"/>
+            <Function index="5" name="启用"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+        </FunctionGroup>
+        <FunctionGroup name="权限管理">
+            <Function index="0" name="用户管理"/>
+            <Function index="1" name="新建"/>
+            <Function index="2" name="编辑"/>
+            <Function index="3" name="删除"/>
+            <Function index="4" name="停用"/>
+            <Function index="5" name="启用"/>
+            <Function index="6" name="锁定"/>
+            <Function index="7" name="解锁"/>
+        </FunctionGroup>
+    </Security>
 </Plugin>

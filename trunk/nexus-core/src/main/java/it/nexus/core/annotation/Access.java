@@ -10,9 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
 public @interface Access {
-	/**
-	 * Dec 23, 2009 Access.java Administrator
-	 */
-	Class<?> enumClass() default BaseOperation.class;
 	String value();
 }

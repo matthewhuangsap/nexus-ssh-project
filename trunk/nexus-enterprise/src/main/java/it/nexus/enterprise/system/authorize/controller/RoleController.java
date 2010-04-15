@@ -1,6 +1,5 @@
 package it.nexus.enterprise.system.authorize.controller;
 
-import com.opensymphony.xwork2.ActionContext;
 import it.nexus.core.NexusException;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
@@ -12,7 +11,6 @@ import it.nexus.core.web.PluginManager;
 import it.nexus.enterprise.system.authorize.model.Role;
 import it.nexus.enterprise.system.authorize.model.RoleAction;
 import it.nexus.enterprise.system.authorize.service.AuthorizeService;
-import it.nexus.enterprise.system.framework.services.SystemAssistService;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -35,8 +33,6 @@ public class RoleController extends BaseAction<Role> {
   AuthorizeService authorizeService;
   @Resource
   SettingClass settingClass;
-  @Resource
-  SystemAssistService systemAssistService;
 
 
   @Access("访问")
@@ -56,7 +52,7 @@ public class RoleController extends BaseAction<Role> {
 
   @SuppressWarnings("unchecked")
   private void initAccessGroupMap() throws NexusException {
-    access_group_map = PluginManager.getAccessGroupMap();
+    access_group_map = PluginManager.getPluginMap();
     plugin_info = PluginManager.getPluginSimpleInfo();
     if (access_group_map == null || plugin_info == null) {
       throw new NexusException("模块加载错误！请检查模块是否正确安装");
