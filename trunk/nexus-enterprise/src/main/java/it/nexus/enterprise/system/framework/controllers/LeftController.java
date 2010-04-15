@@ -2,6 +2,7 @@ package it.nexus.enterprise.system.framework.controllers;
 
 import com.opensymphony.xwork2.ActionContext;
 import it.nexus.core.BasePlugin;
+import it.nexus.core.NexusException;
 import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.controller.BaseAction;
@@ -30,15 +31,11 @@ import java.util.Map;
 public class LeftController extends BaseAction {
   private static final long serialVersionUID = -1313764364459365272L;
   private final String page_left = "/left.ftl";
-  @Resource
-  SettingClass settingClass;
+  private Menu leftMenu = new Menu();
 
   @Access("访问")
   @Action(value = "/left", results = {@Result(type = "freemarker", location = page_left, name = "success")})
   public String left() throws Exception {
-//    System.out.println("=======================================================");
-//    System.out.println("================== begin left action ==================");
-//    System.out.println("=======================================================");
     Map<String, BasePlugin> plugins = PluginManager.getPlugins();
     ActionContext context = getContext();
     Iterator it = plugins.keySet().iterator();
@@ -59,39 +56,44 @@ public class LeftController extends BaseAction {
     Map<String, Object> session = ActionContext.getContext().getSession();
     Map<String, Map<String, Long>> roles = (Map<String, Map<String, Long>>) session.get("roles");
     User user = (User) session.get("userinfo");
-    //检查权限,内置用户admin除外
-    if(!user.getUsername().equalsIgnoreCase("admin"))
-        checkMenuRole(rootMenu, roles);
-
     StringBuilder menu_info = new StringBuilder();
     menu_info.append("<ul id=\"menu\" class=\"filetree treeview-famfamfam\">");
-    createMenu(menu_info, rootMenu);
+    //检查权限,内置用户admin除外
+    if(!user.getUsername().equalsIgnoreCase("admin"))
+        checkMenuRole(leftMenu,rootMenu, roles);
+    else
+      leftMenu.add(rootMenu.getChilds());
+    
+    
+    createMenu(menu_info, leftMenu);
     menu_info.append("</ul>");
     getSession().put("output", menu_info.toString());
     return super.execute();
   }
 
-  private void checkMenuRole(Menu rootMenu, Map<String, Map<String, Long>> roles) {
+  private void checkMenuRole(Menu resultMenu,Menu rootMenu, Map<String, Map<String, Long>> roles) throws NexusException {
     final Map<String, Map<String, Map<Long, String>>> PLUGIN_ACCESS_MAP = PluginManager.getPluginMap();
 
     for (Menu menu : rootMenu.getChilds()) {
       if (menu.isFolder()) {
-        checkMenuRole(menu, roles);
+        Menu curr_menu = createNewMenu(menu,true);
+        checkMenuRole(curr_menu,menu, roles);
+        if(curr_menu.getChilds().size()>0)
+          resultMenu.add(curr_menu);
         continue;
       }
+
       String[] role_arr = menu.getRole().split("[.]");
-
-
       long userPurview = findUserPurview(role_arr, roles);
       long optPurview = findOptPurview(role_arr, PLUGIN_ACCESS_MAP);
-      if (!RoleUtils.checkRole(userPurview, optPurview)) {
-        //如果为否，则说明，当前用户没有访问这个menu的权限
-        //那么就把这个菜单remove掉
-        menu.setRemove(true);
-      } else {
-        menu.setRemove(false);
+      if (RoleUtils.checkRole(userPurview, optPurview)) {
+        resultMenu.add(createNewMenu(menu,false));
       }
     }
+  }
+
+  private Menu createNewMenu(Menu menu,Boolean isFolder) throws NexusException {
+    return new Menu(menu.getId(),menu.getName(),menu.getUrl(),menu.getUrl(),isFolder);
   }
 
   private long findUserPurview(String[] role_arr,
