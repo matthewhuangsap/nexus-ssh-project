@@ -1,0 +1,2 @@
+1.创建Maven Plugin 
+mvn archetype:create -DgroupId=sample.plugin -DartifactId=maven-hello-plugin -DarchetypeGroupId=org.apache.maven.archetypes  -DarchetypeArtifactId=maven-archetype-mojo
