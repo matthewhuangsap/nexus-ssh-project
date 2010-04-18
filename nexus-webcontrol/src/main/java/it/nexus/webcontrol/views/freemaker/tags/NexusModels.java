@@ -9,6 +9,7 @@ public class NexusModels {
 	protected TitleModel title;
 	protected DateInputModel dateinput;
 	protected ChoiceBoxModel choicebox;
+    protected LayoutPanelModel layoutpanel;
 	
 	
 	private ValueStack stack;
@@ -32,7 +33,9 @@ public class NexusModels {
 		if (choicebox == null) {
 			choicebox = new ChoiceBoxModel(stack, req, res);
 		}
-		
+
+        if (layoutpanel ==null)
+            layoutpanel = new LayoutPanelModel(stack,req,res);
 		return title;
 	}
 }
