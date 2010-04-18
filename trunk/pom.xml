@@ -21,6 +21,7 @@
     <module>nexus-webcontrol</module>
     <module>nexus-psi</module>
     <module>web-container</module>
+      <module>nexus-webcontrol-test</module>
   </modules>
 
 </project>
