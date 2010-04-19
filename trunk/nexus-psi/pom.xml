@@ -79,6 +79,14 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>it.nexus.plugins</groupId>
+				<artifactId>maven-nexus-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<configuration>
+					<message>Hello EveryBody</message>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

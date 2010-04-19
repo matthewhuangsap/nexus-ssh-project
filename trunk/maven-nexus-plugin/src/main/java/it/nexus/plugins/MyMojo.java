@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Goal which touches a timestamp file.
  *
- * @goal touch
+ * @goal test
  * 
  * @phase process-sources
  */
@@ -35,47 +35,14 @@ public class MyMojo
 {
     /**
      * Location of the file.
-     * @parameter expression="${project.build.directory}"
-     * @required
+     * @parameter expression="${test.message}"
+     *			  default-value="haha test success!"
      */
-    private File outputDirectory;
+	private Object message;
 
     public void execute()
         throws MojoExecutionException
     {
-        File f = outputDirectory;
-
-        if ( !f.exists() )
-        {
-            f.mkdirs();
-        }
-
-        File touch = new File( f, "touch.txt" );
-
-        FileWriter w = null;
-        try
-        {
-            w = new FileWriter( touch );
-
-            w.write( "touch.txt" );
-        }
-        catch ( IOException e )
-        {
-            throw new MojoExecutionException( "Error creating file " + touch, e );
-        }
-        finally
-        {
-            if ( w != null )
-            {
-                try
-                {
-                    w.close();
-                }
-                catch ( IOException e )
-                {
-                    // ignore
-                }
-            }
-        }
+		getLog().info(message.toString());
     }
 }
