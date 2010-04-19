@@ -22,6 +22,7 @@
     <module>nexus-psi</module>
     <module>web-container</module>
       <module>nexus-webcontrol-test</module>
+    <module>maven-nexus-plugin</module>
   </modules>
 
 </project>
