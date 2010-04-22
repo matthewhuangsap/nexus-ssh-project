@@ -1,3 +1,4 @@
+<#include "/${parameters.templateDir}/css/controlheader.ftl" /> 
 <input <#rt>
 <#if parameters.id?if_exists != "">id="df_dateinput_${parameters.id?html}"</#if><#rt>
 <#if parameters.name?if_exists != "">name="${parameters.name?html}"</#if><#rt/>
@@ -5,7 +6,8 @@
   <#if parameters.nameValue??>
 	 value="<@s.property value="parameters.nameValue"/>"<#rt/>
 	</#if>
-  readonly="readonly"/></td>
+  readonly="readonly"/>
 <script type="text/javascript"> $(document).ready(function() {<#rt>   
     addDateInput($("#df_dateinput_${parameters.id?html}")); <#rt>
-});  </script>
+});  </script><#rt>
+<#include "/${parameters.templateDir}/css/controlfooter.ftl" /> 

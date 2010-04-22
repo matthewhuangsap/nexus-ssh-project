@@ -1,6 +1,6 @@
 <#--
 /*
- * $Id: head.ftl 590812 2007-10-31 20:32:54Z apetrelli $
+ * $Id: actionerror.ftl 805635 2009-08-19 00:18:54Z musachy $
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,4 +20,24 @@
  * under the License.
  */
 -->
-<script src="${base}/struts/utils.js" type="text/javascript"></script>
+<#if (actionErrors?? && actionErrors?size > 0)>
+	<ul<#rt/>
+<#if parameters.id?if_exists != "">
+ id="${parameters.id?html}"<#rt/>
+</#if>            
+<#if parameters.cssClass??>
+ class="${parameters.cssClass?html}"<#rt/>
+<#else>
+ class="errorMessage"<#rt/>
+</#if>
+<#if parameters.cssStyle??>
+ style="${parameters.cssStyle?html}"<#rt/>
+</#if>
+>
+	<#list actionErrors as error>
+		<#if error?if_exists != "">
+            <li><span><#if parameters.escape>${error!?html}<#else>${error!}</#if></span><#rt/></li><#rt/>
+        </#if>
+	</#list>
+	</ul>
+</#if>

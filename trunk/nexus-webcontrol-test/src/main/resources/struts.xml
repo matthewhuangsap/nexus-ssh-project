@@ -7,7 +7,7 @@
     <constant name="struts.ui.theme" value="css"></constant>
     <package name="sagaris" extends="struts-default" >
         <action name="layout" class="it.nexus.webcontrol.showcase.LayoutPanelController">
-            <result name="success">index.jsp</result>
+            <result name="success">/ui/layout.jsp</result>
         </action>
     </package>
 </struts>

@@ -1,6 +1,6 @@
 <#--
 /*
- * $Id: head.ftl 590812 2007-10-31 20:32:54Z apetrelli $
+ * $Id: text.ftl 720258 2008-11-24 19:05:16Z musachy $
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,4 +20,7 @@
  * under the License.
  */
 -->
-<script src="${base}/struts/utils.js" type="text/javascript"></script>
+<#include "/${parameters.templateDir}/css/controlheader.ftl" />
+<div>HAHA:</div>
+<#include "/${parameters.templateDir}/simple/text.ftl" /> 
+<#include "/${parameters.templateDir}/css/controlfooter.ftl" />

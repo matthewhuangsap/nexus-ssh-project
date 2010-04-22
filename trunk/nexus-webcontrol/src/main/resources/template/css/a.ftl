@@ -1,6 +1,6 @@
 <#--
 /*
- * $Id: head.ftl 590812 2007-10-31 20:32:54Z apetrelli $
+ * $Id: a.ftl 753015 2009-03-12 21:00:23Z musachy $
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,4 +20,3 @@
  * under the License.
  */
 -->
-<script src="${base}/struts/utils.js" type="text/javascript"></script>
