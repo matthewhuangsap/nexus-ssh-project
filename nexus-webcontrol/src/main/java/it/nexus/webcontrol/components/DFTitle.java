@@ -5,10 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import org.apache.struts2.components.UIBean;
+import org.apache.struts2.views.annotations.StrutsTag;
 import org.apache.struts2.views.annotations.StrutsTagAttribute;
 
 import com.opensymphony.xwork2.util.ValueStack;
-
+@StrutsTag(name = "title",tldBodyContent = "empty",
+           tldTagClass = "it.nexus.webcontrol.views.jsp.ui.DFTitle",
+           description = "处理标题")
 public class DFTitle extends UIBean {
 	private String dmoID;
 	public String getDmoID() {

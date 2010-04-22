@@ -1,6 +1,6 @@
 <#--
 /*
- * $Id: head.ftl 590812 2007-10-31 20:32:54Z apetrelli $
+ * $Id: a-close.ftl 753015 2009-03-12 21:00:23Z musachy $
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,4 +20,26 @@
  * under the License.
  */
 -->
-<script src="${base}/struts/utils.js" type="text/javascript"></script>
+<a<#rt/>
+<#if parameters.id?if_exists != "">
+ id="${parameters.id?html}"<#rt/>
+</#if>
+<#if parameters.href?if_exists != "">
+ href="${parameters.href}"<#rt/>
+</#if>
+<#if parameters.tabindex??>
+ tabindex="${parameters.tabindex?html}"<#rt/>
+</#if>
+<#if parameters.cssClass??>
+ class="${parameters.cssClass?html}"<#rt/>
+</#if>
+<#if parameters.cssStyle??>
+ style="${parameters.cssStyle?html}"<#rt/>
+</#if>
+<#if parameters.title??>
+ title="${parameters.title?html}"<#rt/>
+</#if>
+<#include "/${parameters.templateDir}/simple/scripting-events.ftl" />
+<#include "/${parameters.templateDir}/simple/common-attributes.ftl" />
+<#include "/${parameters.templateDir}/simple/dynamic-attributes.ftl" />
+>${parameters.body}</a>

@@ -1,6 +1,6 @@
 <#--
 /*
- * $Id: head.ftl 590812 2007-10-31 20:32:54Z apetrelli $
+ * $Id: div.ftl 720258 2008-11-24 19:05:16Z musachy $
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,4 +20,14 @@
  * under the License.
  */
 -->
-<script src="${base}/struts/utils.js" type="text/javascript"></script>
+<div
+    <#if parameters.id??>               id="${parameters.id?html}"         </#if>
+    <#if parameters.name??>             name="${parameters.name?html}"         </#if>
+    <#if parameters.cssClass??>         class="${parameters.cssClass?html}"    </#if>
+    <#if parameters.cssStyle??>         style="${parameters.cssStyle?html}"    </#if>
+    <#if parameters.title??>            title="${parameters.title?html}"<#rt/>
+        </#if>
+<#include "/${parameters.templateDir}/simple/scripting-events.ftl" />
+<#include "/${parameters.templateDir}/simple/common-attributes.ftl" />
+<#include "/${parameters.templateDir}/simple/dynamic-attributes.ftl" />
+>

@@ -1,6 +1,6 @@
 <#--
 /*
- * $Id: checkboxlist.ftl 804072 2009-08-14 03:16:35Z musachy $
+ * $Id: checkboxlist.ftl 720258 2008-11-24 19:05:16Z musachy $
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,9 +20,14 @@
  * under the License.
  */
 -->
+<#assign checked = [] />
+<#if parameters.checked?exists>
+	<#assign checked = parameters.checked />
+</#if>
+
 <#assign itemCount = 0/>
 <#if parameters.list??>
-    <@s.iterator value="parameters.list">
+    <@s.iterator value="parameters.list" var="item" status="st">
         <#assign itemCount = itemCount + 1/>
         <#if parameters.listKey??>
             <#assign itemKey = stack.findValue(parameters.listKey)/>
@@ -37,6 +42,8 @@
 <#assign itemKeyStr=itemKey.toString() />
 <input type="checkbox" name="${parameters.name?html}" value="${itemKeyStr?html}" id="${parameters.name?html}-${itemCount}"<#rt/>
         <#if tag.contains(parameters.nameValue, itemKey)>
+ checked="checked"<#rt/>
+		 <#elseif tag.contains(checked, item.key?string)>
  checked="checked"<#rt/>
         </#if>
         <#if parameters.disabled?default(false)>
@@ -53,8 +60,3 @@
 <#else>
   &nbsp;
 </#if>
-<input type="hidden" id="__multiselect_${parameters.id?html}" name="__multiselect_${parameters.name?html}" value=""<#rt/>
-<#if parameters.disabled?default(false)>
- disabled="disabled"<#rt/>
-</#if>
- /> 
