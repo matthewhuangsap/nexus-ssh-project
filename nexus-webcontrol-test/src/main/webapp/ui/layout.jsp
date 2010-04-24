@@ -16,30 +16,6 @@
             padding: 0;
             list-style: none;
         }
-
-        ul {
-            border: 1px solid #cfdae8;
-            border-left: none;
-            border-bottom: none;
-            overflow: hidden;
-            background: url(../images/linex.gif);
-            zoom: 1;
-        }
-
-        li {
-            width: 20%;
-            *width: 19.9%; /*IE6&IE7的宽度有点囧*/
-            float: left;
-        }
-
-        span {
-            display: block;
-            border-left: 1px solid #cfdae8;
-            height: 48px;
-            font-size: 12px;
-            line-height: 24px;
-            padding: 0 4px;
-        }
     </style>
     <n:head/>
 </head>
@@ -49,7 +25,7 @@
 <h3>HAHA! This is our time!!!!</h3>
 <n:title dmoID="23" id="tt" name="tt" label="XXX单据"/>
 <s:form action="layout" theme="css">
-    <n:layoutpanel>
+    <n:layoutpanel id="main" name="main" title="单据头信息" cols="5"  fieldHeight="48px">
 
         <li><span><div>Name:</div><div><input type="text"/></div></span></li>
         <li><span><div>PSW:</div><div><input type="text"/></div></span></li>
@@ -75,8 +51,11 @@
             <input type="hidden" value="3"/>
         </div></span></li>
         <n:dateinput />
-        <s:textarea id="ta" value="XXXXXXXX" rows="10" cols="20"/>
-        
+
+    </n:layoutpanel>
+    <n:layoutpanel id="main2" fieldHeight="230px" name="main2" cols="1" title="其它信息" height="100%">
+        <s:textarea id="ta" value="XXXXXXXX" rows="10" cols="70"/>
+        <s:textarea id="ta2" value="XXXXXXXX" rows="10" cols="70"/>
     </n:layoutpanel>
 </s:form>
 
