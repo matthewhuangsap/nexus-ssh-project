@@ -7,13 +7,12 @@ function addChoiceBox(obj,hiddenobj,action,datakind){
 }
 
 function addLayoutPanel(obj,obj_ul,obj_li,obj_span,cols,height){
-    var persent_width = 100/cols;
+    var persent_width = (100/cols)-0.1;
 
-    $(obj).css("background","green");
+    $(obj).css("clear","both");
     $(obj_ul).css("border","1px solid #cfdae8")
             .css("border-left","none")
             .css("overflow","hidden")
-            .css("background","url(images/linex.gif)");
     $(obj_li).css("width",persent_width+"%")
             .css("*width",persent_width+"%")
             .css("float","left")
