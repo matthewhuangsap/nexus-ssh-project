@@ -16,6 +16,10 @@
             padding: 0;
             list-style: none;
         }
+        .titleClass{
+            background:green;
+            width:100%
+        }
     </style>
     <n:head/>
 </head>
@@ -25,7 +29,7 @@
 <h3>HAHA! This is our time!!!!</h3>
 <n:title dmoID="23" id="tt" name="tt" label="XXX单据"/>
 <s:form action="layout" theme="css">
-    <n:layoutpanel id="main" name="main" title="单据头信息" cols="3"  fieldHeight="48px">
+    <n:layoutpanel id="main" name="main" title="单据头信息" cols="4"  fieldHeight="48px">
 
         <li><span><div>Name:</div><div><input type="text"/></div></span></li>
         <li><span><div>PSW:</div><div><input type="text"/></div></span></li>
@@ -35,9 +39,9 @@
         <li><span><div>PSW:</div><div><input type="text"/></div></span></li>
         <li><span><div>Address:</div><div><input type=""/></div></span></li>
         <n:dateinput />
-        <%--<li><span></span></li>--%>
+        <s:textfield id="tf" name="ft"/>
     </n:layoutpanel>
-    <n:layoutpanel id="main2" fieldHeight="230px" name="main2" cols="2" title="其它信息" height="100%">
+    <n:layoutpanel id="main2" fieldHeight="220px" name="main2" cols="2" title="其它信息" height="100%">
         <s:textarea id="ta" value="XXXXXXXX" rows="10" cols="60"/>
         <s:textarea id="ta2" value="XXXXXXXX" rows="10" cols="60"/>
     </n:layoutpanel>

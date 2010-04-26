@@ -11,7 +11,7 @@
 
 ><#rt>
 
-<span><strong><#rt>
+<span class="titleClass"><strong><#rt>
 <#if parameters.title?if_exists !="">
     ${parameters.title?html}  <#rt>
 </#if>

@@ -21,11 +21,5 @@
  */
 -->
 <#include "/${parameters.templateDir}/css/controlheader.ftl" />
-<#if parameters.inputcolspan?exists>
-	<#assign inputColumnSpan = parameters.inputcolspan />
-<#else>
-	<#assign inputColumnSpan = 1 />
-</#if>
-<#assign current_colums = current_colums - inputColumnSpan/>
 <#include "/${parameters.templateDir}/simple/text.ftl" /> 
 <#include "/${parameters.templateDir}/css/controlfooter.ftl" />
