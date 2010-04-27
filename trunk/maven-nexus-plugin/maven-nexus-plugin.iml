@@ -39,6 +39,296 @@
     <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: org.apache.maven.wagon:wagon-ssh:1.0-alpha-7" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: com.jcraft:jsch:0.1.24" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.freemarker:freemarker:2.3.15" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-plugin-api/2.0/maven-plugin-api-2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-core/2.0.4/maven-core-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-settings/2.0.4/maven-settings-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-model/2.0.4/maven-model-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/junit/junit/3.8.1/junit-3.8.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/classworlds/classworlds/1.1/classworlds-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/wagon/wagon-file/1.0-alpha-7/wagon-file-1.0-alpha-7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-plugin-parameter-documenter/2.0.4/maven-plugin-parameter-documenter-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/wagon/wagon-http-lightweight/1.0-alpha-6/wagon-http-lightweight-1.0-alpha-6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/reporting/maven-reporting-api/2.0.4/maven-reporting-api-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-profile/2.0.4/maven-profile-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-artifact/2.0.4/maven-artifact-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-repository-metadata/2.0.4/maven-repository-metadata-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-error-diagnostics/2.0.4/maven-error-diagnostics-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-project/2.0.4/maven-project-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-artifact-manager/2.0.4/maven-artifact-manager-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-plugin-registry/2.0.4/maven-plugin-registry-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/commons-cli/commons-cli/1.0/commons-cli-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/wagon/wagon-ssh-external/1.0-alpha-6/wagon-ssh-external-1.0-alpha-6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-plugin-descriptor/2.0.4/maven-plugin-descriptor-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/maven-monitor/2.0.4/maven-monitor-2.0.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/apache/maven/wagon/wagon-ssh/1.0-alpha-7/wagon-ssh-1.0-alpha-7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/com/jcraft/jsch/0.1.24/jsch-0.1.24.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/lib-repository/org/freemarker/freemarker/2.3.15/freemarker-2.3.15.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-plugin-api:2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-core:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-settings:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-model:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.codehaus.plexus:plexus-utils:1.1" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.codehaus.plexus:plexus-container-default:1.0-alpha-9" level="project" />
+    <orderEntry type="library" exported="" name="Maven: classworlds:classworlds:1.1" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: org.apache.maven.wagon:wagon-file:1.0-alpha-7" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven.wagon:wagon-provider-api:1.0-alpha-6" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-plugin-parameter-documenter:2.0.4" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: org.apache.maven.wagon:wagon-http-lightweight:1.0-alpha-6" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven.reporting:maven-reporting-api:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven.doxia:doxia-sink-api:1.0-alpha-7" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-profile:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-artifact:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-repository-metadata:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-error-diagnostics:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-project:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-artifact-manager:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-plugin-registry:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: commons-cli:commons-cli:1.0" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: org.apache.maven.wagon:wagon-ssh-external:1.0-alpha-6" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-plugin-descriptor:2.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.codehaus.plexus:plexus-interactivity-api:1.0-alpha-4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.apache.maven:maven-monitor:2.0.4" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: org.apache.maven.wagon:wagon-ssh:1.0-alpha-7" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: com.jcraft:jsch:0.1.24" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.freemarker:freemarker:2.3.15" level="project" />
   </component>
 </module>
 
