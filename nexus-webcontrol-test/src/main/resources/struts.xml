@@ -9,5 +9,8 @@
         <action name="layout" class="it.nexus.webcontrol.showcase.LayoutPanelController">
             <result name="success">/ui/layout.jsp</result>
         </action>
+        <action name="pages" class="it.nexus.webcontrol.showcase.PagesController" method="list">
+            <result name="success">/ui/pages.jsp</result>
+        </action>
     </package>
 </struts>
