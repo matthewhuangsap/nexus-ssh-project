@@ -39,9 +39,9 @@ public class PagesController extends ActionSupport {
     }
 
     public String list()throws Exception{
-        cpage="2";
-        total="5";
-        url="list";
+
+ 
+      System.out.println(getCpage()+"  "+ getTotal());
         return super.execute();
     }
 }
