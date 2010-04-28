@@ -60,6 +60,10 @@
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
+                <configuration>
+                    <stopKey>foo</stopKey>
+                    <stopPort>8081</stopPort>
+                </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

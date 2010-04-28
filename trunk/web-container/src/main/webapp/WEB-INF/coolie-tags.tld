@@ -171,4 +171,25 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>pages</name>
+        <tag-class>it.nexus.webcontrol.views.jsp.ui.PageTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>cpage</name>
+            <required>true</required>
+            <!--表示该自定义标签的某属性的值 可以直接指定或者通过动态计算指定-->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>total</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

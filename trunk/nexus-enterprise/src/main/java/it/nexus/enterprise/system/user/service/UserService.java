@@ -1,5 +1,6 @@
 package it.nexus.enterprise.system.user.service;
 
+import it.nexus.core.dao.Page;
 import it.nexus.enterprise.system.user.dao.UserDAO;
 import it.nexus.enterprise.system.user.model.User;
 
@@ -23,8 +24,8 @@ public class UserService {
 		userDAO.delete(entity);
 	}
 
-	public List<User> getAll() {
-		return userDAO.getAll();
+	public List<User> getAll(Page page) {
+		return userDAO.getAll(page);
 	}
 
 	public User load(Serializable id) {

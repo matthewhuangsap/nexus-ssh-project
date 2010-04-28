@@ -1,5 +1,6 @@
 package it.nexus.enterprise.system.employee.service;
 
+import it.nexus.core.dao.Page;
 import it.nexus.enterprise.system.employee.dao.EmployeeDAO;
 import it.nexus.enterprise.system.employee.model.Employee;
 
@@ -38,8 +39,8 @@ public class EmployeeService {
 		employeeDAO.delete(entity);
 	}
 
-	public List<Employee> getAll() {
-		return employeeDAO.getAll();
+	public List<Employee> getAll(Page page) {
+		return employeeDAO.getAll(page);
 	}
 
 	public Employee load(Serializable id) {

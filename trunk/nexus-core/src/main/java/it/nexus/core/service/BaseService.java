@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import it.nexus.core.dao.BaseDAO;
+import it.nexus.core.dao.Page;
 import it.nexus.core.models.Base;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,8 +29,8 @@ public class BaseService<T extends Base,K extends BaseDAO> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<T> getAll() {
-		return dao.getAll();
+	public List<T> getAll(Page page) {
+		return dao.getAll(page);
 	}
 
 	@SuppressWarnings("unchecked")
