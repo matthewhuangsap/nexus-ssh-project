@@ -5,6 +5,7 @@ import it.nexus.core.SettingClass;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.controller.BaseAction;
+import it.nexus.core.dao.Page;
 import it.nexus.core.tools.RoleUtils;
 import it.nexus.core.tools.converters.ConverterUtils;
 import it.nexus.core.web.PluginManager;
@@ -38,7 +39,8 @@ public class RoleController extends BaseAction<Role> {
   @Access("访问")
   @Action(value = "/permission/list", results = {@Result(type = "freemarker", location = "role_list.ftl", name = "success")})
   public String list() throws Exception {
-    lists = authorizeService.getAll();
+    Page page = new Page();
+    lists = authorizeService.getAll(page);
     return super.execute();
   }
 
@@ -93,7 +95,8 @@ public class RoleController extends BaseAction<Role> {
   public String remove() throws Exception {
     dmo = authorizeService.load(dmo.getId());
     authorizeService.delete(dmo);
-    lists = authorizeService.getAll();
+    Page page = new Page();
+    lists = authorizeService.getAll(page);
     return super.execute();
   }
 

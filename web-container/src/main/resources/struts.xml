@@ -7,7 +7,7 @@
     <constant name="struts.devMode" value="false"/>
     <constant name="struts.convention.classes.reload" value="true"/>
     <constant name="struts.i18n.encoding" value="utf-8"/>
-    <constant name="struts.ui.theme" value="nexus"></constant>
+    <constant name="struts.ui.theme" value="css"></constant>
 
     <package name="coolie-default" extends="struts-default">
         <interceptors>

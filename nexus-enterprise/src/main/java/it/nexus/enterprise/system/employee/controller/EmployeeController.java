@@ -4,6 +4,7 @@ import it.nexus.core.annotation.Access;
 import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.controller.BaseInfoAction;
 import it.nexus.core.controller.IBaseInfoAction;
+import it.nexus.core.dao.Page;
 import it.nexus.enterprise.system.employee.model.Employee;
 import it.nexus.enterprise.system.employee.service.EmployeeService;
 
@@ -49,7 +50,8 @@ public class EmployeeController extends BaseInfoAction<Employee> implements IBas
 	@SuppressWarnings("unchecked")
 	@Action(value = "/system/employee/list", results = { @Result(name = "success", location = page_list) })
 	public String list() {
-		lists =employeeService.getAll();
+    Page page = new Page();
+		lists =employeeService.getAll(page);
 		return SUCCESS;
 	}
 
@@ -73,7 +75,7 @@ public class EmployeeController extends BaseInfoAction<Employee> implements IBas
 	@Action(value = "/system/employee/edit", results = { @Result(name = "success", location = page_edit) })
 	public String edit() {
 		dmo = employeeService.load(dmo.getId());
-		lists=employeeService.getAll();
+		lists=employeeService.getAll(page);
 		return SUCCESS;
 	}
 	
@@ -101,42 +103,42 @@ public class EmployeeController extends BaseInfoAction<Employee> implements IBas
 	@Override
 	@Access("停用")
 	public String disable() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO: Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Access("启用")
 	public String start() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO: Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Access("锁定")
 	public String lock() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO: Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Access("后单")
 	public String next() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO: Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Access("前单")
 	public String previous() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO: Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Access("解锁")
 	public String unlock() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO: Auto-generated method stub
 		return null;
 	}
 }

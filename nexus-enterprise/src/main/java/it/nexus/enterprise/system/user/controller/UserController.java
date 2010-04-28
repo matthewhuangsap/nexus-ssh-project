@@ -3,6 +3,7 @@ package it.nexus.enterprise.system.user.controller;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.controller.BaseAction;
+import it.nexus.core.dao.Page;
 import it.nexus.enterprise.system.user.model.User;
 import it.nexus.enterprise.system.user.service.UserService;
 
@@ -40,7 +41,8 @@ public class UserController extends BaseAction<User> {
 	@Action(value = "/system/user/list", results = { @Result(name = "success", location = page_list) })
 	public String list() {
         long begin_time = System.currentTimeMillis();
-		lists = userService.getAll();
+    Page page = new Page();
+		lists = userService.getAll(page);
         long end_time = System.currentTimeMillis();
         long time = end_time - begin_time;
         System.out.println("List:>>>######>>>>>"+ time);
@@ -65,7 +67,8 @@ public class UserController extends BaseAction<User> {
 			@Result(name = "input", location = page_edit) })
 	public String edit() {
 		dmo = userService.load(dmo.getId());
-		lists = userService.getAll();
+    Page page = new Page();
+		lists = userService.getAll(page);
 		return SUCCESS;
 	}
 
@@ -86,7 +89,8 @@ public class UserController extends BaseAction<User> {
 	@Action(value = "/system/user/create", results = { @Result(name = "success", location = page_edit) })
 	public String create() {
 		dmo = new User();
-		lists = userService.getAll();
+    Page page = new Page();
+		lists = userService.getAll(page);
 		return SUCCESS;
 	}
 

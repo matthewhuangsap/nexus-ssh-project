@@ -1,11 +1,21 @@
 package it.nexus.core.controller;
 
+import it.nexus.core.dao.Page;
 import it.nexus.core.models.Entity;
 
 public class EntityAction<T extends Entity> extends BaseAction<T> {
 	private static final long	serialVersionUID	= -396481523092188753L;
+  protected Page page;
 
-	@Override
+  public Page getPage() {
+    return page;
+  }
+
+  public void setPage(Page page) {
+    this.page = page;
+  }
+
+  @Override
 	protected String afterButtonGroup() {
 		if(dmo!=null && !dmo.isNew())
 			button_group.append("<input id='btn_remove' value='删除' type='submit'>");

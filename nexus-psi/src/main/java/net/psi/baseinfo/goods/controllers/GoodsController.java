@@ -51,7 +51,8 @@ public class GoodsController extends BaseInfoAction<Goods> implements IBaseInfoA
 	@SuppressWarnings("unchecked")
 	@Action(value = "/baseinfo/goods/list", results = { @Result(name = "success", type = "freemarker", location = list_page) })
 	public String list() {
-		lists = goodsService.getAll();
+
+		lists = goodsService.getAll(page);
 		return SUCCESS;
 	}
 

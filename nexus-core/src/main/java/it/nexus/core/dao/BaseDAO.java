@@ -23,7 +23,6 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.metadata.ClassMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 @SuppressWarnings("unchecked")
@@ -65,7 +64,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	public void save(final T entity) {
 		Assert.notNull(entity, "entity不能为空");
 		getSession().saveOrUpdate(entity);
-		logger.debug("save entity: {}", entity);
+		logger.debug("save entity: {%s}", entity);
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	public void delete(final T entity) {
 		Assert.notNull(entity, "entity不能为空");
 		getSession().delete(entity);
-		logger.debug("delete entity: {}", entity);
+		logger.debug("delete entity: {%s}", entity);
 	}
 
 	/**
@@ -86,21 +85,20 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 	public void delete(final PK id) {
 		Assert.notNull(id, "id不能为空");
 		delete(get(id));
-		logger.debug("delete entity {},id is {}", entityClass.getSimpleName(),
+		logger.debug("delete entity {%s},id is {%s}", entityClass.getSimpleName(),
 				id);
 	}
 
 	/**
 	 * 获取全部对象.
 	 */
-	public List<T> getAll() {
-		return find();
+	public List<T> getAll(Page page) {
+		return find(page);
 	}
 
 	/**
 	 * 按id获取对象.
 	 */
-
 	public T get(final PK id) {
 		Assert.notNull(id, "id不能为空");
 		return (T) getSession().load(entityClass, id);
@@ -150,7 +148,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 按HQL查询对象列表.
-	 * 
+	 *
 	 * @param values
 	 *            数量可变的参数,按顺序绑定.
 	 */
@@ -160,7 +158,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 按HQL查询对象列表.
-	 * 
+	 *
 	 * @param values
 	 *            命名参数,按名称绑定.
 	 */
@@ -170,8 +168,8 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 按HQL查询唯一对象.
-	 * 
-	 * @param values 
+	 *
+	 * @param values
 	 * 				数量可变的参数,按顺序绑定.
 	 */
 	public <X> X findUnique(final String hql, final Object... values) {
@@ -180,7 +178,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 按HQL查询唯一对象.
-	 * 
+	 *
 	 * @param values
 	 *            命名参数,按名称绑定.
 	 */
@@ -197,7 +195,7 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 执行HQL进行批量修改/删除操作.
-	 * 
+	 *
 	 * @return 更新记录数.
 	 */
 	public int batchExecute(final String hql, final Map<String, Object> values) {
@@ -238,13 +236,31 @@ public class BaseDAO<T extends Base, PK extends Serializable> implements
 
 	/**
 	 * 按Criteria查询对象列表.
-	 * 
+	 *
 	 * @param criterions
 	 *            数量可变的Criterion.
 	 */
 	public List<T> find(final Criterion... criterions) {
 		return createCriteria(criterions).list();
 	}
+
+  /**
+	 * 按Criteria查询对象列表.
+	 *
+	 * @param criterions
+	 *            数量可变的Criterion.
+	 */
+	public List<T> find(Page page,final Criterion... criterions) {
+		Criteria criteria = createCriteria(criterions);
+    for (Criterion c : criterions) {
+			criteria.add(c);
+		}
+    criteria.setFirstResult(page.getFirstResult());
+    criteria.setMaxResults(page.getPageSize());
+    
+    return criteria.list();
+	}
+
 
 	/**
 	 * 按Criteria查询唯一对象.

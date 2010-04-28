@@ -3,6 +3,7 @@ package it.nexus.enterprise.system.dept.controller;
 import it.nexus.core.annotation.Access;
 import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.controller.BaseInfoAction;
+import it.nexus.core.dao.Page;
 import it.nexus.core.datakind.ChoiceBoxSettings;
 import it.nexus.enterprise.system.dept.model.Dept;
 import it.nexus.enterprise.system.dept.service.DeptService;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import it.nexus.webcontrol.components.Pages;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -50,7 +52,13 @@ public class DeptController extends BaseInfoAction<Dept> {
 	@SuppressWarnings("unchecked")
 	@Action(value = "/system/dept/list", results = { @Result(name = "success", location = page_list) })
 	public String list() {
-		lists = deptService.getAll();
+    page = new Page();
+    page.setCpage(1);
+    page.setPageSize(15);
+    page.setTotal(30);
+    page.setUrl("/system/dept/list");
+
+		lists = deptService.getAll(page);
 		return SUCCESS;
 	}
 
@@ -69,7 +77,7 @@ public class DeptController extends BaseInfoAction<Dept> {
 	@Action(value = "/system/dept/create", results = { @Result(name = "success", location = page_edit) })
 	public String create() throws Exception {
 		dmo = new Dept();
-		lists = deptService.getAll();
+		lists = deptService.getAll(page);
 		System.out.println("dmo.id:" + dmo.getId());
 		return super.SUCCESS;
 	}
@@ -79,7 +87,7 @@ public class DeptController extends BaseInfoAction<Dept> {
 	public String edit() {
 		System.out.println("dmo.id:" + dmo.getId());
 		dmo = deptService.load(dmo.getId());
-		lists = deptService.getAll();
+		lists = deptService.getAll(page);
 		System.out.println("out put " + dmo.getLevel() + dmo.getRemark()
 				+ dmo.getId());
 		return SUCCESS;
