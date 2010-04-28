@@ -25,7 +25,6 @@
           <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />
         </sourceRoots>
-        <context-artifact name="nexus-webcontrol-test:nexus-webcontrol-test exploded" />
       </configuration>
     </facet>
   </component>
@@ -135,7 +134,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../jdk1.6.0_02/jre/../lib/tools.jar!/" />
+          <root url="jar://E:/jdk1.6.0_02/jre/../lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -48,7 +48,7 @@ public class PageTag extends ComponentTagSupport {
 
     @Override
     public Component getBean(ValueStack stack, HttpServletRequest req, HttpServletResponse res) {
-        return new Pages(stack);
+        return new Pages(stack,req,res);
     }
 
 //获得参数
