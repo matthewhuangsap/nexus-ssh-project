@@ -5,7 +5,7 @@
 		<@c.head compressed="false" uiTheme="flick" locale="zh-CN" />
 	</head>
 
-	<body>
+	<body topmargin="0" onkeydown="if(event.keyCode==13){return false;}">
 
 		<@s.form action="save">
 

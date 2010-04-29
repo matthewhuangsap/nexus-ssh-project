@@ -9,13 +9,13 @@ package it.nexus.core.dao;
  */
 public class Page {
   //-- 公共变量 --//
-	public static final String ASC = "asc";
-	public static final String DESC = "desc";
-  
+  public static final String ASC = "asc";
+  public static final String DESC = "desc";
+
   private int cpage;      //当前页
   private long total;     //总页数
   private String url;     //url地址
-  private int pageSize=15;   //一页最大记录数
+  private int pageSize = 15;   //一页最大记录数
   private int firstResult = 0; //记录起始位置
   private long totalCount = 0;  //总记录数
 
@@ -28,16 +28,17 @@ public class Page {
   }
 
   public int getFirstResult() {
-    return (cpage-1) * pageSize;
+    return (cpage - 1) * pageSize;
   }
 
   public void setFirstResult(int firstResult) {
     this.firstResult = firstResult;
   }
 
-  public Page(){}
+  public Page() {
+  }
 
-  public Page(int pageSize){
+  public Page(int pageSize) {
     this.pageSize = pageSize;
   }
 
@@ -59,14 +60,14 @@ public class Page {
 
   public long getTotal() {
     if (totalCount < 0) {
-			return -1;
-		}
+      return -1;
+    }
 
-		long count = totalCount / pageSize;
-		if (totalCount % pageSize > 0) {
-			count++;
-		}
-		return count;
+    long count = totalCount / pageSize;
+    if (totalCount % pageSize > 0) {
+      count++;
+    }
+    return count;
   }
 
   public void setTotal(long total) {
