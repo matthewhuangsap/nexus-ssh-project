@@ -6,7 +6,7 @@
 
 	</head>
 	
-	<body topmargin="0">
+	<body topmargin="0" onkeydown="if(event.keyCode==13){return false;}">
 		<#include "/components/buttongroup.ftl" />
 		<hr>
 		<@s.bean name="java.util.HashMap" id="qTableLayout">
