@@ -1,6 +1,6 @@
 package it.nexus.enterprise.system.framework.controllers;
 
-import it.nexus.core.annotation.Access;
+import it.nexus.enterprise.annotations.Access;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;

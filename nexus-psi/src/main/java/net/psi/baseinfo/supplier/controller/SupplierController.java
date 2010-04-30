@@ -1,12 +1,10 @@
 package net.psi.baseinfo.supplier.controller;
 
-import it.nexus.core.annotation.Access;
-import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.controller.BaseAction;
+import it.nexus.enterprise.annotations.Access;
+import it.nexus.enterprise.annotations.AccessGroup;
 import net.psi.baseinfo.supplier.model.Supplier;
-
 import org.springframework.stereotype.Controller;
-
 import plugin.psi.PluginClass;
 
 @Controller

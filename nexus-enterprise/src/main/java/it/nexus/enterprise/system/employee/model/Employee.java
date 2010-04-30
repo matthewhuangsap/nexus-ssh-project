@@ -1,7 +1,7 @@
 package it.nexus.enterprise.system.employee.model;
 
 import it.nexus.core.annotation.LogicName;
-import it.nexus.core.models.WithCodeBaseInfo;
+import it.nexus.enterprise.baseinfo.model.WithCodeBaseInfo;
 import it.nexus.enterprise.system.dept.model.Dept;
 
 import java.util.Date;

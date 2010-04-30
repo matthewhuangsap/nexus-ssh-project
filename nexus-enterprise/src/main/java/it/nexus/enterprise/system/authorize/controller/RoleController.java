@@ -2,8 +2,8 @@ package it.nexus.enterprise.system.authorize.controller;
 
 import it.nexus.core.NexusException;
 import it.nexus.core.SettingClass;
-import it.nexus.core.annotation.Access;
-import it.nexus.core.annotation.AccessGroup;
+import it.nexus.enterprise.annotations.Access;
+import it.nexus.enterprise.annotations.AccessGroup;
 import it.nexus.core.controller.BaseAction;
 import it.nexus.core.dao.Page;
 import it.nexus.core.tools.RoleUtils;

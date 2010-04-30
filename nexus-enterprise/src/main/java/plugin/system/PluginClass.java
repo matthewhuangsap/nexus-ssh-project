@@ -1,17 +1,12 @@
 package plugin.system;
 
 import it.nexus.core.BasePlugin;
-import it.nexus.core.datakind.Argument;
-import it.nexus.core.datakind.ChoiceBoxSettings;
-import it.nexus.core.datakind.IChoiceBoxCallback;
+import it.nexus.enterprise.system.framework.data.Argument;
+import it.nexus.enterprise.system.framework.data.ChoiceBoxSettings;
+import it.nexus.enterprise.system.framework.data.IChoiceBoxCallback;
 import it.nexus.core.NexusException;
-import it.nexus.core.datakind.WordPair;
+import it.nexus.enterprise.system.framework.data.WordPair;
 import it.nexus.core.menu.Menu;
-import it.nexus.enterprise.system.authorize.dao.RoleDAO;
-import it.nexus.enterprise.system.authorize.model.Role;
-import it.nexus.enterprise.system.authorize.service.AuthorizeService;
-import it.nexus.enterprise.system.dept.dao.DeptDAO;
-import it.nexus.enterprise.system.dept.model.Dept;
 import it.nexus.enterprise.system.employee.dao.EmployeeDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -90,7 +85,7 @@ public class PluginClass extends BasePlugin {
         EmployeeDAO employeeDAO;
 
         @Override
-        public List<WordPair> getData( JdbcTemplate jdbcTemplate,Argument arg) {
+        public List<WordPair> getData( JdbcTemplate jdbcTemplate, Argument arg) {
             return null;
         }
     };

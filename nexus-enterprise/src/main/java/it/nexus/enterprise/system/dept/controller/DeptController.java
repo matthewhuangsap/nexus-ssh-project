@@ -1,10 +1,9 @@
 package it.nexus.enterprise.system.dept.controller;
 
-import it.nexus.core.annotation.Access;
-import it.nexus.core.annotation.AccessGroup;
-import it.nexus.core.controller.BaseInfoAction;
+import it.nexus.enterprise.annotations.Access;
+import it.nexus.enterprise.annotations.AccessGroup;
+import it.nexus.enterprise.baseinfo.controller.BaseInfoAction;
 import it.nexus.core.dao.Page;
-import it.nexus.core.datakind.ChoiceBoxSettings;
 import it.nexus.enterprise.system.dept.model.Dept;
 import it.nexus.enterprise.system.dept.service.DeptService;
 
@@ -13,7 +12,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import it.nexus.webcontrol.components.Pages;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -77,6 +75,7 @@ public class DeptController extends BaseInfoAction<Dept> {
 	@Action(value = "/system/dept/create", results = { @Result(name = "success", location = page_edit) })
 	public String create() throws Exception {
 		dmo = new Dept();
+    page = new Page(15);
 		lists = deptService.getAll(page);
 		System.out.println("dmo.id:" + dmo.getId());
 		return super.SUCCESS;

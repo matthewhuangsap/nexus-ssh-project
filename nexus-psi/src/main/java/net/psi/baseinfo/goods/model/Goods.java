@@ -1,7 +1,7 @@
 package net.psi.baseinfo.goods.model;
 
 import it.nexus.core.annotation.LogicName;
-import it.nexus.core.models.BaseInfo;
+import it.nexus.enterprise.baseinfo.model.BaseInfo;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

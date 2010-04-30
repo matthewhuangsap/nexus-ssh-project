@@ -1,7 +1,7 @@
 package it.nexus.enterprise.system.framework.controllers;
 
 import com.opensymphony.xwork2.ActionContext;
-import it.nexus.core.annotation.Access;
+import it.nexus.enterprise.annotations.Access;
 import it.nexus.core.controller.BaseAction;
 import it.nexus.enterprise.system.user.model.User;
 import it.nexus.enterprise.system.user.service.UserService;
