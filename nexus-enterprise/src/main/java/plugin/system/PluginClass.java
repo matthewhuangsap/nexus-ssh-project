@@ -1,12 +1,13 @@
 package plugin.system;
 
+import com.sun.jdi.connect.Connector;
 import it.nexus.core.BasePlugin;
-import it.nexus.enterprise.system.framework.data.Argument;
-import it.nexus.enterprise.system.framework.data.ChoiceBoxSettings;
-import it.nexus.enterprise.system.framework.data.IChoiceBoxCallback;
 import it.nexus.core.NexusException;
-import it.nexus.enterprise.system.framework.data.WordPair;
 import it.nexus.core.menu.Menu;
+import it.nexus.enterprise.framework.data.Argument;
+import it.nexus.enterprise.framework.data.ChoiceBoxSettings;
+import it.nexus.enterprise.framework.data.IChoiceBoxCallback;
+import it.nexus.enterprise.framework.data.WordPair;
 import it.nexus.enterprise.system.employee.dao.EmployeeDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -40,9 +41,9 @@ public class PluginClass extends BasePlugin {
 
     IChoiceBoxCallback dept = new IChoiceBoxCallback() {
 
-        @Override
-        public List<WordPair> getData( JdbcTemplate jdbcTemplate,Argument arg) {
-            List result = new ArrayList();
+      @Override
+           public List<WordPair> getData(JdbcTemplate jdbcTemplate, Argument arg) {
+                 List result = new ArrayList();
             Iterator<?> iterator = jdbcTemplate.queryForList
                     ("SELECT s.id,sb.name FROM sys_dept s inner join sys_basetree sb on s.id = sb.id")
                     .iterator();
@@ -52,7 +53,7 @@ public class PluginClass extends BasePlugin {
                 result.add(wp);
             }
             return result;
-        }                                
+        }
     };
 
     IChoiceBoxCallback roles = new IChoiceBoxCallback() {
