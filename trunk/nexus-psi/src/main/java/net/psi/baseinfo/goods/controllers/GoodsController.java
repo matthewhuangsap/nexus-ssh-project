@@ -1,16 +1,15 @@
 package net.psi.baseinfo.goods.controllers;
 
-import it.nexus.core.annotation.Access;
-import it.nexus.core.annotation.AccessGroup;
-import it.nexus.core.controller.BaseInfoAction;
-import it.nexus.core.controller.IBaseInfoAction;
+import it.nexus.enterprise.annotations.Access;
+import it.nexus.enterprise.annotations.AccessGroup;
+import it.nexus.enterprise.baseinfo.controller.BaseInfoAction;
+import it.nexus.enterprise.baseinfo.controller.IBaseInfoAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import it.nexus.psi.PSIOption;
 import net.psi.baseinfo.goods.model.Goods;
 import net.psi.baseinfo.goods.services.GoodsService;
 

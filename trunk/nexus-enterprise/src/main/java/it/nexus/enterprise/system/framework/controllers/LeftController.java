@@ -3,8 +3,7 @@ package it.nexus.enterprise.system.framework.controllers;
 import com.opensymphony.xwork2.ActionContext;
 import it.nexus.core.BasePlugin;
 import it.nexus.core.NexusException;
-import it.nexus.core.SettingClass;
-import it.nexus.core.annotation.Access;
+import it.nexus.enterprise.annotations.Access;
 import it.nexus.core.controller.BaseAction;
 import it.nexus.core.menu.Menu;
 import it.nexus.core.tools.RoleUtils;
@@ -16,7 +15,6 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;

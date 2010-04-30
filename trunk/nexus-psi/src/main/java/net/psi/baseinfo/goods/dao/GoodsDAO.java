@@ -1,8 +1,7 @@
 package net.psi.baseinfo.goods.dao;
 
-import it.nexus.core.dao.BaseInfoDAO;
+import it.nexus.enterprise.baseinfo.dao.BaseInfoDAO;
 import net.psi.baseinfo.goods.model.Goods;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

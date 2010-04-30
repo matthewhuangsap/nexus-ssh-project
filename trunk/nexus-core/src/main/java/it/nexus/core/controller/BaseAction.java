@@ -1,6 +1,5 @@
 package it.nexus.core.controller;
 
-import it.nexus.core.annotation.AccessGroup;
 import it.nexus.core.annotation.LogicName;
 import it.nexus.core.models.Base;
 import it.nexus.core.tools.ClassUtils;
@@ -27,12 +26,12 @@ public abstract class BaseAction<T extends Base> extends ActionSupport {
 		return ClassUtils.getGenericType(getClass(), 0);
 	}
 	
-	protected void getRole(){
-		Class<?> entityClass = getEntityClass();
-		AccessGroup aGroup = entityClass.getAnnotation(AccessGroup.class);
-		String access_group_name = aGroup.name();
-		
-	}
+//	protected void getRole(){
+//		Class<?> entityClass = getEntityClass();
+//		AccessGroup aGroup = entityClass.getAnnotation(AccessGroup.class);
+//		String access_group_name = aGroup.name();
+//
+//	}
 	
 	@SuppressWarnings("unchecked")
 	protected Long getRoleBits(String access_group_name){

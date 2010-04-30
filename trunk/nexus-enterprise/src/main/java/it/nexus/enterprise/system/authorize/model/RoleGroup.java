@@ -1,6 +1,6 @@
 package it.nexus.enterprise.system.authorize.model;
 
-import it.nexus.core.models.BaseInfo;
+import it.nexus.enterprise.baseinfo.model.BaseInfo;
 
 import java.util.List;
 

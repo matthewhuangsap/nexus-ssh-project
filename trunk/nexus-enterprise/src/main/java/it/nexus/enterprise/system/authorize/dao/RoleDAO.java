@@ -1,12 +1,10 @@
 package it.nexus.enterprise.system.authorize.dao;
 
-import it.nexus.core.dao.BaseTreeDAO;
+import it.nexus.enterprise.baseinfo.dao.BaseTreeDAO;
 import it.nexus.enterprise.system.authorize.model.Role;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("unchecked")
 @Repository

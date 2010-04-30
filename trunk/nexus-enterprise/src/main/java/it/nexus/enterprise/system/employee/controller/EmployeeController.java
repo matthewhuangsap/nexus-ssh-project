@@ -1,9 +1,9 @@
 package it.nexus.enterprise.system.employee.controller;
 
-import it.nexus.core.annotation.Access;
-import it.nexus.core.annotation.AccessGroup;
-import it.nexus.core.controller.BaseInfoAction;
-import it.nexus.core.controller.IBaseInfoAction;
+import it.nexus.enterprise.annotations.Access;
+import it.nexus.enterprise.annotations.AccessGroup;
+import it.nexus.enterprise.baseinfo.controller.BaseInfoAction;
+import it.nexus.enterprise.baseinfo.controller.IBaseInfoAction;
 import it.nexus.core.dao.Page;
 import it.nexus.enterprise.system.employee.model.Employee;
 import it.nexus.enterprise.system.employee.service.EmployeeService;

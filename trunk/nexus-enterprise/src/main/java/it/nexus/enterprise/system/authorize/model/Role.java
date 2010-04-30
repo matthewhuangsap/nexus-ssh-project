@@ -1,7 +1,7 @@
 package it.nexus.enterprise.system.authorize.model;
 
 import it.nexus.core.annotation.LogicName;
-import it.nexus.core.models.BaseTree;
+import it.nexus.enterprise.baseinfo.model.BaseTree;
 
 import java.io.Serializable;
 import java.util.ArrayList;

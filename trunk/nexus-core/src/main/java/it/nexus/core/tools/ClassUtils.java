@@ -1,7 +1,5 @@
 package it.nexus.core.tools;
 
-import it.nexus.core.annotation.AccessGroup;
-
 import java.io.*;
 import java.lang.reflect.ParameterizedType;
 import java.net.JarURLConnection;
@@ -202,22 +200,22 @@ public class ClassUtils {
         return clazz_list;
     }
 
-    /**
-     * 得到菜单资源
-     */
-
-    public static List<Class<?>> getAccessGroup(String package_name) {
-        List<Class<?>> result_list = new ArrayList<Class<?>>();
-        List<Class<?>> clazz_list = ClassUtils.getClasses(package_name);
-        for (Class<?> clazz : clazz_list) {
-            AccessGroup aGroup = clazz.getAnnotation(AccessGroup.class);
-            if (aGroup != null) {
-                System.out.println("ClassUtils GetAccessGroup:" + clazz.getName());
-                result_list.add(clazz);
-            }
-        }
-        return result_list;
-    }
+//    /**
+//     * 得到菜单资源
+//     */
+//
+//    public static List<Class<?>> getAccessGroup(String package_name) {
+//        List<Class<?>> result_list = new ArrayList<Class<?>>();
+//        List<Class<?>> clazz_list = ClassUtils.getClasses(package_name);
+//        for (Class<?> clazz : clazz_list) {
+//            AccessGroup aGroup = clazz.getAnnotation(AccessGroup.class);
+//            if (aGroup != null) {
+//                System.out.println("ClassUtils GetAccessGroup:" + clazz.getName());
+//                result_list.add(clazz);
+//            }
+//        }
+//        return result_list;
+//    }
 
     /**
      * 根据文件所在类路径返回对应的绝对路径的文件对象。

@@ -1,6 +1,7 @@
 package net.psi.baseinfo.supplier.model;
 
-import it.nexus.core.models.BaseInfo;
+
+import it.nexus.enterprise.baseinfo.model.BaseInfo;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

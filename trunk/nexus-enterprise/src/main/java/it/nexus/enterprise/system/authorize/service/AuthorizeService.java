@@ -1,6 +1,6 @@
 package it.nexus.enterprise.system.authorize.service;
 
-import it.nexus.core.service.BaseTreeService;
+import it.nexus.enterprise.baseinfo.service.BaseTreeService;
 import it.nexus.enterprise.system.authorize.dao.RoleDAO;
 import it.nexus.enterprise.system.authorize.model.Role;
 
