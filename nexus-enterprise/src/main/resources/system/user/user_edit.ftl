@@ -7,7 +7,7 @@
 
 	<body topmargin="0" onkeydown="if(event.keyCode==13){return false;}">
 
-		<@s.form action="save">
+		<@s.form action="save" theme="nexus">
 
 			<@s.hidden name="dmo.id"></@s.hidden>
 			<@s.hidden name="dmo.spell"></@s.hidden>
