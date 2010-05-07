@@ -50,11 +50,9 @@ public class DeptController extends BaseInfoAction<Dept> {
 	@SuppressWarnings("unchecked")
 	@Action(value = "/system/dept/list", results = { @Result(name = "success", location = page_list) })
 	public String list() {
-    page = new Page();
-    page.setCpage(1);
-    page.setPageSize(15);
-    page.setTotal(30);
-    page.setUrl("/system/dept/list");
+
+    System.out.println(">>>>:"+page.getCpage());
+    page.setUrl("list");
 
 		lists = deptService.getAll(page);
 		return SUCCESS;
@@ -75,20 +73,18 @@ public class DeptController extends BaseInfoAction<Dept> {
 	@Action(value = "/system/dept/create", results = { @Result(name = "success", location = page_edit) })
 	public String create() throws Exception {
 		dmo = new Dept();
-    page = new Page(15);
-		lists = deptService.getAll(page);
-		System.out.println("dmo.id:" + dmo.getId());
+
 		return super.SUCCESS;
 	}
 
 	@Access("编辑")
 	@Action(value = "/system/dept/edit", results = { @Result(name = "success", location = page_edit) })
 	public String edit() {
-		System.out.println("dmo.id:" + dmo.getId());
+//		System.out.println("dmo.id:" + dmo.getId());
 		dmo = deptService.load(dmo.getId());
 		lists = deptService.getAll(page);
-		System.out.println("out put " + dmo.getLevel() + dmo.getRemark()
-				+ dmo.getId());
+//		System.out.println("out put " + dmo.getLevel() + dmo.getRemark()
+//				+ dmo.getId());
 		return SUCCESS;
 	}
 

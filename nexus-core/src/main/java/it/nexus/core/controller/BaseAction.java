@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import it.nexus.core.tools.ReflectionUtils;
 
 @SuppressWarnings("unchecked")
 public abstract class BaseAction<T extends Base> extends ActionSupport {
@@ -23,7 +24,7 @@ public abstract class BaseAction<T extends Base> extends ActionSupport {
 	}
 	
 	protected Class<?> getEntityClass(){
-		return ClassUtils.getGenericType(getClass(), 0);
+		return ReflectionUtils.getSuperClassGenricType(getClass(), 0);
 	}
 	
 //	protected void getRole(){

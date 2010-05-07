@@ -8,8 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head><title>Simple jsp page</title></head>
+  <head><title>Error Page </title></head>
   <body>
+    <h1>发生了错误！</h1>
     <s:property value="exception.message"/>
   </body>
 

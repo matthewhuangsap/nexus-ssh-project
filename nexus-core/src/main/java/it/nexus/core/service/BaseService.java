@@ -48,11 +48,7 @@ public class BaseService<T extends Base, K extends BaseDAO> {
   }
 
   public void saveOrUpdate(T entity) {
-    dao.saveOrUpdate(entity);
-  }
-
-  public void merge(T entity) {
-    dao.merge(entity);
+    dao.save(entity);
   }
 
   public void update(T entity) {

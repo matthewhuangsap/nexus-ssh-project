@@ -47,7 +47,6 @@
     </tr>
 </@s.iterator>
 </table>
-共${page.total}页
 <@c.pages cpage="${page.cpage}" total="${page.total}" url="${page.url}"/>
 <@s.a href="create">添加</@s.a>
 </body>

@@ -24,10 +24,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 public class ClassUtils {
     private static final Log log = LogFactory.getLog(ClassUtils.class);
 
-    /*
-      * get all class name
-      */
-
+    
     public static String[] getPackageAllClassName(String classLocation,
                                                   String packageName) {
         // 将packageName分解
@@ -174,11 +171,6 @@ public class ClassUtils {
                 }
             }
         }
-    }
-
-    public static Class<?> getGenericType(Class<?> clazz, int index) {
-        return (Class<?>) ((ParameterizedType) clazz.getGenericSuperclass())
-                .getActualTypeArguments()[index];
     }
 
     public static List<Class<?>> getControllers(String package_name) {
