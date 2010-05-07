@@ -33,7 +33,7 @@ public class UserService {
 	}
 
 	public void save(User entity) {
-		userDAO.saveOrUpdate(entity);
+		userDAO.save(entity);
 	}
 
 	public void update(User entity) {

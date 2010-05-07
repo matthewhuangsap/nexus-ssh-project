@@ -14,7 +14,6 @@ import plugin.system.PluginClass;
 public class TestPluginClass {
     @Test
     public void getPluginFile() throws NexusException {
-//        PluginClass pc = new PluginClass();
-//        pc.Init();
+      
     }
 }

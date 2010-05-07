@@ -48,15 +48,12 @@ public class EmployeeService {
 	}
 
 	public void save(Employee entity) {
-			employeeDAO.saveOrUpdate(entity);
+			employeeDAO.save(entity);
 	}
 
 	public void update(Employee entity) {
 		employeeDAO.update(entity);
 	}
 	
-	public void merge(Employee entity){
-		employeeDAO.merge(entity);
-	}
 	
 }

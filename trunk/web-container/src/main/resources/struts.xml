@@ -26,15 +26,13 @@
 
         <!-- 定义全局Result -->
         <global-results>
-            <result name="all">/error.jsp</result>
             <!-- 当返回login视图名时，转入/login.jsp页面 -->
-            <!--<result name="error" type="redirect">/error</result>-->
             <result name="login" type="redirect">/show</result>
         </global-results>
-        <global-exception-mappings>
-            <exception-mapping result="all" exception="java.lang.Exception">
-            </exception-mapping>
-        </global-exception-mappings>
+        <!--<global-exception-mappings>-->
+            <!--<exception-mapping result="all" exception="java.lang.Exception">-->
+            <!--</exception-mapping>-->
+        <!--</global-exception-mappings>-->
     </package>
 
     <!-- ################################################################### -->

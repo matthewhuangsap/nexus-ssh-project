@@ -1,1 +1,5 @@
-<li><span><div>Name:</div><div><#rt>
+<li><span><div><#rt>
+<#if parameters.label??>
+ ${parameters.label?html}:<#rt>
+</#if>
+</div><div><#rt>

@@ -5,7 +5,7 @@ import it.nexus.core.models.Entity;
 
 public class EntityAction<T extends Entity> extends BaseAction<T> {
 	private static final long	serialVersionUID	= -396481523092188753L;
-  protected Page page;
+  protected Page page = new Page(15);
 
   public Page getPage() {
     return page;
