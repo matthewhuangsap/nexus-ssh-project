@@ -1,6 +1,7 @@
 package it.nexus.core.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table(name="SYS_USER")
 public class User extends it.nexus.core.models.Entity {
   public User(){}
 

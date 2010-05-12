@@ -1,6 +1,7 @@
 package it.nexus.core.dao;
 
 import it.nexus.core.model.User;
+import it.nexus.core.test.spring.SpringExtTestCase;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,10 +23,8 @@ import static junit.framework.Assert.assertEquals;
  * Date: 2010-5-7
  * Time: 10:30:49
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
-public class HibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class HibernateDaoTest extends SpringExtTestCase {
   private static final String DEFAULT_LOGIN_NAME = "sagaris";
   private HibernateDao<User, String> dao;
   @Resource
@@ -36,6 +35,7 @@ public class HibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTe
 
   @Before
   public void before() {
+    jdbcTemplate.execute("drop all objects");
     dao = new HibernateDao(sessionFactory, User.class);
   }
 
@@ -75,8 +75,19 @@ public class HibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTe
   @Test
   public void getAll(){
     List<User> users = dao.getAll("id",true);
+    System.out.println(users.size());
     assertEquals(6,users.size());
     assertEquals(DEFAULT_LOGIN_NAME, users.get(0).getName());
   }
+
+  @Test
+	public void findByProperty() {
+		List<User> users = dao.findBy("name", DEFAULT_LOGIN_NAME);
+		assertEquals(1, users.size());
+		assertEquals(DEFAULT_LOGIN_NAME, users.get(0).getName());
+
+		User user = dao.findUniqueBy("name", DEFAULT_LOGIN_NAME);
+		assertEquals(DEFAULT_LOGIN_NAME, user.getName());
+	}
 
 }
